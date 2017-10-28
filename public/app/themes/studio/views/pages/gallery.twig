@@ -1,0 +1,17 @@
+{% extends "layouts/master.twig" %}
+
+{% block content %}
+	{% for gallery in post.get_field('gallery_group') %}
+	<a data-id="{{ loop.index }}" href="">{{ gallery.gallery_title}}</a>
+	{% endfor %}
+
+	{% for gallery in post.get_field('gallery_group') %}
+	<div id="gallery-{{ loop.index }}">
+	{% for image in gallery.gallery_images %}
+		<img src="{{ TimberImage(image) }}" alt="{{ image.alt }}">
+	{% endfor %}
+	</div>
+	{% endfor %}
+{% endblock %}
+
+{% block body_js %}{% endblock %}

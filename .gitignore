@@ -1,0 +1,23 @@
+# Application
+/public/app/upgrade
+
+# WordPress
+/public/wp
+
+# WP-CLI
+db-sync
+sql-dump-*.sql
+
+# Environment
+.env
+/public/.htaccess
+
+# Composer
+/vendor
+
+# Node
+node_modules
+
+# OS related files
+*.DS_Store
+Thumbs.db

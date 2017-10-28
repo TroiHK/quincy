@@ -1,0 +1,46 @@
+{
+    "name": "studio/wordpress-property",
+    "description": "WordPress boilerplate for property website with modern development tools, easier configuration, and an improved folder structure.",
+    "keywords": ["wordpress", "stack", "composer", "wp"],
+    "license": "proprietary",
+    "type": "project",
+    "require": {
+        "php": ">=5.6",
+        "johnpbloch/wordpress": "4.7.4",
+        "studio/wordpress-foundation": "^1.0.0",
+        "wpackagist-plugin/timber-library": "^1.1",
+        "wp-plugin/advanced-custom-fields-pro": "^5.4",
+        "wp-plugin/engrain": "^1.0"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^2.5.1"
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "scripts": {
+        "test": [
+            "vendor/bin/phpcs --ignore=public/wp/,vendor/ -n -s ."
+        ]
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "extra": {
+        "installer-paths": {
+            "public/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+            "public/app/plugins/{$name}/": ["type:wordpress-plugin"],
+            "public/app/themes/{$name}/": ["type:wordpress-theme"]
+        },
+        "wordpress-install-dir": "public/wp"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        },
+        {
+            "type": "composer",
+            "url": "https://composer.registry.engrain.io"
+        }
+    ]
+}

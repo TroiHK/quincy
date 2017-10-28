@@ -1,0 +1,30 @@
+{% extends "layouts/master.twig" %}
+
+{% block content %}
+	{% for item in post.get_field('amenities') %}
+	<a data-id="{{ loop.index }}" href="">{{ item.amenity_group_title}}</a>
+	{% endfor %}
+
+	{% for item in post.get_field('amenities') %}
+	<div id="amenity-list-{{ loop.index }}">
+		<ul>
+			{% for amenity in item.amenity_item %}
+			<li>
+				{{ amenity.amenity_title }}
+				<img src="{{ TimberImage(amenity.amenity_image).src }}" alt="{{ amenity.amenity_image.alt }}">
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+	{% endfor %}
+
+	{% for item in post.get_field('amenities') %}
+	<div id="amenity-gallery-{{ loop.index }}">
+	{% for image in item.amenity_group_gallery %}
+	    <img src="{{ TimberImage(image) }}" alt="{{ image.alt }}">
+	{% endfor %}
+	</div>
+	{% endfor %}
+{% endblock %}
+
+{% block body_js %}{% endblock %}

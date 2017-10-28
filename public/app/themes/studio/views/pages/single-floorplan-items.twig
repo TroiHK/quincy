@@ -1,0 +1,12 @@
+{% extends "layouts/master.twig" %}
+
+{% block content %}
+	<p>
+		{{ post.name }}<br>
+		{{ post.get_field('bedroom_count') }} Bedroom<br>
+		{{ post.get_field('bathroom_count') }} Bathroom<br>
+		{{ post.get_field('area_min') }} - {{ post.get_field('area_max') }} Sq. Ft.
+	</p>
+
+	<img src="{{ post.floorplan_image }}" alt="{{ post.name }}" />
+{% endblock %}

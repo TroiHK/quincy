@@ -1,0 +1,44 @@
+{% block html_head_container %}
+  <!doctype html>
+  <!--[if lt IE 7]><html class="no-js ie ie6 lt-ie9 lt-ie8 lt-ie7" {{site.language_attributes}}> <![endif]-->
+  <!--[if IE 7]><html class="no-js ie ie7 lt-ie9 lt-ie8" {{site.language_attributes}}> <![endif]-->
+  <!--[if IE 8]><html class="no-js ie ie8 lt-ie9" {{site.language_attributes}}> <![endif]-->
+  <!--[if gt IE 8]><!--><html class="no-js" {{site.language_attributes}}> <!--<![endif]-->
+  <head>
+    <meta charset="{{site.charset}}">
+
+    <title>{% if post.get_field('title') %}{{post.get_field('title')}}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{% if post.get_field('meta_description') %}{{post.get_field('meta_description')}}{% else %}{{ site.description }}{% endif %}">
+    <meta name="keywords" content="{{post.get_field('meta_keywords')}}">
+    <link rel="stylesheet" href="{{style_url('master')}}" type="text/css" media="screen">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    {{ global.google_analytics }}
+    {{ global.tracking_codes }}
+    {{function('wp_head')}}
+
+    {% block head %}
+    {% endblock %}
+  </head>
+{% endblock %}
+
+  <body class="{{body_class}}">
+    {% block header %}
+      {% include 'partials/header.twig' %}
+    {% endblock %}
+
+    {% block content %}
+      Sorry, no content
+    {% endblock %}
+
+    {% block footer %}
+      {% include 'partials/footer.twig' %}
+    {% endblock %}
+
+    {% block body_js %}
+    {% endblock %}
+    {{ function('wp_footer') }}
+
+  </body>
+</html>

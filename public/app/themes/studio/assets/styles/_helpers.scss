@@ -1,0 +1,105 @@
+.hide {
+  display: none !important;
+}
+
+.clearfix {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after { 
+    clear: both; 
+  }
+}
+
+.left {
+  float:left;
+}
+
+.right {
+  float:right;
+}
+
+.full-width {
+  width:100%;
+}
+
+.half-width {
+  width:50%;
+}
+
+.third-width {
+  width:33%;
+}
+
+.quarter-width  {
+  width:25%;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.static {
+  position: static;
+}
+
+.text-left {
+  text-align:left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+@include breakpoint(tablet) { 
+  .hide-for-small {
+    display: none !important;
+  }
+  .show-for-small {
+    display: block !important;
+  }
+}
+
+@include breakpoint(phone) {
+  .hide-for-small {
+    display: none !important;
+  }
+  .show-for-small {
+    display: block !important;
+  }
+}
+
+@include breakpoint(tablet) {
+  .show-for-medium-up {
+    display: block !important;
+  }
+  .hide-for-medium-up {
+    display: none !important;
+  }
+}
+@include breakpoint(desktop) {
+  .show-for-medium-up {
+    display: block !important;
+  }
+  .hide-for-medium-up {
+    display: none !important;
+  }
+}

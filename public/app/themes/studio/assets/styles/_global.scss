@@ -1,0 +1,28 @@
+html {
+    font-size: $base__font-size;
+
+    body {
+        line-height: $base__line-height;
+        font-size: $base__font-size;
+    }
+}
+
+a img {
+    /* Stops ie from displaying a blue box around linked images */
+    outline:0;
+    border:0;
+}
+
+.ieblock {
+    margin: 0 auto;
+    text-align: center;
+    width: 500px;
+    font-size: 20px;
+    background: $black;
+    color: $white;
+    padding: 30px;
+    position: absolute;
+    z-index: 10; 
+    left: 0;
+    top: 0;
+}

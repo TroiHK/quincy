@@ -1,0 +1,13 @@
+{
+  "name": "wordpress",
+  "version": "1.0.0",
+  "description": "Wordpress Default Theme",
+  "authors": [
+    "Eric Hilse <eric@engrain.com>"
+  ],
+  "private": true,
+  "license": "proprietary",
+  "dependencies": {
+    "jQuery": "^3.2.1"
+  }
+}

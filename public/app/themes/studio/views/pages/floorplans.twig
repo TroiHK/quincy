@@ -1,0 +1,98 @@
+{% extends "layouts/master.twig" %}
+
+{% block content %}
+	<div id="fp-filters">
+		<ul id="fp-filters--bedrooms">
+			<li><a href="#" data-value="false">All</a></li>
+			<li><a href="#" data-value="0">Studio</a></li>
+			<li><a href="#" data-value="1">1 Bedroom</a></li>
+			<li><a href="#" data-value="2">2 Bedroom</a></li>
+			<li><a href="#" data-value="3">3 Bedroom</a></li>
+		</ul>
+
+		{# Select option for bedroom filter #}
+		{#<select id="fp-filters--bedrooms" value="">
+			<option value="false">All Bedrooms</option>
+			<option value="0">Studio</option>
+			<option value="1">1 Bedroom</option>
+			<option value="2">2 Bedroom</option>
+			<option value="3">3 Bedroom</option>
+		</select>#}
+
+		<select id="fp-filters--date">
+			<option value="false">Select a Timeframe</option>
+			<option value="30">WITHIN 30 DAYS</option>
+			<option value="60">WITHIN 60 DAYS</option>
+			<option value="90">WITHIN 90 DAYS</option>
+			<option value="365">WITHIN 90+ DAYS</option>
+		</select>
+
+		<select id="fp-filters--price">
+			<option value="false">All</option>
+			<option value="1000-1500">$1,000-$1,500</option>
+			<option value="1500-2000">$1,500-$2,000</option>
+			<option value="2000-2500">$2,000-$2,500</option>
+			<option value="2500-3000">$2,500-$3,000</option>
+		</select>
+	</div>
+
+	{% for floorplan in floorplans %}
+	<div id="fp{{ floorplan.id }}">
+		<img src="{{ floorplan.floorplan_image }}" alt="{{ floorplan.name }}" />
+		<p>
+			{{ floorplan.name }}<br>
+			{{ floorplan.bedroomcount }} Bedroom<br>
+			{{ floorplan.bedroomcount }} Bathroom<br>
+			{{ floorplan.areamin }} - {{ floorplan.areamax }} Sq. Ft.
+			<a href="{{ floorplan.floorplan_link }}">View Details</a>
+		</p>
+	</div>
+	{% endfor %}
+{% endblock %}
+
+{% block body_js %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+	<script type="text/javascript">
+		var floorplans = {{ floorplans_json|raw }};
+		// var price_range = {{ price_range|json_encode()|raw }};
+
+		// Function to get query variable from URL
+		function getQueryVariable(variable) {
+			var query = window.location.search.substring(1);
+			var vars = query.split("&");
+			for (var i=0;i<vars.length;i++) {
+				var pair = vars[i].split("=");
+				if(pair[0] == variable){return pair[1];}
+			}
+			return ''
+		}
+
+		// Sets the default Filter for when the page Loads
+		var defaultFilters = {
+			bedroom: getQueryVariable('quick-search--bedroom'),
+			date: getQueryVariable('quick-search--date'),
+			priceRange: getQueryVariable('quick-search--price'),
+		}
+
+		/* Select option for bedroom filter */
+		// if (defaultFilters.bedroom !== null && defaultFilters.bedroom !== '') {
+		// 	$('#fp-filters--bedrooms').val(decodeURIComponent(defaultFilters.bedroom));
+		// } 
+
+		if (defaultFilters.bedroom !== null && defaultFilters.bedroom !== '') {
+			$('#fp-filters--bedrooms li a[data-value="' + defaultFilters.bedroom + '"]').parent().addClass('selected');
+		} else {
+			$('#fp-filters--bedrooms li a[data-value="false"]').parent().addClass('selected');
+		}
+
+		if (defaultFilters.date !== null && defaultFilters.date !== '') {
+			$('#fp-filters--date').val(decodeURIComponent(defaultFilters.date));
+		}
+
+		if (defaultFilters.priceRange !== null && defaultFilters.priceRange !== '') {
+			$('#fp-filters--price').val(decodeURIComponent(defaultFilters.priceRange));
+		}
+	</script>
+	<script type="text/javascript" src="{{script_url('floorplans')}}"></script>
+{% endblock %}

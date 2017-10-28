@@ -1,0 +1,46 @@
+{% extends "layouts/master.twig" %}
+
+{% block content %}
+	<ul>
+		{% for location_category in locations %}
+		<li class="category category-{{ location_category.location_category_name|lower|replace({' ': '_'}) }}">
+			<a data-category="{{ location_category.location_category_id }}" href="#">{{ location_category.location_category_name }}</a>
+		</li>
+		{% endfor %}
+	</ul>
+
+	{% for location_category in locations %}
+	<div class="neighborhood-list-wrap" id="{{ 'content' ~ location_category.location_category_id }}">
+		<ul class="neighborhood-list" id="{{ 'results' ~ location_category.location_category_id }}">
+			{# locations get dumped into here #}
+		</ul>
+	</div>
+	{% endfor %}
+
+	<div id="map-area" style="height: 500px;"></div>
+{% endblock %}
+
+{% block body_js %}
+	<script>
+		var location_categories = {{ locations_json|raw }};
+		var properties = [  
+			{
+				"id":"0",
+				"name":"{{ global.name }}",
+				"address":"{{ global.street }}",
+				"city":"{{ global.city }}",
+				"state":"{{ global.state }}",
+				"zip":"{{ global.zip }}",
+				"phone":"{{ global.phone }}",
+				"latitude":"{{ global.map_location.lat }}",
+				"longitude":"{{ global.map_location.lng }}"
+			}
+		];
+		var site_url = "{{ theme.link }}";
+	</script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ global.api_key }}"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.24/gmaps.min.js"></script>
+	<script type="text/javascript" src="{{script_url('maps')}}"></script>
+{% endblock %}

@@ -1,0 +1,40 @@
+{
+  "name": "@studio/wordpress-property",
+  "version": "1.2.0",
+  "description": "Studio Property Theme",
+  "authors": [
+    "Patrick Douglas <patrick@engrain.com>",
+    "Eric Hilse <eric@engrain.com>"
+  ],
+  "private": true,
+  "license": "proprietary",
+  "engines": {
+    "node": ">=4.3.2 < 5"
+  },
+  "scripts": {
+    "start": "gulp watch",
+    "release": "gulp"
+  },
+  "devDependencies": {
+    "autoprefixer": "~5.2.0",
+    "css-mqpacker": "~4.0.0",
+    "cssnano": "~2.6.1",
+    "dotenv": "~1.2.0",
+    "fs": "~0.0.2",
+    "gulp": "~3.9.0",
+    "gulp-concat": "~2.6.0",
+    "gulp-imagemin": "~2.3.0",
+    "gulp-jshint": "~1.11.2",
+    "gulp-postcss": "~6.0.0",
+    "gulp-rename": "~1.2.2",
+    "gulp-sass": "~2.0.4 ",
+    "gulp-sourcemaps": "~1.6.0",
+    "gulp-svg-sprite": "^1.3.3",
+    "gulp-uglify": "~1.4.2",
+    "gulp-uglifycss": "~1.0.4",
+    "lost": "~6.5.0",
+    "merge-stream": "~1.0.0",
+    "node-sass": "~3.4.0",
+    "postcss-pxtorem": "~3.0.0"
+  }
+}
