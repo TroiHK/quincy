@@ -175,7 +175,7 @@ $base-line-height: 1.5 !default;
 
 // @mixins
 //
-// We use this to add a glowing effect to block elements
+// We use this to add a glowing effect to blocks elements
 // $selector - Used for selector state. Default: focus, Options: hover, active, visited
 // $fade-time - Default: 300ms
 // $glowing-effect-color - Default: fade-out($primary-color, .25)
@@ -461,7 +461,7 @@ $cursor-text-value: text !default;
     // Note this only applies to webkit-based desktop browsers and Firefox 25 (and later) on the Mac.
     .antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
-    // Get rid of gap under images by making them display: inline-block; by default
+    // Get rid of gap under images by making them display: inline-blocks; by default
     img {
       display: inline-block;
       vertical-align: middle;

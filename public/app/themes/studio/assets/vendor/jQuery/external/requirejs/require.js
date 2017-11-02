@@ -1957,7 +1957,7 @@ var requirejs, require, define;
         } else if (isWebWorker) {
             try {
                 //In a web worker, use importScripts. This is not a very
-                //efficient use of importScripts, importScripts will block until
+                //efficient use of importScripts, importScripts will blocks until
                 //its script is downloaded and evaluated. However, if web workers
                 //are in play, the expectation is that a build has been done so
                 //that only one script needs to be loaded anyway. This may need

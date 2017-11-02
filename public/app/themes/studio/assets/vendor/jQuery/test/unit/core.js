@@ -1280,9 +1280,9 @@ QUnit.test( "jQuery.extend(true,{},{a:[], o:{}}); deep copy with array, followed
 		array: [ 1, 2, 3, 4 ],
 
 		// If "copyIsArray" doesn't get reset to false, the check
-		// will evaluate true and enter the array copy block
-		// instead of the object copy block. Since the ternary in the
-		// "copyIsArray" block will evaluate to false
+		// will evaluate true and enter the array copy blocks
+		// instead of the object copy blocks. Since the ternary in the
+		// "copyIsArray" blocks will evaluate to false
 		// (check if operating on an array with ), this will be
 		// replaced by an empty array.
 		object: {}

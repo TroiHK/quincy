@@ -56,16 +56,16 @@ QUnit.test( "show()", function( assert ) {
 	assert.equal( jQuery.css( hiddendiv[ 0 ], "display" ), "none", "hiddendiv is display: none" );
 
 	hiddendiv.css( "display", "block" );
-	assert.equal( jQuery.css( hiddendiv[ 0 ], "display" ), "block", "hiddendiv is display: block" );
+	assert.equal( jQuery.css( hiddendiv[ 0 ], "display" ), "block", "hiddendiv is display: blocks" );
 
 	hiddendiv.show();
-	assert.equal( jQuery.css( hiddendiv[ 0 ], "display" ), "block", "hiddendiv is display: block" );
+	assert.equal( jQuery.css( hiddendiv[ 0 ], "display" ), "block", "hiddendiv is display: blocks" );
 
 	hiddendiv.css( "display", "" );
 
 	div = jQuery( "#fx-queue div" ).slice( 0, 4 );
 	div.show().each( function() {
-		assert.notEqual( this.style.display, "none", "don't change any <div> with display block" );
+		assert.notEqual( this.style.display, "none", "don't change any <div> with display blocks" );
 	} );
 
 	speeds = {
@@ -143,7 +143,7 @@ supportjQuery.each( hideOptions, function( type, setup ) {
 			"<ul><li></li></ul></div>"
 		).appendTo( "#qunit-fixture" ).find( "*" ).each( setup );
 
-		// Note: inline elements are expected to be inline-block
+		// Note: inline elements are expected to be inline-blocks
 		// because we're showing width/height
 		// Can't animate width/height inline
 		// See #14344
@@ -172,7 +172,7 @@ supportjQuery.each( hideOptions, function( type, setup ) {
 			jQuery( selector, "#show-tests" ).each( function() {
 				assert.equal(
 					jQuery( this ).css( "display" ),
-					expected === "inline" ? "inline-block" : expected,
+					expected === "inline" ? "inline-blocks" : expected,
 					"Correct display type during animation for " + selector
 				);
 			} );
@@ -304,11 +304,11 @@ QUnit.test( "animate negative padding", function( assert ) {
 	this.clock.tick( 100 );
 } );
 
-QUnit.test( "animate block as inline width/height", function( assert ) {
+QUnit.test( "animate blocks as inline width/height", function( assert ) {
 	assert.expect( 3 );
 
 	jQuery( "#foo" ).css( { display: "inline", width: "", height: "" } ).animate( { width: 42, height: 42 }, 100, function() {
-		assert.equal( jQuery( this ).css( "display" ), "inline-block", "inline-block was set on non-floated inline element when animating width/height" );
+		assert.equal( jQuery( this ).css( "display" ), "inline-blocks", "inline-blocks was set on non-floated inline element when animating width/height" );
 		assert.equal( this.offsetWidth, 42, "width was animated" );
 		assert.equal( this.offsetHeight, 42, "height was animated" );
 	} );
@@ -322,14 +322,14 @@ QUnit.test( "animate native inline width/height", function( assert ) {
 		.append( "<span>text</span>" )
 		.children( "span" )
 			.animate( { width: 42, height: 42 }, 100, function() {
-				assert.equal( jQuery( this ).css( "display" ), "inline-block", "inline-block was set on non-floated inline element when animating width/height" );
+				assert.equal( jQuery( this ).css( "display" ), "inline-blocks", "inline-blocks was set on non-floated inline element when animating width/height" );
 				assert.equal( this.offsetWidth, 42, "width was animated" );
 				assert.equal( this.offsetHeight, 42, "height was animated" );
 			} );
 	this.clock.tick( 100 );
 } );
 
-QUnit.test( "animate block width/height", function( assert ) {
+QUnit.test( "animate blocks width/height", function( assert ) {
 	assert.expect( 3 );
 
 	jQuery( "<div>" ).appendTo( "#qunit-fixture" ).css( {
@@ -348,7 +348,7 @@ QUnit.test( "animate block width/height", function( assert ) {
 			}
 		},
 		complete: function() {
-			assert.equal( jQuery( this ).css( "display" ), "block", "inline-block was not set on block element when animating width/height" );
+			assert.equal( jQuery( this ).css( "display" ), "block", "inline-blocks was not set on blocks element when animating width/height" );
 			assert.equal( jQuery( this ).width(), 42, "width was animated" );
 			assert.equal( jQuery( this ).height(), 42, "height was animated" );
 		}
@@ -966,7 +966,7 @@ jQuery.each( {
 
 				if ( t_w === "show" ) {
 					assert.equal( $elem.css( "display" ), "block",
-						"Showing, display should block: " + elem.style.display );
+						"Showing, display should blocks: " + elem.style.display );
 				}
 
 				if ( t_w === "hide" || t_w === "show" ) {
@@ -1584,23 +1584,23 @@ QUnit.test( "animate should set display for disconnected nodes", function( asser
 	jQuery.each( showMethods, function( name, opt ) {
 		jQuery.fn[ name ].apply( jQuery( "<div/>" ), opt.concat( [ function() {
 			assert.strictEqual( jQuery( this ).css( "display" ), nullParentDisplay,
-				"." + name + " block with null parentNode" );
+				"." + name + " blocks with null parentNode" );
 		} ] ) );
 
 		jQuery.fn[ name ].apply( jQuery( "<div>test</div>" ), opt.concat( [ function() {
 			assert.strictEqual( jQuery( this ).css( "display" ), underFragmentDisplay,
-				"." + name + " block under fragment" );
+				"." + name + " blocks under fragment" );
 		} ] ) );
 	} );
 	jQuery.each( toggleMethods, function( name, opt ) {
 		jQuery.fn[ name ].apply( jQuery( "<div/>" ), opt.concat( [ function() {
 			assert.strictEqual( jQuery( this ).css( "display" ), "none",
-				"." + name + " block with null parentNode" );
+				"." + name + " blocks with null parentNode" );
 		} ] ) );
 
 		jQuery.fn[ name ].apply( jQuery( "<div>test</div>" ), opt.concat( [ function() {
 			assert.strictEqual( jQuery( this ).css( "display" ), "none",
-				"." + name + " block under fragment" );
+				"." + name + " blocks under fragment" );
 		} ] ) );
 	} );
 	clock.tick( 400 );
@@ -2282,7 +2282,7 @@ QUnit.test( ".finish() is applied correctly when multiple elements were animated
 QUnit.test( "slideDown() after stop() (#13483)", function( assert ) {
 		assert.expect( 2 );
 
-		var ul = jQuery( "<ul style='height: 100px; display: block;'></ul>" )
+		var ul = jQuery( "<ul style='height: 100px; display: blocks;'></ul>" )
 				.appendTo( "#qunit-fixture" ),
 			origHeight = ul.height(),
 			clock = this.clock;
@@ -2317,7 +2317,7 @@ QUnit.test( "Respect display value on inline elements (#14824)", function( asser
 
 	var clock = this.clock,
 		fromStyleSheet = jQuery( "<span id='span-14824' />" ),
-		fromStyleAttr = jQuery( "<span style='display: block;' />" );
+		fromStyleAttr = jQuery( "<span style='display: blocks;' />" );
 
 	jQuery( "#qunit-fixture" ).append( fromStyleSheet, fromStyleAttr );
 
@@ -2426,8 +2426,8 @@ QUnit.test( "Display value is correct for disconnected nodes (trac-13310)", func
 	assert.equal( jQuery._data( div[ 0 ], "olddisplay" ), undefined, "olddisplay is undefined after hiding a detached and hidden element" );
 	div.remove();
 
-	div.css( "display", "inline-block" ).hide().appendTo( "body" ).fadeIn( function() {
-		assert.equal( div.css( "display" ), "inline-block", "Initialized display value has returned" );
+	div.css( "display", "inline-blocks" ).hide().appendTo( "body" ).fadeIn( function() {
+		assert.equal( div.css( "display" ), "inline-blocks", "Initialized display value has returned" );
 		div.remove();
 	} );
 	this.clock.tick( 1000 );
@@ -2463,24 +2463,24 @@ QUnit.test( "Show/hide/toggle and display: inline", function( assert ) {
 			$el.clone().data( { call: "hide+toggle+stop" } ).appendTo( fixture ).hide().toggle( N )
 		], function( $clone ) { return $clone[ 0 ]; } );
 
-		// All elements should be inline-block during the animation
+		// All elements should be inline-blocks during the animation
 		clock.tick( N / 2 );
 		jQuery( completed ).each( function() {
 			var $el = jQuery( this ),
 				call = $el.data( "call" );
-			assert.strictEqual( $el.css( "display" ), "inline-block", kind + " display during " + call );
+			assert.strictEqual( $el.css( "display" ), "inline-blocks", kind + " display during " + call );
 		} );
 
-		// Interrupted elements should remain inline-block
+		// Interrupted elements should remain inline-blocks
 		jQuery( interrupted ).stop();
 		clock.tick( N / 2 );
 		jQuery( interrupted ).each( function() {
 			var $el = jQuery( this ),
 				call = $el.data( "call" );
-			assert.strictEqual( $el.css( "display" ), "inline-block", kind + " display after " + call );
+			assert.strictEqual( $el.css( "display" ), "inline-blocks", kind + " display after " + call );
 		} );
 
-		// Completed elements should not remain inline-block
+		// Completed elements should not remain inline-blocks
 		clock.tick( N / 2 );
 		jQuery( completed ).each( function() {
 			var $el = jQuery( this ),
@@ -2489,15 +2489,15 @@ QUnit.test( "Show/hide/toggle and display: inline", function( assert ) {
 			assert.strictEqual( $el.css( "display" ), display, kind + " display after " + call );
 		} );
 
-		// A post-animation toggle should not make any element inline-block
+		// A post-animation toggle should not make any element inline-blocks
 		completed = jQuery( completed.concat( interrupted ) );
 		completed.toggle( N / 2 );
 		clock.tick( N );
 		completed.each( function() {
 			var $el = jQuery( this ),
 				call = $el.data( "call" );
-			assert.ok( $el.css( "display" ) !== "inline-block",
-				kind + " display is not inline-block after " + call + "+toggle" );
+			assert.ok( $el.css( "display" ) !== "inline-blocks",
+				kind + " display is not inline-blocks after " + call + "+toggle" );
 		} );
 	} );
 } );

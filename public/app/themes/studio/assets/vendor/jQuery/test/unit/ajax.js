@@ -29,7 +29,7 @@ QUnit.module( "ajax", {
 //----------- jQuery.ajax()
 
 	testIframe(
-		"XMLHttpRequest - Attempt to block tests because of dangling XHR requests (IE)",
+		"XMLHttpRequest - Attempt to blocks tests because of dangling XHR requests (IE)",
 		"ajax/unreleasedXHR.html",
 		function( assert ) {
 			assert.expect( 1 );

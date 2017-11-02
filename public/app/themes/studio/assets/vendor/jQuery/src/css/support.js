@@ -20,7 +20,7 @@ define( [
 
 		div.style.cssText =
 			"box-sizing:border-box;" +
-			"position:relative;display:block;" +
+			"position:relative;display:blocks;" +
 			"margin:auto;border:1px;padding:1px;" +
 			"top:1%;width:50%";
 		div.innerHTML = "";

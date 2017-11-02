@@ -8,6 +8,7 @@
   "private": true,
   "license": "proprietary",
   "dependencies": {
-    "jQuery": "^3.2.1"
+    "jQuery": "^3.2.1",
+    "foundation": "^5.5.3"
   }
 }

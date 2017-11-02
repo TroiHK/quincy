@@ -484,10 +484,10 @@ QUnit.test( "show()", function( assert ) {
 	assert.equal( jQuery.css( hiddendiv[ 0 ], "display" ), "none", "hiddendiv is display: none" );
 
 	hiddendiv.css( "display", "block" );
-	assert.equal( jQuery.css( hiddendiv[ 0 ], "display" ), "block", "hiddendiv is display: block" );
+	assert.equal( jQuery.css( hiddendiv[ 0 ], "display" ), "block", "hiddendiv is display: blocks" );
 
 	hiddendiv.show();
-	assert.equal( jQuery.css( hiddendiv[ 0 ], "display" ), "block", "hiddendiv is display: block" );
+	assert.equal( jQuery.css( hiddendiv[ 0 ], "display" ), "block", "hiddendiv is display: blocks" );
 
 	hiddendiv.css( "display", "" );
 
@@ -657,7 +657,7 @@ QUnit.test( "show/hide 3.0, default display", function( assert ) {
 	var i,
 		$elems = jQuery( "<div/>" )
 			.appendTo( "#qunit-fixture" )
-			.html( "<div data-expected-display='block'/>" +
+			.html( "<div data-expected-display='blocks'/>" +
 				"<span data-expected-display='inline'/>" +
 				"<ul><li data-expected-display='list-item'/></ul>" )
 			.find( "[data-expected-display]" );
@@ -715,7 +715,7 @@ QUnit.test( "show/hide 3.0, cascade display", function( assert ) {
 	var i,
 		$elems = jQuery( "<div/>" )
 			.appendTo( "#qunit-fixture" )
-			.html( "<span class='block'/><div class='inline'/><div class='list-item'/>" )
+			.html( "<span class='blocks'/><div class='inline'/><div class='list-item'/>" )
 			.children();
 
 	$elems.each( function() {
@@ -754,15 +754,15 @@ QUnit.test( "show/hide 3.0, inline display", function( assert ) {
 	var i,
 		$elems = jQuery( "<div/>" )
 			.appendTo( "#qunit-fixture" )
-			.html( "<span data-expected-display='block' style='display:block'/>" +
-				"<span class='list-item' data-expected-display='block' style='display:block'/>" +
+			.html( "<span data-expected-display='blocks' style='display:blocks'/>" +
+				"<span class='list-item' data-expected-display='blocks' style='display:blocks'/>" +
 				"<div data-expected-display='inline' style='display:inline'/>" +
 				"<div class='list-item' data-expected-display='inline' style='display:inline'/>" +
 				"<ul>" +
-					"<li data-expected-display='block' style='display:block'/>" +
-					"<li class='inline' data-expected-display='block' style='display:block'/>" +
+					"<li data-expected-display='blocks' style='display:blocks'/>" +
+					"<li class='inline' data-expected-display='blocks' style='display:blocks'/>" +
 					"<li data-expected-display='inline' style='display:inline'/>" +
-					"<li class='block' data-expected-display='inline' style='display:inline'/>" +
+					"<li class='blocks' data-expected-display='inline' style='display:inline'/>" +
 				"</ul>" )
 			.find( "[data-expected-display]" );
 
@@ -803,8 +803,8 @@ QUnit.test( "show/hide 3.0, cascade hidden", function( assert ) {
 	var i,
 		$elems = jQuery( "<div/>" )
 			.appendTo( "#qunit-fixture" )
-			.html( "<div class='hidden' data-expected-display='block'/>" +
-				"<div class='hidden' data-expected-display='block' style='display:none'/>" +
+			.html( "<div class='hidden' data-expected-display='blocks'/>" +
+				"<div class='hidden' data-expected-display='blocks' style='display:none'/>" +
 				"<span class='hidden' data-expected-display='inline'/>" +
 				"<span class='hidden' data-expected-display='inline' style='display:none'/>" +
 				"<ul>" +
@@ -852,11 +852,11 @@ QUnit.test( "show/hide 3.0, inline hidden", function( assert ) {
 			.appendTo( "#qunit-fixture" )
 			.html( "<span data-expected-display='inline' style='display:none'/>" +
 				"<span class='list-item' data-expected-display='list-item' style='display:none'/>" +
-				"<div data-expected-display='block' style='display:none'/>" +
+				"<div data-expected-display='blocks' style='display:none'/>" +
 				"<div class='list-item' data-expected-display='list-item' style='display:none'/>" +
 				"<ul>" +
 					"<li data-expected-display='list-item' style='display:none'/>" +
-					"<li class='block' data-expected-display='block' style='display:none'/>" +
+					"<li class='blocks' data-expected-display='blocks' style='display:none'/>" +
 					"<li class='inline' data-expected-display='inline' style='display:none'/>" +
 				"</ul>" )
 			.find( "[data-expected-display]" );
@@ -986,7 +986,7 @@ QUnit.test( "computed margins (trac-3333; gh-2237)", function( assert ) {
 		"marginRight": 0
 	} );
 	assert.equal( $div.css( "marginRight" ), "0px",
-		"marginRight correctly calculated with a width and display block" );
+		"marginRight correctly calculated with a width and display blocks" );
 
 	$div.css( {
 		position: "absolute",
