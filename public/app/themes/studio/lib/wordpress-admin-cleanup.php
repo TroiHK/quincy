@@ -58,3 +58,24 @@ function remove_dashboard_widgets() {
 
 remove_action( 'welcome_panel', 'wp_welcome_panel' );
 add_action( 'wp_dashboard_setup', 'remove_dashboard_widgets' );
+
+/**
+ * Enqueue scripts and styles.
+ */
+function master_scripts() {
+
+	$url_obj = new Studio_Twig_Extension_Url();
+
+	if ( is_singular() && get_option( 'thread_comments' ) )
+		wp_enqueue_script( 'comment-reply' );
+
+	if (WP_DEBUG === true) {
+		wp_enqueue_style( 'main-libs', $url_obj->styleUrl('libs', true), array(), null );
+		wp_enqueue_style( 'main-style', $url_obj->styleUrl('custom', true), array(), null );
+		wp_enqueue_script( 'main-script', $url_obj->scriptUrl('all', true), array('jquery'), null, true );
+	} else {
+		wp_enqueue_style( 'main-style', $url_obj->styleUrl('all', true), array(), null );
+		wp_enqueue_script( 'main-script', $url_obj->scriptUrl('all', true), array('jquery'), null, true );
+	};
+}
+add_action( 'wp_enqueue_scripts', 'master_scripts' );

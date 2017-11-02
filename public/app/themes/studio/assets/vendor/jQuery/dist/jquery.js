@@ -42,7 +42,7 @@
 // Edge <= 12 - 13+, Firefox <=18 - 45+, IE 10 - 11, Safari 5.1 - 9+, iOS 6 - 9.1
 // throw exceptions when non-strict code (e.g., ASP.NET 4.5) accesses strict mode
 // arguments.callee.caller (trac-13335). But as of jQuery 3.0 (2016), strict mode should be common
-// enough that all such attempts are guarded in a try blocks.
+// enough that all such attempts are guarded in a try block.
 "use strict";
 
 var arr = [];
@@ -6098,7 +6098,7 @@ var getStyles = function( elem ) {
 
 		div.style.cssText =
 			"box-sizing:border-box;" +
-			"position:relative;display:blocks;" +
+			"position:relative;display:block;" +
 			"margin:auto;border:1px;padding:1px;" +
 			"top:1%;width:50%";
 		div.innerHTML = "";
@@ -6917,8 +6917,8 @@ function defaultPrefilter( elem, props, opts ) {
 			}
 		}
 
-		// Animate inline elements as inline-blocks
-		if ( display === "inline" || display === "inline-blocks" && restoreDisplay != null ) {
+		// Animate inline elements as inline-block
+		if ( display === "inline" || display === "inline-block" && restoreDisplay != null ) {
 			if ( jQuery.css( elem, "float" ) === "none" ) {
 
 				// Restore the original display value at the end of pure show/hide animations
@@ -6931,7 +6931,7 @@ function defaultPrefilter( elem, props, opts ) {
 						restoreDisplay = display === "none" ? "" : display;
 					}
 				}
-				style.display = "inline-blocks";
+				style.display = "inline-block";
 			}
 		}
 	}

@@ -8,6 +8,6 @@ $(function () {
 	})
 
 	$('#quick-search--submit').click(function () {
-		$('#quick-search').submit()
+		$('#quick-search').submit() 
 	})
 })

@@ -17,8 +17,10 @@ var jshint = require('gulp-jshint'),
 	imagemin = require('gulp-imagemin'),
 	fs = require('fs'),
 	merge = require('merge-stream'),
-	dotenv = require('dotenv').load()
+	// dotenv = require('dotenv').load(),
+	browserSync 	= require('browser-sync').create()
 
+var siteUrl = 'quincy.me';
 var path = require('path')
 
 // Use path.join() for path generation to avoid cross-platform issues.
@@ -27,12 +29,15 @@ var paths = {
 	dist: path.join('assets', 'dist'),
 	images: path.join('assets', 'images'),
 	scripts: path.join('assets', 'scripts'),
-	styles: path.join('assets', 'styles')
+	styles: path.join('assets', 'styles'),
+	vendor: path.join('assets', 'vendor')
 }
 
 // Compile Our Styles
 gulp.task('styles', function () {
-  return gulp.src([paths.styles + '/*.scss', paths.styles + '/*.css'])
+  return gulp.src([
+  		paths.styles + '/*.scss'
+  	])
 	.pipe(sourcemaps.init())
 	.pipe(sass())
 	.pipe(postcss([lost()]))
@@ -44,16 +49,41 @@ gulp.task('styles', function () {
 	})]))
 	.pipe(postcss([mqpacker()]))
 	.pipe(sourcemaps.write())
-	.pipe(concat('master.css'))
+	.pipe(concat('custom.css'))
 	.pipe(gulp.dest(paths.bundles))
-	.pipe(rename('master.min.css'))
+	.pipe(browserSync.stream())
+})
+
+gulp.task('styles-libs', function () {
+  return gulp.src([
+  		paths.vendor + '/bootstrap/dist/css/bootstrap.min.css',
+  		paths.vendor + '/font-awesome/css/font-awesome.min.css',
+  		paths.vendor + '/fancyBox/dist/jquery.fancybox.min.css'
+  	])
+  	.pipe(concat('libs.css'))
+	.pipe(gulp.dest(paths.bundles))
+})
+
+gulp.task('styles-min', function () {
+  return gulp.src([
+  		paths.bundles + '/libs.css',
+  		paths.bundles + '/custom.css'
+  	])
+  	.pipe(concat('all.css'))
+	.pipe(gulp.dest(paths.bundles))
+	.pipe(rename('all.min.css'))
 	.pipe(postcss([cssnano()]))
 	.pipe(gulp.dest(paths.dist))
 })
 
 // Concatenate & Minify JS
 gulp.task('scripts', function () {
-	return gulp.src(paths.scripts + '/*.js')
+	return gulp.src([
+			paths.vendor + '/fancyBox/dist/jquery.fancybox.js',
+			paths.vendor + '/FlexSlider/jquery.flexslider.js',
+			paths.vendor + '/lodash/dist/lodash.js',
+			paths.scripts + '/main/*.js'
+		])
 		.pipe(concat('all.js'))
 		.pipe(gulp.dest(paths.bundles))
 		.pipe(rename('all.min.js'))
@@ -93,6 +123,12 @@ gulp.task('jslint_folders', function () {
 		.pipe(jshint.reporter('default'))
 })
 
+// jsreload
+gulp.task('jsreload', ['jslint_folders', 'scripts_folders'], function (done) {
+	browserSync.reload();
+	done();
+});
+
 // Compress Images
 gulp.task('images', function () {
 	return gulp.src(paths.images + '/*')
@@ -101,11 +137,28 @@ gulp.task('images', function () {
 })
 
 // Watch Files For Changes
-gulp.task('watch', ['jslint', 'jslint_folders', 'styles'], function () {
+gulp.task('watch', ['jslint', 'jslint_folders', 'styles-libs', 'styles'], function () {
+
+	browserSync.init({
+		proxy: siteUrl
+	})
+
 	gulp.watch(paths.scripts + '/*.js', ['jslint', 'scripts'])
-	gulp.watch(paths.scripts + '/*/*.js', ['jslint_folders', 'scripts_folders'])
-	gulp.watch([paths.styles + '/*.scss', paths.styles + '/*.css'], ['styles'])
+	gulp.watch(paths.scripts + '/*/*.js', {cwd: './'}, ['jsreload'])
+	gulp.watch([paths.styles + '/*.scss', paths.styles + '/*/*.scss'], ['styles'])
+
+	gulp.watch([
+		'./*.php',
+		'./*/*.php',
+		'./*/*/*.php',
+		'./*.twig',
+		'./*/*.twig',
+		'./*/*/*.twig',
+		'./*/*/*/*.twig'
+	])
+	.on('change', browserSync.reload)
+
 })
 
 // Default Task
-gulp.task('default', ['styles', 'scripts', 'scripts_folders'])
+gulp.task('default', ['styles', 'styles-libs', 'styles-min', 'scripts', 'scripts_folders'])

@@ -10,10 +10,10 @@
     <title>{% if post.get_field('title') %}{{post.get_field('title')}}{% else %}{{ site.title }}{% endif %}</title>
     <meta name="description" content="{% if post.get_field('meta_description') %}{{post.get_field('meta_description')}}{% else %}{{ site.description }}{% endif %}">
     <meta name="keywords" content="{{post.get_field('meta_keywords')}}">
-    <link rel="stylesheet" href="{{style_url('master')}}" type="text/css" media="screen">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
     {{ global.google_analytics }}
     {{ global.tracking_codes }}
     {{function('wp_head')}}
@@ -38,7 +38,7 @@
 
     {% block body_js %}
     {% endblock %}
-    {{ function('wp_footer') }}
 
+    {{ function('wp_footer') }}
   </body>
 </html>

@@ -172,8 +172,8 @@ function defaultPrefilter( elem, props, opts ) {
 			}
 		}
 
-		// Animate inline elements as inline-blocks
-		if ( display === "inline" || display === "inline-blocks" && restoreDisplay != null ) {
+		// Animate inline elements as inline-block
+		if ( display === "inline" || display === "inline-block" && restoreDisplay != null ) {
 			if ( jQuery.css( elem, "float" ) === "none" ) {
 
 				// Restore the original display value at the end of pure show/hide animations
@@ -186,7 +186,7 @@ function defaultPrefilter( elem, props, opts ) {
 						restoreDisplay = display === "none" ? "" : display;
 					}
 				}
-				style.display = "inline-blocks";
+				style.display = "inline-block";
 			}
 		}
 	}

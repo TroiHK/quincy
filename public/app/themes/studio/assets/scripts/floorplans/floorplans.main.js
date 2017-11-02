@@ -22,7 +22,7 @@ function loadFilterEvents(floorplans, config) {
             sliderFilterSlideEvent(current_filter, floorplans, config);
         } else if (current_filter.type === 'input') {
             inputFilterChangeEvent(current_filter.input_id, floorplans, config);
-        }
+        } 
     }
 }
 
