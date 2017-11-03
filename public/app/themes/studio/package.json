@@ -38,5 +38,8 @@
     "merge-stream": "~1.0.0",
     "node-sass": "~3.4.0",
     "postcss-pxtorem": "^3.0.0"
+  },
+  "dependencies": {
+    "gulp-sass": "^2.3.2"
   }
 }

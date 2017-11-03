@@ -1,6 +1,79 @@
+@font-face {
+	font-family: 'MyriadPro-Regular';
+	src: url('../fonts/MyriadPro-Regular.eot');
+	src: url('../fonts/MyriadPro-Regular.woff2') format('woff2'),
+	url('../fonts/MyriadPro-Regular.woff') format('woff'),
+	url('../fonts/MyriadPro-Regular.ttf') format('truetype'),
+	url('../fonts/MyriadPro-Regular.svg#MyriadPro-Regular') format('svg'),
+	url('../fonts/MyriadPro-Regular.eot?#iefix') format('embedded-opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Raleway-Medium';
+	src: url('../fonts/Raleway-Medium.eot');
+	src: url('../fonts/Raleway-Medium.woff2') format('woff2'),
+	url('../fonts/Raleway-Medium.woff') format('woff'),
+	url('../fonts/Raleway-Medium.ttf') format('truetype'),
+	url('../fonts/Raleway-Medium.svg#Raleway-Medium') format('svg'),
+	url('../fonts/Raleway-Medium.eot?#iefix') format('embedded-opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'WorkSans';
+	src: url('../fonts/WorkSans-Bold.eot');
+	src: url('../fonts/WorkSans-Bold.woff2') format('woff2'),
+	url('../fonts/WorkSans-Bold.woff') format('woff'),
+	url('../fonts/WorkSans-Bold.ttf') format('truetype'),
+	url('../fonts/WorkSans-Bold.svg#WorkSans-Bold') format('svg'),
+	url('../fonts/WorkSans-Bold.eot?#iefix') format('embedded-opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'WorkSans';
+	src: url('../fonts/WorkSans-Light.eot');
+	src: url('../fonts/WorkSans-Light.woff2') format('woff2'),
+	url('../fonts/WorkSans-Light.woff') format('woff'),
+	url('../fonts/WorkSans-Light.ttf') format('truetype'),
+	url('../fonts/WorkSans-Light.svg#WorkSans-Light') format('svg'),
+	url('../fonts/WorkSans-Light.eot?#iefix') format('embedded-opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'WorkSans';
+	src: url('../fonts/WorkSans-Medium.eot');
+	src: url('../fonts/WorkSans-Medium.woff2') format('woff2'),
+	url('../fonts/WorkSans-Medium.woff') format('woff'),
+	url('../fonts/WorkSans-Medium.ttf') format('truetype'),
+	url('../fonts/WorkSans-Medium.svg#WorkSans-Medium') format('svg'),
+	url('../fonts/WorkSans-Medium.eot?#iefix') format('embedded-opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'WorkSans';
+	src: url('../fonts/WorkSans-Regular.eot');
+	src: url('../fonts/WorkSans-Regular.woff2') format('woff2'),
+	url('../fonts/WorkSans-Regular.woff') format('woff'),
+	url('../fonts/WorkSans-Regular.ttf') format('truetype'),
+	url('../fonts/WorkSans-Regular.svg#WorkSans-Regular') format('svg'),
+	url('../fonts/WorkSans-Regular.eot?#iefix') format('embedded-opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
 // Set font families
 $font-family--primary      : 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $font-family--secondary    : Arial, Helvetica, sans-serif;
+$main-font                 : 'WorkSans';
 
 // Set font weights
 $font-weight--light       : 300;
@@ -10,6 +83,8 @@ $font-weight--bold        : 600;
 // Set color
 $black                    : #000000;
 $white                    : #ffffff;
+$main-color               : #D4A358;
+$gray-color               : #E5E5E6;
 
 // Set main colors
 $primary-color            : $black;

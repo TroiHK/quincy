@@ -2,5 +2,13 @@
 	&__thumb {
 		height: 100vh; 
 		background-attachment: fixed;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+
+	&__detail {
+		@extend %absolute-center;
+		text-align: center;
+		color: $white;
 	}
 }

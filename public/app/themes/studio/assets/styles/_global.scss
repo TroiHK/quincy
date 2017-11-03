@@ -26,3 +26,11 @@ a img {
     left: 0;
     top: 0;
 }
+
+.scroll-next-section {
+    color: $white;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    @include transform(translateX(-50%));
+}

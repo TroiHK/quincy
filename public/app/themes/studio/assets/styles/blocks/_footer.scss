@@ -1,0 +1,18 @@
+.block-ft {
+	&-contact {
+		&__left {
+			background-color: $gray-color;
+			text-align: center;
+		}
+	}
+
+	&__list {
+		list-style: none;
+		padding-left: 0;
+
+		li {
+			display: inline-block;
+			vertical-align: middle;
+		}
+	}
+}
