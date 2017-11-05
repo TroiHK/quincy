@@ -18,7 +18,7 @@
 	url('../fonts/Raleway-Medium.ttf') format('truetype'),
 	url('../fonts/Raleway-Medium.svg#Raleway-Medium') format('svg'),
 	url('../fonts/Raleway-Medium.eot?#iefix') format('embedded-opentype');
-	font-weight: normal;
+	font-weight: 500;
 	font-style: normal;
 }
 
@@ -30,7 +30,7 @@
 	url('../fonts/WorkSans-Bold.ttf') format('truetype'),
 	url('../fonts/WorkSans-Bold.svg#WorkSans-Bold') format('svg'),
 	url('../fonts/WorkSans-Bold.eot?#iefix') format('embedded-opentype');
-	font-weight: normal;
+	font-weight: 700;
 	font-style: normal;
 }
 
@@ -42,7 +42,7 @@
 	url('../fonts/WorkSans-Light.ttf') format('truetype'),
 	url('../fonts/WorkSans-Light.svg#WorkSans-Light') format('svg'),
 	url('../fonts/WorkSans-Light.eot?#iefix') format('embedded-opentype');
-	font-weight: normal;
+	font-weight: 300;
 	font-style: normal;
 }
 
@@ -54,7 +54,7 @@
 	url('../fonts/WorkSans-Medium.ttf') format('truetype'),
 	url('../fonts/WorkSans-Medium.svg#WorkSans-Medium') format('svg'),
 	url('../fonts/WorkSans-Medium.eot?#iefix') format('embedded-opentype');
-	font-weight: normal;
+	font-weight: 500;
 	font-style: normal;
 }
 
@@ -66,7 +66,7 @@
 	url('../fonts/WorkSans-Regular.ttf') format('truetype'),
 	url('../fonts/WorkSans-Regular.svg#WorkSans-Regular') format('svg'),
 	url('../fonts/WorkSans-Regular.eot?#iefix') format('embedded-opentype');
-	font-weight: normal;
+	font-weight: 400;
 	font-style: normal;
 }
 
@@ -78,13 +78,15 @@ $main-font                 : 'WorkSans';
 // Set font weights
 $font-weight--light       : 300;
 $font-weight--normal      : 400;
-$font-weight--bold        : 600;
+$font-weight--medium      : 500;
+$font-weight--bold        : 700;
 
 // Set color
 $black                    : #000000;
 $white                    : #ffffff;
 $main-color               : #D4A358;
 $gray-color               : #E5E5E6;
+$luxor-gold               : #a17830;
 
 // Set main colors
 $primary-color            : $black;

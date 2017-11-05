@@ -1,14 +1,121 @@
 .block-banner {
+	position: relative;
+
 	&__thumb {
-		height: 100vh; 
-		background-attachment: fixed;
-		background-size: cover;
-		background-repeat: no-repeat;
+		@include breakpoint(tablet) {
+			height: 100vh; 
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+
+		@include breakpoint(phone) {
+			display: none;
+		}
 	}
 
 	&__detail {
 		@extend %absolute-center;
 		text-align: center;
 		color: $white;
+	}
+
+	&__logo {
+		span {
+			width: 403px;
+			height: 244px;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: contain;
+			display: block;
+			font-size: 0;
+		}
+	}
+}
+
+#slider-vertical {
+	position: absolute;
+	top: 50%;
+	left: 110px;
+	height: 224px;
+	margin-top: -112px;
+	width: 1px;
+	background: $white;
+
+	.noUi-handle {
+		width: 25px;
+		height: 25px;
+		left: -12px;
+		border: 0 none;
+		background: $white url(../svg/sources/scrollbar.svg) no-repeat center;
+		background-size: 15px;
+		box-shadow: none;
+		cursor: pointer;
+		border-radius: 50%;
+
+		&:before, &:after {
+			display: none;
+		}
+	}
+}
+
+.quick-search {
+	@include breakpoint(tablet) {
+		position: fixed;
+		right: 0;
+		top: 50%;
+		z-index: 10;
+		@include transform(translate(0%, -50%));
+	}
+
+	a {
+		display: inline-block;
+		width: 50px;
+		height: 50px;
+		text-align: center;
+		line-height: 50px;
+		font-size: 27px;
+		color: $white;
+		font-weight: $font-weight--light;
+		position: relative;
+		@extend %bg-gradient;
+
+		&:hover {
+			text-decoration: none;
+		}
+
+		.description {
+			position: absolute;
+			opacity: 0;
+			height: 100%;
+			right: 100%;
+			transition: all .3s ease-in-out;
+			font-size: 11px;
+			line-height: 15px;
+			padding: 10px 20px;
+			white-space: nowrap;
+			text-align: left;
+			text-transform: uppercase;
+			background: $main-color;
+			font-weight: $font-weight--medium;
+			visibility: hidden;
+			@include transform(translate(-50%));
+		}
+
+		@include breakpoint(tablet) {
+			display: block;
+
+			&:hover {
+				.description {
+					visibility: visible;
+					opacity: 1;
+					@include transform(translate(0%));
+				}
+			}
+
+			+a {
+				margin-top: 15px;
+			}
+		}
 	}
 }

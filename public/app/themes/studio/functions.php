@@ -13,6 +13,17 @@ if ( !class_exists( 'Timber' ) ) {
  */
 require_once('functions/enqueue.php');
 
+// Gestion du sprite SVG
+$HTTP_USER_AGENT = preg_match("/(Trident\/(\d{2,}|4|5|6|7|8|9)(.*)rv:(\d{2,}))|(MSIE\ (\d{2,}|4|5|6|7|8|9)(.*)Tablet\ PC)|(Trident\/(\d{2,}|4|5|6|7|8|9))/", $_SERVER["HTTP_USER_AGENT"]);
+define('HTTP_USER_AGENT', $HTTP_USER_AGENT);
+
+if( HTTP_USER_AGENT ) {
+    $sprite = '';
+} else {
+    $sprite = get_template_directory_uri() . '/assets/svg/sprite.svg';
+}
+define('SPRITE', $sprite);
+
 
 class BootstrapSite extends TimberSite {
 

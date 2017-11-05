@@ -18,10 +18,13 @@ var jshint = require('gulp-jshint'),
 	fs = require('fs'),
 	merge = require('merge-stream'),
 	// dotenv = require('dotenv').load(),
+	notify = require('gulp-notify'),
+	svgstore = require('gulp-svgstore'),
 	browserSync 	= require('browser-sync').create()
 
 var siteUrl = 'quincy.me';
-var path = require('path')
+var path = require('path');
+var notifyOptions = {};
 
 // Use path.join() for path generation to avoid cross-platform issues.
 var paths = {
@@ -30,7 +33,8 @@ var paths = {
 	images: path.join('assets', 'images'),
 	scripts: path.join('assets', 'scripts'),
 	styles: path.join('assets', 'styles'),
-	vendor: path.join('assets', 'vendor')
+	vendor: path.join('assets', 'vendor'),
+	svg: path.join('assets', 'svg')
 }
 
 // Compile Our Styles
@@ -58,7 +62,8 @@ gulp.task('styles-libs', function () {
   return gulp.src([
   		paths.vendor + '/bootstrap/dist/css/bootstrap.min.css',
   		paths.vendor + '/font-awesome/css/font-awesome.min.css',
-  		paths.vendor + '/fancyBox/dist/jquery.fancybox.min.css'
+  		paths.vendor + '/fancyBox/dist/jquery.fancybox.min.css',
+  		paths.vendor + '/nouislider/distribute/nouislider.min.css'
   	])
   	.pipe(concat('libs.css'))
 	.pipe(gulp.dest(paths.bundles))
@@ -82,6 +87,7 @@ gulp.task('scripts', function () {
 			paths.vendor + '/fancyBox/dist/jquery.fancybox.js',
 			paths.vendor + '/FlexSlider/jquery.flexslider.js',
 			paths.vendor + '/lodash/dist/lodash.js',
+			paths.vendor + '/nouislider/distribute/nouislider.js',
 			paths.scripts + '/main/*.js'
 		])
 		.pipe(concat('all.js'))
@@ -93,7 +99,7 @@ gulp.task('scripts', function () {
 
 // Lint javascript
 gulp.task('jslint', function () {
-	return gulp.src(paths.scripts + '/*.js')
+	return gulp.src(paths.scripts + '/*/*.js')
 		.pipe(jshint())
 		.pipe(jshint.reporter('default'))
 })
@@ -116,15 +122,8 @@ gulp.task('scripts_folders', function () {
 	return merge(tasks)
 })
 
-// Lint javascript
-gulp.task('jslint_folders', function () {
-	return gulp.src(paths.scripts + '/*.js')
-		.pipe(jshint())
-		.pipe(jshint.reporter('default'))
-})
-
 // jsreload
-gulp.task('jsreload', ['jslint_folders', 'scripts_folders'], function (done) {
+gulp.task('jsreload', ['jslint', 'scripts'], function (done) {
 	browserSync.reload();
 	done();
 });
@@ -136,14 +135,29 @@ gulp.task('images', function () {
 		.pipe(gulp.dest(paths.images))
 })
 
+// Sprite SVG
+gulp.task('svg', function () {
+	notifyOptions.title   = 'SVG Store';
+	notifyOptions.message = 'Le fichier <%= file.relative %> a été mis à jour';
+
+	return gulp
+		.src(`${paths.svg}/sources/*.svg`)
+		.pipe(rename({ prefix: 'svg-' }))
+		.pipe(svgstore({
+			inlineSvg: true
+		}))
+		.pipe(rename('sprite.svg'))
+		.pipe(gulp.dest(`${paths.svg}/`))
+		.pipe(notify(notifyOptions));
+});
+
 // Watch Files For Changes
-gulp.task('watch', ['jslint', 'jslint_folders', 'styles-libs', 'styles'], function () {
+gulp.task('watch', ['jslint', 'styles-libs', 'styles'], function () {
 
 	browserSync.init({
 		proxy: siteUrl
 	})
 
-	gulp.watch(paths.scripts + '/*.js', ['jslint', 'scripts'])
 	gulp.watch(paths.scripts + '/*/*.js', {cwd: './'}, ['jsreload'])
 	gulp.watch([paths.styles + '/*.scss', paths.styles + '/*/*.scss'], ['styles'])
 

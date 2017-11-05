@@ -8,8 +8,12 @@
     <meta charset="{{site.charset}}">
 
     <title>{% if post.get_field('title') %}{{post.get_field('title')}}{% else %}{{ site.title }}{% endif %}</title>
+
+    <link rel="shortcut icon" href="{{site.theme.uri}}/assets/images/favicon.png">
+
     <meta name="description" content="{% if post.get_field('meta_description') %}{{post.get_field('meta_description')}}{% else %}{{ site.description }}{% endif %}">
     <meta name="keywords" content="{{post.get_field('meta_keywords')}}">
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
@@ -24,6 +28,9 @@
 {% endblock %}
 
   <body class="{{body_class}}">
+
+    {{print_svg_sprite()}}
+
     {% block header %}
       {% include 'partials/header.twig' %}
     {% endblock %}

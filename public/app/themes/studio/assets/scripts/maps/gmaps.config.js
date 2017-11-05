@@ -180,12 +180,12 @@ var gmaps_config = {
         properties: [
             {
                 neighborhood: {
-                    url: site_url + '/assets/images/icons/location.png',
-                    size: new google.maps.Size(50, 50)
+                    url: site_url + '/assets/svg/sources/location.svg',
+                    size: new google.maps.Size(66, 84)
                 },
                 contact: {
-                    url: site_url + '/assets/images/icons/location.png',
-                    size: new google.maps.Size(50, 50)
+                    url: site_url + '/assets/svg/sources/location.svg',
+                    size: new google.maps.Size(66, 84)
                 }
             }
         ]
@@ -197,19 +197,7 @@ var gmaps_config = {
      * @type {Object}
      */
     styles: {
-        neighborhood: [
-            {
-                "stylers": [
-                    { "saturation": -100 }
-                ]
-            }
-        ],
-        contact: [
-            {
-                "stylers": [
-                    { "saturation": -100 }
-                ]
-            }
-        ]
+        neighborhood: google_map_styler,
+        contact: google_map_styler
     }
 };

@@ -24,6 +24,8 @@ class Studio_Twig_Extension_Url extends Twig_Extension
         return [
             new Twig_SimpleFunction('script_url', [$this, 'scriptUrl'], ['is_safe' => ['html']]),
             new Twig_SimpleFunction('style_url', [$this, 'styleUrl'], ['is_safe' => ['html']]),
+            new Twig_SimpleFunction('print_svg_sprite', [$this, 'printSvgSprite'], ['is_safe' => ['html']]),
+            new Twig_SimpleFunction('get_svg_icon', [$this, 'getSvgIcon'], ['is_safe' => ['html']]),
         ];
     }
 
@@ -71,5 +73,31 @@ class Studio_Twig_Extension_Url extends Twig_Extension
         // https://developer.wordpress.org/reference/functions/get_stylesheet_directory_uri/#comment-1798
 
         return get_stylesheet_directory_uri().'/'.$path;
+    }
+
+    // Print svg sprite if IE
+    public function printSvgSprite() {
+        if(HTTP_USER_AGENT) {
+            echo '<div style="display: none;">';
+            require_once("./app/themes/studio/assets/svg/sprite.svg");
+            echo '</div>';
+        }
+    }
+
+    /**
+     * Get a SVG icon
+     * @param String $shapeName The svg name (in images/spriteSVG/raw/)
+     * @return string SVG HTML element
+     */
+    public function getSvgIcon($shapeName, $viewBox) {
+
+        $svg = '<i class="icon icon__' . $shapeName . '">';
+        $svg .= '<svg viewBox="' . $viewBox . '" class="svg_' . $shapeName . '">';
+        $svg .= '<use xlink:href="' . SPRITE . '#svg-' . $shapeName . '"></use>';
+        $svg .= '<use xlink:href="#svg-' . $shapeName . '"></use>';
+        $svg .= '</svg>';
+        $svg .= '</i>';
+
+        return $svg;
     }
 }

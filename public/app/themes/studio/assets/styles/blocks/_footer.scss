@@ -4,6 +4,19 @@
 			background-color: $gray-color;
 			text-align: center;
 		}
+
+		#map-contact {
+			height: 100%;
+
+			.gm-bundled-control-on-bottom {
+				right: 25px!important;
+				left: auto!important;
+			}
+
+			.gm-svpc {
+				display: none;
+			}
+		}
 	}
 
 	&__list {

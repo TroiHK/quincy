@@ -12,6 +12,7 @@
     "bootstrap": "*",
     "font-awesome": "*",
     "fancyBox": "*",
+    "nouislider": "*",
     "lodash": "*"
   }
 }

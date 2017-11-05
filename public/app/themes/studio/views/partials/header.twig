@@ -1,4 +1,32 @@
-<header>
-  {# header code  #}
-  {% include 'partials/menu.twig' %}
+<header class="block-banner">
+    <div class="block-banner__thumb" style="background-image: url('{{Image(post._thumbnail_id).src|resize(1920)}}')">
+    </div>
+
+    <div class="visible-xs">
+        <img src="{{Image(post._thumbnail_id).src|resize(767)}}" class="img-responsive" alt="hero-image {{site.title}}">
+    </div>
+
+    {% include 'partials/menu.twig' %}
+
+    <div class="block-banner__detail">
+        <div class="block-banner__logo">
+            <a href="{{site.url}}">
+            	<span style="background-image: url('{{global.logo}}')">{{site.title}}</span>
+            </a>
+        </div>
+    </div>
+
+    <a href="#block-life" title="" class="scroll-next-section"><i class="fa fa-caret-down"></i></a>
+
+    <div id="slider-vertical" class="hidden-xs"></div>
 </header>
+
+<div class="quick-search">
+    <div class="title visible-xs">{{global.title_qs}}</div>
+    {% for item in global.item_qs %}
+        <a href="{{item.link}}">
+            {{item.label}}
+            <span class="description">{{item.description}}</span>
+        </a>
+    {% endfor %}
+</div>

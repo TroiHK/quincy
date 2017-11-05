@@ -30,7 +30,23 @@ a img {
 .scroll-next-section {
     color: $white;
     position: absolute;
-    bottom: 10px;
+    bottom: 20px;
     left: 50%;
     @include transform(translateX(-50%));
+    .fa {
+        display: block;
+        font-size: 0;
+        &:before {
+            content: "";
+            width: 0;
+            height: 0;
+            border-top: 14px solid $white;
+            border-left: 14px solid transparent;
+            border-right: 14px solid transparent;
+        }
+    }
+}
+
+.flexlayout {
+    display: flex;
 }
