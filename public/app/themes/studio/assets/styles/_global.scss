@@ -4,6 +4,7 @@ html {
     body {
         line-height: $base__line-height;
         font-size: $base__font-size;
+        font-family: $main-font;
     }
 }
 
@@ -11,6 +12,12 @@ a img {
     /* Stops ie from displaying a blue box around linked images */
     outline:0;
     border:0;
+}
+
+a {
+    &:hover, &:active, &:focus {
+        text-decoration: none;
+    }
 }
 
 .ieblock {
@@ -33,9 +40,11 @@ a img {
     bottom: 20px;
     left: 50%;
     @include transform(translateX(-50%));
+
     .fa {
         display: block;
         font-size: 0;
+
         &:before {
             content: "";
             width: 0;
@@ -49,4 +58,9 @@ a img {
 
 .flexlayout {
     display: flex;
+}
+
+.icon {
+    display: inline-block;
+    overflow: hidden;
 }

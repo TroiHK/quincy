@@ -1,18 +1,43 @@
-{#<nav>#}
-	{#<ul class="main-nav">#}
-		{#{% for item in menu.get_items %}#}
-		{#<li class="nav-main-item {{item.classes | join(' ')}}">#}
-			{#<a class="nav-main-link" href="{{item.link}}">{{item.title}}</a>#}
-			{#{% if item.get_children %}#}
-			{#<ul class="nav-drop">#}
-				{#{% for child in item.get_children %}#}
-				{#<li class="nav-drop-item">#}
-					{#<a href="{{child.link}}">{{child.title}}</a>#}
-				{#</li>#}
-				{#{% endfor %}#}
-			{#</ul>#}
-			{#{% endif %}#}
-		{#</li>#}
-		{#{% endfor %}#}
-	{#</ul>#}
-{#</nav>#}
+<nav class="nav">
+	<div class="nav__bar">
+		{{get_svg_icon('menu-icon-close', '0 0 17.68 17.68')}}
+		{{get_svg_icon('menu-icon', '0 0 13 24')}}
+		<div class="visible-xs">
+            {{get_svg_icon('phone', '0 0 21.12 21.06')}}
+            {{get_svg_icon('local', '0 0 19.82 24.93')}}
+		</div>
+
+		<a href="{{site.url}}" class="logo-text">
+			{{get_svg_icon('logo-text', '0 0 30 32.15')}}
+		</a>
+	</div>
+
+	<div class="nav__content">
+		<div class="row">
+			<div class="col-sm-6">
+				<ul class="main-nav">
+					{% for item in menu.get_items %}
+					<li class="nav-main-item {{item.classes | join(' ')}}">
+						<a class="nav-main-link" href="{{item.link}}">{{item.title}}</a>
+						{% if item.get_children %}
+						<ul class="nav-drop">
+							{% for child in item.get_children %}
+							<li class="nav-drop-item">
+								<a href="{{child.link}}">{{child.title}}</a>
+							</li>
+							{% endfor %}
+						</ul>
+						{% endif %}
+					</li>
+					{% endfor %}
+				</ul>
+			</div>	
+
+			<div class="col-sm-6">
+				<div class="box-address">
+                    {% include "partials/address.twig" %}
+                </div>
+			</div>
+		</div>
+	</div>
+</nav>

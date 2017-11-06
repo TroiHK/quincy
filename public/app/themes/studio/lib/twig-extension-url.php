@@ -92,7 +92,7 @@ class Studio_Twig_Extension_Url extends Twig_Extension
     public function getSvgIcon($shapeName, $viewBox) {
 
         $svg = '<i class="icon icon__' . $shapeName . '">';
-        $svg .= '<svg viewBox="' . $viewBox . '" class="svg_' . $shapeName . '">';
+        $svg .= '<svg height="40" with="40" viewBox="' . $viewBox . '" class="svg_' . $shapeName . '">';
         $svg .= '<use xlink:href="' . SPRITE . '#svg-' . $shapeName . '"></use>';
         $svg .= '<use xlink:href="#svg-' . $shapeName . '"></use>';
         $svg .= '</svg>';

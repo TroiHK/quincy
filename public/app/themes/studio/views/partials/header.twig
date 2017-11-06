@@ -1,5 +1,15 @@
-<header class="block-banner">
-    <div class="block-banner__thumb" style="background-image: url('{{Image(post._thumbnail_id).src|resize(1920)}}')">
+<header class="block-header">
+    <div class="block-header__thumb" style="background-image: url('{{Image(post._thumbnail_id).src|resize(1920)}}')">
+    </div>
+
+    <div class="call-action-button hidden-xs container text-right">
+        {% if not global.availability_off and global.apply_link %}
+            <a class="apply-link" href="{{global.apply_link}}" target="_blank">APPLY NOW</a>
+        {% endif %}
+
+        {% if global.phone %}
+            <a class="phone-link" href="tel:{{global.phone|replace({' ': ''})}}">{{global.phone}}</a>
+        {% endif %}
     </div>
 
     <div class="visible-xs">
@@ -8,8 +18,8 @@
 
     {% include 'partials/menu.twig' %}
 
-    <div class="block-banner__detail">
-        <div class="block-banner__logo">
+    <div class="block-header__detail">
+        <div class="block-header__logo">
             <a href="{{site.url}}">
             	<span style="background-image: url('{{global.logo}}')">{{site.title}}</span>
             </a>

@@ -1,4 +1,4 @@
-.block-banner {
+.block-header {
 	position: relative;
 
 	&__thumb {
@@ -116,6 +116,132 @@
 			+a {
 				margin-top: 15px;
 			}
+		}
+	}
+}
+
+.call-action-button {
+	position: absolute;
+	top: 25px;
+	z-index: 10;
+	left: 0;
+	right: 0;
+	font-size: 0;
+	a {
+		font-size: 12px;
+		font-weight: $font-weight--medium;
+		color: $white;
+		display: inline-block;
+		padding: 0 10px 5px;
+		border-bottom: 2px solid $main-color;
+		text-transform: uppercase;
+		+a {
+			margin-left: 30px;
+		}
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+.nav {
+	position: fixed;
+	left: 0;
+	top: 50%;
+	right: 70px;
+	z-index: 10;
+	@include transform(translate(0%,-50%));
+	background-color: $gray-color;
+
+	@include breakpoint(tablet) {
+		padding-left: 50px;
+		height: 450px;
+	}
+
+	&__bar {
+		@extend %bg-gradient;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		top: 0;
+		width: 50px;
+
+		.icon__menu-icon {
+			position: absolute;
+			left: 0;
+			right: 0;
+			text-align: center;
+		}
+
+		.icon__menu-icon-close {
+			visibility: hidden;
+			opacity: 0;
+
+			.svg_menu-icon-close {
+				width: 16px;
+			}
+		}
+
+		.svg_logo-text {
+			width: 30px;
+		}
+
+		.logo-text {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 15px;
+			width: 30px;
+		}
+	}
+
+	&__content {
+
+	}
+
+	.main-nav {
+		font-size: 11px;
+		list-style: none;
+		text-transform: uppercase;
+		display: flex;
+		flex-flow: column wrap;
+		margin-top: auto;
+		height: 450px;
+		justify-content: center;
+		padding-left: 50%;
+
+		li {
+			padding: 10px 0;
+			position: relative;
+
+			&:before {
+				content: "";
+				position: absolute;
+				left: -67px;
+				bottom: 0;
+				width: 57px;
+				height: 1px;
+				top: 50%;
+				@include transform(translateY(-50%));
+				background-color: $luxor-gold;
+			}
+		}
+
+		a {
+			color: $main-text-color;
+		}
+	}
+
+	.box-address {
+		display: flex;
+		flex-flow: column wrap;
+		margin-top: auto;
+		height: 450px;
+		justify-content: center;
+		text-align: center;
+
+		.svg_logo-white {
+			width: 217px;
 		}
 	}
 }

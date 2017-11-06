@@ -28,6 +28,7 @@ if (typeof google !== 'undefined' && typeof GMaps !== 'undefined') {
                     lat: property.latitude,
                     lng: property.longitude,
                     title: property.name,
+                    optimized: !1,
                     icon: gmaps_config.markers.properties[key].neighborhood,
                     click: function() {
                         map.hideInfoWindows();
@@ -62,6 +63,7 @@ if (typeof google !== 'undefined' && typeof GMaps !== 'undefined') {
                                 lat: location.latitude,
                                 lng: location.longitude,
                                 title: location.name,
+                                optimized: !1,
                                 icon: gmaps_config.markers.location_categories[category],
                                 click: function() {
                                     map.hideInfoWindows();
@@ -197,6 +199,7 @@ if (typeof google !== 'undefined' && typeof GMaps !== 'undefined') {
                         lat: property.latitude,
                         lng: property.longitude,
                         title: property.name,
+                        optimized: !1,
                         icon: gmaps_config.markers.properties[key].contact,
                         click: function() {
                             map.hideInfoWindows();

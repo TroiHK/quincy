@@ -73,7 +73,7 @@ class BootstrapSite extends TimberSite {
 
 	// Global Context of Site
 	function add_to_context( $context ) {
-		$context['menu'] = new TimberMenu();
+		$context['menu'] = new TimberMenu('Main Menu');
 		$context['site'] = $this;
 		// Site-wide Settings
 		$context['global'] = get_fields( 'options' );

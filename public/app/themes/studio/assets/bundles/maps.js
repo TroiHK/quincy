@@ -157,35 +157,35 @@ var gmaps_config = {
     markers: {
         location_categories: [
             {
-                size: new google.maps.Size(50, 50),
-                url: site_url + '/assets/images/icons/location.png'
+                url: site_url + '/assets/images/icons/location.png',
+                scaledSize: new google.maps.Size(66, 84)
             },
             {
-                size: new google.maps.Size(50, 50),
-                url: site_url + '/assets/images/icons/location.png'
+                url: site_url + '/assets/images/icons/location.png',
+                scaledSize: new google.maps.Size(66, 84)
             },
             {
-                size: new google.maps.Size(50, 50),
-                url: site_url + '/assets/images/icons/location.png'
+                url: site_url + '/assets/images/icons/location.png',
+                scaledSize: new google.maps.Size(66, 84)
             },
             {
-                size: new google.maps.Size(50, 50),
-                url: site_url + '/assets/images/icons/location.png'
+                url: site_url + '/assets/images/icons/location.png',
+                scaledSize: new google.maps.Size(66, 84)
             },
             {
-                size: new google.maps.Size(50, 50),
-                url: site_url + '/assets/images/icons/location.png'
+                url: site_url + '/assets/images/icons/location.png',
+                scaledSize: new google.maps.Size(66, 84)
             }
         ],
         properties: [
             {
                 neighborhood: {
                     url: site_url + '/assets/svg/sources/location.svg',
-                    size: new google.maps.Size(66, 84)
+                    scaledSize: new google.maps.Size(66, 84)
                 },
                 contact: {
                     url: site_url + '/assets/svg/sources/location.svg',
-                    size: new google.maps.Size(66, 84)
+                    scaledSize: new google.maps.Size(66, 84)
                 }
             }
         ]
@@ -232,6 +232,7 @@ if (typeof google !== 'undefined' && typeof GMaps !== 'undefined') {
                     lat: property.latitude,
                     lng: property.longitude,
                     title: property.name,
+                    optimized: !1,
                     icon: gmaps_config.markers.properties[key].neighborhood,
                     click: function() {
                         map.hideInfoWindows();
@@ -266,6 +267,7 @@ if (typeof google !== 'undefined' && typeof GMaps !== 'undefined') {
                                 lat: location.latitude,
                                 lng: location.longitude,
                                 title: location.name,
+                                optimized: !1,
                                 icon: gmaps_config.markers.location_categories[category],
                                 click: function() {
                                     map.hideInfoWindows();
@@ -401,6 +403,7 @@ if (typeof google !== 'undefined' && typeof GMaps !== 'undefined') {
                         lat: property.latitude,
                         lng: property.longitude,
                         title: property.name,
+                        optimized: !1,
                         icon: gmaps_config.markers.properties[key].contact,
                         click: function() {
                             map.hideInfoWindows();
