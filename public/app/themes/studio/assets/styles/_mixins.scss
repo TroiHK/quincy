@@ -3,6 +3,10 @@
 		@media (min-width: 1024px) {
 			@content;
 		}
+	} @else if $class == custom_tablet {
+		@media (min-width: 850px) {
+			@content;
+		}
 	} @else if $class == tablet {
 		@media (min-width: 768px) {
 			@content;
@@ -13,6 +17,10 @@
 		}
 	} @else if $class == phone {
 		@media (max-width: 767px) {
+			@content;
+		}
+	}	@else if $class == custom_phone {
+		@media (max-width: 849px) {
 			@content;
 		}
 	}

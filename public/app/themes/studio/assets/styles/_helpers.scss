@@ -15,3 +15,25 @@
 	background: linear-gradient(to right, $main-color 0%, $main-color 30%, $luxor-gold 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$main-color', endColorstr='$luxor-gold', GradientType=1 );
 }
+
+%bg-gradient-revert {
+	background: $main-color;
+	background: -moz-linear-gradient(left, $luxor-gold 0%, $luxor-gold 30%, $main-color 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, $luxor-gold), color-stop(30%, $luxor-gold), color-stop(100%, $main-color));
+	background: -webkit-linear-gradient(left, $luxor-gold 0%, $luxor-gold 30%, $main-color 100%);
+	background: -o-linear-gradient(left, $luxor-gold 0%, $luxor-gold 30%, $main-color 100%);
+	background: -ms-linear-gradient(left, $luxor-gold 0%, $luxor-gold 30%, $main-color 100%);
+	background: linear-gradient(to right, $luxor-gold 0%, $luxor-gold 30%, $main-color 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$luxor-gold', endColorstr='$main-color', GradientType=1 );
+}
+
+%bg-gradient-top {
+	background: $luxor-gold;
+	background: -moz-linear-gradient(top, $luxor-gold 0%, $luxor-gold 30%, $main-color 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, $luxor-gold), color-stop(30%, $luxor-gold), color-stop(100%, $main-color));
+	background: -webkit-linear-gradient(top, $luxor-gold 0%, $luxor-gold 30%, $main-color 100%);
+	background: -o-linear-gradient(top, $luxor-gold 0%, $luxor-gold 30%, $main-color 100%);
+	background: -ms-linear-gradient(top, $luxor-gold 0%, $luxor-gold 30%, $main-color 100%);
+	background: linear-gradient(to bottom, $luxor-gold 0%, $luxor-gold 30%, $main-color 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$luxor-gold', endColorstr='$main-color', GradientType=0 );
+}

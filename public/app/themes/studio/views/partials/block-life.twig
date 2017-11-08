@@ -1,69 +1,34 @@
+{% if post.get_field('a_life_above') %}
+{% set a_life_above = post.get_field('a_life_above') %}
+{% set l_posts = a_life_above[0]['posts'] %}
 <section class="block-life" id="block-life">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <header>
-                    <h2 class="block-life__title">A LIFE ABOVE</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh eui smod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper olore magna aliquam era.</p>
-                    <p>Kem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh smod tincidunt ut laoreet dolore magna aliquam erat. </p>
+                    <h2 class="block-life__title">{{a_life_above[0]['title']}}</h2>
+                    {{a_life_above[0]['description']}}
                 </header>
             </div>
         </div>
+
+        {% if l_posts %}
         <div class="row block-life__list">
+            {% for item in l_posts %}
             <div class="block-life__item col-sm-6">
-                <div class="block-life__item__thumb">
-                    <img src="{{site.url}}/app/themes/studio/assets/images/life1.png" alt="" class="img-responsive">
-                </div>
-                <div class="block-life__item__detail">
-                    <p class="block-life__item__title">LINK TO INTERIOR</p>
-                    <p>Lorem ipsum dolor sit amet conse ctetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
-                </div>
+                <a href="{{item.link}}">
+                    <div class="block-life__item__thumb">
+                        <img src="{{Image(item.image).src|resize(555, 362)}}" alt="{{Image(item.image).title}}" class="img-responsive">
+                    </div>
+                    <div class="block-life__item__detail">
+                        <p class="block-life__item__title">{{item.title}}</p>
+                        <p>{{item.description}}</p>
+                    </div>
+                </a>
             </div>
-            <div class="block-life__item col-sm-6">
-                <div class="block-life__item__thumb">
-                    <img src="{{site.url}}/app/themes/studio/assets/images/life2.png" alt="" class="img-responsive">
-                </div>
-                <div class="block-life__item__detail">
-                    <p class="block-life__item__title">LINK TO INTERIOR</p>
-                    <p>Lorem ipsum dolor sit amet conse ctetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
-                </div>
-            </div>
-            <div class="block-life__item col-sm-6">
-                <div class="block-life__item__thumb">
-                    <img src="{{site.url}}/app/themes/studio/assets/images/life3.png" alt="" class="img-responsive">
-                </div>
-                <div class="block-life__item__detail">
-                    <p class="block-life__item__title">LINK TO INTERIOR</p>
-                    <p>Lorem ipsum dolor sit amet conse ctetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
-                </div>
-            </div>
-            <div class="block-life__item col-sm-6">
-                <div class="block-life__item__thumb">
-                    <img src="{{site.url}}/app/themes/studio/assets/images/life4.jpg" alt="" class="img-responsive">
-                </div>
-                <div class="block-life__item__detail">
-                    <p class="block-life__item__title">LINK TO INTERIOR</p>
-                    <p>Lorem ipsum dolor sit amet conse ctetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
-                </div>
-            </div>
-            <div class="block-life__item col-sm-6">
-                <div class="block-life__item__thumb">
-                    <img src="{{site.url}}/app/themes/studio/assets/images/life5.jpg" alt="" class="img-responsive">
-                </div>
-                <div class="block-life__item__detail">
-                    <p class="block-life__item__title">LINK TO INTERIOR</p>
-                    <p>Lorem ipsum dolor sit amet conse ctetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
-                </div>
-            </div>
-            <div class="block-life__item col-sm-6">
-                <div class="block-life__item__thumb">
-                    <img src="{{site.url}}/app/themes/studio/assets/images/life6.png" alt="" class="img-responsive">
-                </div>
-                <div class="block-life__item__detail">
-                    <p class="block-life__item__title">LINK TO INTERIOR</p>
-                    <p>Lorem ipsum dolor sit amet conse ctetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
-                </div>
-            </div>
+            {% endfor %}
         </div>
+        {% endif %}
     </div>
 </section>
+{% endif %}

@@ -22,13 +22,18 @@
 
 	&__logo {
 		span {
-			width: 403px;
-			height: 244px;
+			width: 265px;
+			height: 161px;
 			background-repeat: no-repeat;
 			background-position: center;
 			background-size: contain;
 			display: block;
 			font-size: 0;
+
+			@include breakpoint(tablet) {
+				width: 403px;
+				height: 244px;
+			}
 		}
 	}
 }
@@ -60,19 +65,37 @@
 }
 
 .quick-search {
-	@include breakpoint(tablet) {
+	text-align: center;
+	padding-top: 25px;
+	font-size: 0;
+
+	@include breakpoint(custom_tablet) {
+		padding-top: 0;
 		position: fixed;
 		right: 0;
 		top: 50%;
 		z-index: 10;
 		@include transform(translate(0%, -50%));
+
+		.title {
+			display: none;
+		}
+	}
+
+	.title {
+		padding-bottom: 25px;
+		font-size: 11px;
+		text-transform: uppercase;
+		text-align: center;
+		font-weight: $font-weight--medium;
+		color: $luxor-gold;
+		letter-spacing: 2px;
 	}
 
 	a {
 		display: inline-block;
 		width: 50px;
 		height: 50px;
-		text-align: center;
 		line-height: 50px;
 		font-size: 27px;
 		color: $white;
@@ -100,9 +123,13 @@
 			font-weight: $font-weight--medium;
 			visibility: hidden;
 			@include transform(translate(-50%));
+
+			@include breakpoint(custom_phone) {
+				display: none;
+			}
 		}
 
-		@include breakpoint(tablet) {
+		@include breakpoint(custom_tablet) {
 			display: block;
 
 			&:hover {
@@ -115,6 +142,12 @@
 
 			+a {
 				margin-top: 15px;
+			}
+		}
+
+		@include breakpoint(custom_phone) {
+			+a {
+				margin-left: 15px;
 			}
 		}
 	}
@@ -145,70 +178,260 @@
 }
 
 .nav {
-	position: fixed;
-	left: 0;
-	top: 50%;
-	right: 70px;
+	position: fixed;	
 	z-index: 10;
-	@include transform(translate(0%,-50%));
-	background-color: $gray-color;
+	top: 0;
 
-	@include breakpoint(tablet) {
+	@include breakpoint(custom_tablet) {
 		padding-left: 50px;
-		height: 450px;
+		min-height: 450px;
+		left: 0;
+		top: 50%;
+		@include transform(translate(0%,-50%));
+	}
+
+	@include breakpoint(custom_phone) {
+		width: 100%;
 	}
 
 	&__bar {
-		@extend %bg-gradient;
 		position: absolute;
-		left: 0;
-		bottom: 0;
-		top: 0;
-		width: 50px;
+		left: 15px;
+		right: 15px;
 
-		.icon__menu-icon {
-			position: absolute;
+		@include breakpoint(custom_tablet) {
+			background: $main-color;
+			background: -moz-linear-gradient(left, $luxor-gold 0%, $luxor-gold 30%, $main-color 100%);
+			background: -webkit-gradient(left top, right top, color-stop(0%, $luxor-gold), color-stop(30%, $luxor-gold), color-stop(100%, $main-color));
+			background: -webkit-linear-gradient(left, $luxor-gold 0%, $luxor-gold 30%, $main-color 100%);
+			background: -o-linear-gradient(left, $luxor-gold 0%, $luxor-gold 30%, $main-color 100%);
+			background: -ms-linear-gradient(left, $luxor-gold 0%, $luxor-gold 30%, $main-color 100%);
+			background: linear-gradient(to right, $luxor-gold 0%, $luxor-gold 30%, $main-color 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$luxor-gold', endColorstr='$main-color', GradientType=1 );
+
 			left: 0;
-			right: 0;
-			text-align: center;
+			bottom: 0;
+			top: 0;
+			right: auto;
+			width: 50px;
 		}
 
-		.icon__menu-icon-close {
-			visibility: hidden;
-			opacity: 0;
-
-			.svg_menu-icon-close {
-				width: 16px;
-			}
-		}
-
-		.svg_logo-text {
-			width: 30px;
+		@include breakpoint(custom_phone) {
+			background: $luxor-gold;
+			background: -moz-linear-gradient(top, $luxor-gold 0%, $luxor-gold 30%, $main-color 100%);
+			background: -webkit-gradient(left top, left bottom, color-stop(0%, $luxor-gold), color-stop(30%, $luxor-gold), color-stop(100%, $main-color));
+			background: -webkit-linear-gradient(top, $luxor-gold 0%, $luxor-gold 30%, $main-color 100%);
+			background: -o-linear-gradient(top, $luxor-gold 0%, $luxor-gold 30%, $main-color 100%);
+			background: -ms-linear-gradient(top, $luxor-gold 0%, $luxor-gold 30%, $main-color 100%);
+			background: linear-gradient(to bottom, $luxor-gold 0%, $luxor-gold 30%, $main-color 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$luxor-gold', endColorstr='$main-color', GradientType=0 );
+		
+			height: 50px;
 		}
 
 		.logo-text {
 			position: absolute;
+			left: 15px;
+			text-align: center;
+
+			@include breakpoint(custom_tablet) {
+				left: 0;
+				right: 0;
+				bottom: 15px;
+			}
+
+			@include breakpoint(custom_phone) {
+				top: 50%;
+				margin-top: -16px;
+			}
+		}
+	}
+
+	&__button {
+		position: absolute;
+		width: 100%;
+		top: 15px;
+		padding: 0;
+		margin: 0;
+		cursor: pointer;
+		text-align: center;
+		background: transparent;
+		border: 0 none;
+		min-height: 50px;
+
+		@include breakpoint(custom_phone) {
+			transform: rotate(90deg);
+			width: 50px;
+			right: 15px;
+			top: 0;
+		}
+
+		&:focus {
+			outline: none;
+		}
+
+		.icon {
+			position: absolute;
+			top: 0;
 			left: 0;
 			right: 0;
-			bottom: 15px;
-			width: 30px;
+			margin: 0 auto;
+
+			&__menu-icon-close {
+				opacity: 0;
+				transition: all .3s ease-in-out;
+			}
+
+			&__menu-icon {
+				transition: all .3s ease-in-out;
+			}
+		}
+
+		&-text {
+		    position: absolute;
+		    font-weight: $font-weight--medium;
+		    transform: rotate(-90deg);
+		    top: 50px;
+		    font-size: 11px;
+		    color: $white;
+		    left: 0;
+		    right: 0;
+		    text-transform: uppercase;
+		    letter-spacing: 2px;
+		    &:after {
+				content: "MENU";
+				transition: all .3s ease-in-out;
+		    }
+
+		    @include breakpoint(custom_phone) {
+		    	display: none;
+		    }
+		}
+
+		&.active {
+			.icon {
+				&__menu-icon-close {
+					opacity: 1;
+				}
+
+				&__menu-icon {
+					opacity: 0;
+				}
+			}
+
+			.nav__button-text {
+			    &:after {
+					content: "CLOSE";
+			    }
+			}
+		}
+	}
+
+	.phone-local {
+		position: absolute;
+		top: 50%;
+		right: 60px;
+		font-size: 0;
+		@include transform(translateY(-50%));
+		a+a {
+			margin-left: 20px;
+		}
+		a {
+			display: inline-block;
+			vertical-align: middle;
 		}
 	}
 
 	&__content {
+		position: absolute;
+		padding: 15px;
+		background-color: $gray-color;
+		transition: all .3s ease-in-out;
+		z-index: -1;
+		overflow: hidden;
 
+		@include breakpoint(custom_phone) {
+			right: 15px;
+			left: 15px;
+			@include transform(translateY(-100%));
+			top: 50px;
+			text-align: left;
+			height: calc(100vh - 50px);
+			overflow-y: scroll;
+		}
+
+		@include breakpoint(custom_tablet) {
+			width: calc(100vw - 137px);
+			height: 100%;
+			@include transform(translateX(-100%));
+		}
+		
+		@include breakpoint(custom_tablet) {
+			&:after {
+				content: "";
+				top: 30px;
+				bottom: 30px;
+				width: 1px;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				background: $color-1;
+				position: absolute;
+			}
+
+			&:before {
+				content: "";
+				top: 50%;
+				width: 20px;
+				height: 10px;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				border-bottom: 1px solid $color-1;
+				border-top: 1px solid $color-1;
+				position: absolute;
+				@include transform(skew(-45deg) rotate(-45deg));
+			}
+		}
+
+		&>.row {
+			@include breakpoint(custom_tablet) {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100%;
+			}
+		}
+	}
+
+	&.open {
+		@include breakpoint(custom_tablet) {
+			.nav__content {
+				@include transform(translateX(0%));
+			}
+		}
+
+		@include breakpoint(custom_phone) {
+			.nav__content {
+				@include transform(translateY(0%));
+			}
+		}
 	}
 
 	.main-nav {
 		font-size: 11px;
+		font-weight: $font-weight--medium;
 		list-style: none;
 		text-transform: uppercase;
-		display: flex;
-		flex-flow: column wrap;
-		margin-top: auto;
-		height: 450px;
+		margin: 0;
+		padding-left: 68px;
 		justify-content: center;
-		padding-left: 50%;
+		display: inline-block;
+		text-align: left;
+
+		@include breakpoint(custom_phone) {
+			padding-left: 88px;
+		}
 
 		li {
 			padding: 10px 0;
@@ -218,7 +441,7 @@
 				content: "";
 				position: absolute;
 				left: -67px;
-				bottom: 0;
+				bottom: 0; 
 				width: 57px;
 				height: 1px;
 				top: 50%;
@@ -239,9 +462,17 @@
 		height: 450px;
 		justify-content: center;
 		text-align: center;
+		@include breakpoint(custom_phone) {
+			padding: 30px 0 20px; 
+			margin-top: 20px;
+			height: auto;
+			border-top: 1px solid $color-1;
+		}
+	}
 
-		.svg_logo-white {
-			width: 217px;
+	.menu-apply-item {
+		@include breakpoint(custom_tablet) {
+			display: none;
 		}
 	}
 }

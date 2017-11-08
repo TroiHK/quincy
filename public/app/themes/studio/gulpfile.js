@@ -86,8 +86,10 @@ gulp.task('scripts', function () {
 	return gulp.src([
 			paths.vendor + '/fancyBox/dist/jquery.fancybox.js',
 			paths.vendor + '/FlexSlider/jquery.flexslider.js',
-			paths.vendor + '/lodash/dist/lodash.js',
+			paths.vendor + '/scrollmagic/scrollmagic/minified/ScrollMagic.min.js',
+			paths.vendor + '/scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min.js',
 			paths.vendor + '/nouislider/distribute/nouislider.js',
+			paths.vendor + '/lodash/dist/lodash.js',
 			paths.scripts + '/main/*.js'
 		])
 		.pipe(concat('all.js'))

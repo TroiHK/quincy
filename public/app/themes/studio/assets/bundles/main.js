@@ -33,12 +33,18 @@
 		} 	// End if
 	});
 
+	// nav__button
+	$('.nav__button').on('click', function() {
+		$(this).closest('.nav').toggleClass('open');
+		$(this).toggleClass('active');
+	});
+
 	// Home page
 	if ( $('body').hasClass('home') ) {
 
 		// verticalSlider
 		var verticalSlider = document.getElementById('slider-vertical');
-	    var homebg = $('.home .block-banner__thumb');
+	    var homebg = $('.home .block-header__thumb');
 
 		noUiSlider.create(verticalSlider, {
 			start: 50,
@@ -61,6 +67,22 @@
 			// Set position bg.
 			homebg.css('background-position', 'center ' + position + '%');
 		};
+
+		// init controller
+		var controller = new ScrollMagic.Controller({globalSceneOptions: {duration: 500}});
+
+		// get all life__item
+		var life__items = document.querySelectorAll(".block-life__item");
+
+		// create scene for every life__item
+		for (var i=0; i<life__items.length; i++) {
+			new ScrollMagic.Scene({
+					triggerElement: life__items[i]
+				})
+				.setClassToggle(life__items[i], "is-visible")
+				// .addIndicators() // add indicators (requires plugin)
+				.addTo(controller);
+		}
 
 	};
 

@@ -57,10 +57,73 @@ a {
 }
 
 .flexlayout {
-    display: flex;
+    @include breakpoint(tablet) {
+        display: flex;
+    }
 }
 
 .icon {
     display: inline-block;
     overflow: hidden;
+    line-height: 0;
+
+    &__menu-icon {
+        svg {
+            width: 13px;
+            height: 24px;
+        }
+    }
+
+    &__menu-icon-close {
+        svg {
+            width: 17px;
+            height: 17px;
+        }
+    }
+
+    &__logo-text {
+        svg {
+            width: 30px;
+            height: 32px;
+        }
+    }
+
+    &__phone {
+        svg {
+            width: 21px;
+            height: 21px;
+        }
+    }
+
+    &__local {
+        svg {
+            width: 20px;
+            height: 25px;
+        }
+    }
+
+    &__logo-white{
+        svg {
+            width: 141px;
+            height: 86px;
+            background: url(../svg/sources/logo-white.svg) no-repeat center;
+            background-size: 141px 86px;
+            * {
+                display: none;
+            }
+
+            @include breakpoint(tablet) {
+                width: 216px;
+                height: 132px;
+                background-size: 216px 132px;
+            }
+        }
+    }
+
+    &__icon-1, &__icon-2, &__icon-3, &__icon-4 {
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
 }

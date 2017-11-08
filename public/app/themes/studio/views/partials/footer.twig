@@ -1,14 +1,23 @@
+{% set menu_ft = global.menu_ft %}
+{% set icons_link_ft = global.icons_link_ft %}
 <footer class="block-ft">
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
                 <ul class="block-ft__list">
-                    <li><a href="#" title="">Shea</a></li>
-                    <li><a href="#" title="">Apartment Living</a></li>
+                    {% for item in menu_ft %}
+                        <li><a href="{{item.link}}" title="{{item.text}}">{{item.text}}</a></li>
+                    {% endfor %}
                 </ul>
             </div>
             <div class="col-sm-8">
-                <p class="block-ft__copyright">© 2017 SHEA APARTMENT LIVING. All rights reserved. Privacy Policy. Design by STUDIO.</p>
+                <div class="list-icons text-right">
+                    <a href="{{icons_link_ft[0]['icon_1']}}">{{get_svg_icon('icon-1', '0 0 16.4 16.17')}}</a>
+                    <a href="{{icons_link_ft[0]['icon_2']}}">{{get_svg_icon('icon-2', '0 0 15.72 15.17')}}</a>
+                    <a href="{{icons_link_ft[0]['icon_3']}}">{{get_svg_icon('icon-3', '0 0 14.87 16.85')}}</a>
+                    <a href="{{icons_link_ft[0]['icon_4']}}">{{get_svg_icon('icon-4', '0 0 16.11 16.15')}}</a>
+                </div>
+                <p class="block-ft__copyright text-right">{{global.copy_right_text}}</p>
             </div>
         </div>
     </div>

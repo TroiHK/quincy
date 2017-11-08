@@ -1,10 +1,19 @@
 <nav class="nav">
 	<div class="nav__bar">
-		{{get_svg_icon('menu-icon-close', '0 0 17.68 17.68')}}
-		{{get_svg_icon('menu-icon', '0 0 13 24')}}
-		<div class="visible-xs">
-            {{get_svg_icon('phone', '0 0 21.12 21.06')}}
-            {{get_svg_icon('local', '0 0 19.82 24.93')}}
+		<button class="nav__button">
+			<span class="nav__button-icon">
+				{{get_svg_icon('menu-icon-close', '0 0 17.68 17.68')}}
+				{{get_svg_icon('menu-icon', '0 0 13 24')}}
+			</span>
+
+			<span class="nav__button-text"></span>
+		</button>
+
+		<div class="visible-xs phone-local">
+			{% if global.phone %}
+				<a href="tel:{{global.phone|replace({' ': ''})}}">{{get_svg_icon('phone', '0 0 21.12 21.06')}}</a>
+	        {% endif %}
+            <a href="#">{{get_svg_icon('local', '0 0 19.82 24.93')}}</a>
 		</div>
 
 		<a href="{{site.url}}" class="logo-text">
@@ -12,7 +21,7 @@
 		</a>
 	</div>
 
-	<div class="nav__content">
+	<div class="nav__content text-center">
 		<div class="row">
 			<div class="col-sm-6">
 				<ul class="main-nav">

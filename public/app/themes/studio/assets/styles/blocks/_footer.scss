@@ -1,4 +1,12 @@
 .block-ft {
+	padding: 20px 0;
+
+	@include breakpoint(phone) {
+		text-align: center;
+		position: relative;
+		padding-bottom: 60px;
+	}
+
 	&-contact {
 		&__left {
 			background-color: $gray-color;
@@ -22,10 +30,74 @@
 	&__list {
 		list-style: none;
 		padding-left: 0;
+		font-size: 12px;
+		margin: 0;
+		font-size: 0;
+
+		@include breakpoint(phone) {
+			display: inline-block;
+		}
 
 		li {
 			display: inline-block;
 			vertical-align: middle;
+			line-height: 50px;
+			font-weight: $font-weight--bold;
+			font-size: 12px;
+
+			+li {
+				border-left: 1px solid $color-1;
+				padding-left: 5px;
+				margin-left: 5px;
+			}
+
+			a {
+				color: inherit;
+			}
+		}
+	}
+	&__copyright {
+		font-size: 12px;
+		font-weight: $font-weight--medium;
+		margin-bottom: 0;
+		@include breakpoint(phone) {
+			text-align: center;
+			margin-top: 15px;
+		}
+	}
+
+	@include breakpoint(phone) {
+		.list-icons {
+			position: absolute;
+			bottom: -40px;
+			left: 0;
+			text-align: center;
+			width: 100%;
+		}
+	}
+}
+.box-address {
+	padding: 50px 0;
+
+	@include breakpoint(phone) {
+		padding: 30px 15px;
+	}
+
+	.icon {
+		margin-bottom: 20px;
+	}
+
+	address {
+		font-size: 15px;
+		color: $luxor-gold;
+		text-transform: uppercase;
+
+		@include breakpoint(tablet) {
+			font-size: 24px;
+		}
+
+		a {
+			color: inherit;
 		}
 	}
 }
