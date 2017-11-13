@@ -37,3 +37,7 @@
 	background: linear-gradient(to bottom, $luxor-gold 0%, $luxor-gold 30%, $main-color 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$luxor-gold', endColorstr='$main-color', GradientType=0 );
 }
+
+.w-100 {
+	width: 100%;
+}

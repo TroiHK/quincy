@@ -58,7 +58,7 @@
 		verticalSlider.noUiSlider.on('slide', setBgPosition);
 
 		// setBgPosition
-		function setBgPosition() {  
+		function setBgPosition() {
 			// Get the slider values,
 			// stick them together.
 			var position = verticalSlider.noUiSlider.get();
@@ -84,6 +84,15 @@
 				.addTo(controller);
 		}
 
-	};
+	}
+
+    //Flex Slider
+    $('.gallery-slider').slick({
+        dots: true,
+        infinite: false,
+        speed: 300,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+    });
 
 })(jQuery);

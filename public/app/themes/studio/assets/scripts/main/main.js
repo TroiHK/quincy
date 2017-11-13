@@ -58,7 +58,7 @@
 		verticalSlider.noUiSlider.on('slide', setBgPosition);
 
 		// setBgPosition
-		function setBgPosition() {  
+		function setBgPosition() {
 			// Get the slider values,
 			// stick them together.
 			var position = verticalSlider.noUiSlider.get();
@@ -84,6 +84,17 @@
 				.addTo(controller);
 		}
 
-	};
+	}
+
+    //Flex Slider
+    $('.gallery-slider').slick({
+        dots: false,
+        infinite: false,
+        speed: 300,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa fa-caret-left' aria-hidden='true'></i></button>",
+        nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-caret-right' aria-hidden='true'></i></button>"
+    });
 
 })(jQuery);

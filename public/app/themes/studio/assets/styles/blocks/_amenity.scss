@@ -1,0 +1,29 @@
+.block-amenity {
+	&__item {
+		margin-bottom: 30px;
+
+		&__title {
+			color: $main-color;
+			font-weight: 300;
+			font-size: 36px;
+
+			a {
+				color: inherit;
+			}
+		}
+
+		&__detail {
+			background-color: $gray-bg-color;
+
+			> .row {
+				@media screen and (min-width: 992px) {
+					display: flex;
+				}
+			}
+		}
+
+		&__list {
+			padding: 60px 30px 30px;
+		}
+	}
+}

@@ -63,7 +63,8 @@ gulp.task('styles-libs', function () {
   		paths.vendor + '/bootstrap/dist/css/bootstrap.min.css',
   		paths.vendor + '/font-awesome/css/font-awesome.min.css',
   		paths.vendor + '/fancyBox/dist/jquery.fancybox.min.css',
-  		paths.vendor + '/nouislider/distribute/nouislider.min.css'
+  		paths.vendor + '/nouislider/distribute/nouislider.min.css',
+  		paths.vendor + '/slick-carousel/slick/slick.css',
   	])
   	.pipe(concat('libs.css'))
 	.pipe(gulp.dest(paths.bundles))
@@ -85,7 +86,7 @@ gulp.task('styles-min', function () {
 gulp.task('scripts', function () {
 	return gulp.src([
 			paths.vendor + '/fancyBox/dist/jquery.fancybox.js',
-			paths.vendor + '/FlexSlider/jquery.flexslider.js',
+			paths.vendor + '/slick-carousel/slick/slick.js',
 			paths.vendor + '/scrollmagic/scrollmagic/minified/ScrollMagic.min.js',
 			paths.vendor + '/scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min.js',
 			paths.vendor + '/nouislider/distribute/nouislider.js',

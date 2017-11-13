@@ -43,7 +43,31 @@
       {% include 'partials/footer.twig' %}
     {% endblock %}
 
+    <script>
+        var properties = [
+            {
+                "id":"0",
+                "name":"{{ global.name }}",
+                "address":"{{ global.street }}",
+                "city":"{{ global.city }}",
+                "state":"{{ global.state }}",
+                "zip":"{{ global.zip }}",
+                "phone":"{{ global.phone }}",
+                "latitude":"{{ global.map_location.lat }}",
+                "longitude":"{{ global.map_location.lng }}"
+            }
+        ];
+        var site_url = "{{ theme.link }}";
+        var google_map_styler = {{ global.google_map_styler }};
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ global.api_key }}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.24/gmaps.min.js"></script>
+    <script type="text/javascript" src="{{script_url('maps')}}"></script>
+
     {% block body_js %}
+
     {% endblock %}
 
     {{ function('wp_footer') }}

@@ -1,0 +1,23 @@
+.list-default {
+	list-style: none;
+
+	li {
+		position: relative;
+
+		&:before {
+			content: "";
+			position: absolute;
+			left: -30px;
+			bottom: 0;
+			width: 20px;
+			height: 1px;
+			top: 50%;
+			@include transform(translateY(-50%));
+			background-color: $luxor-gold;
+		}
+
+		a {
+			color: $black;
+		}
+	}
+}

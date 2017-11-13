@@ -2,16 +2,10 @@
 	position: relative;
 
 	&__thumb {
-		@include breakpoint(tablet) {
-			height: 100vh; 
-			background-size: cover;
-			background-repeat: no-repeat;
-			background-position: center;
-		}
-
-		@include breakpoint(phone) {
-			display: none;
-		}
+		height: 100vh;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
 	}
 
 	&__detail {
@@ -24,15 +18,35 @@
 		span {
 			width: 265px;
 			height: 161px;
-			background-repeat: no-repeat;
-			background-position: center;
-			background-size: contain;
 			display: block;
 			font-size: 0;
 
 			@include breakpoint(tablet) {
 				width: 403px;
 				height: 244px;
+			}
+		}
+	}
+
+	&--internal {
+		.block-header {
+			&__thumb {
+				max-height: 540px;
+			}
+
+			&__detail {
+				text-align: left;
+				left: 30px;
+				width: 100%;
+				@include transform(translateY(-50%));
+
+				a {
+					color: inherit;
+				}
+
+				.list-default {
+					margin-top: 50px;
+				}
 			}
 		}
 	}

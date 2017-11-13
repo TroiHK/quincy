@@ -2,7 +2,14 @@
 @import "mixins";
 @import "helpers";
 @import "global";
+
+@import "components/list";
+@import "components/slickslider";
+
 @import "blocks/header";
 @import "blocks/life";
 @import "blocks/social";
+@import "blocks/amenity";
+
+
 @import "blocks/footer";
