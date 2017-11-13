@@ -88,11 +88,13 @@
 
     //Flex Slider
     $('.gallery-slider').slick({
-        dots: true,
+        dots: false,
         infinite: false,
         speed: 300,
-        slidesToShow: 4,
-        slidesToScroll: 4,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa fa-caret-left' aria-hidden='true'></i></button>",
+        nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-caret-right' aria-hidden='true'></i></button>"
     });
 
 })(jQuery);

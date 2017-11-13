@@ -151,7 +151,7 @@ var gmaps_config = {
 
     maps: {
         neighborhood: '#map-area',
-        contact: '#map-contact'
+        contact: '.map-contact'
     },
 
     markers: {

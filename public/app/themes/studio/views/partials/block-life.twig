@@ -1,7 +1,7 @@
 {% if post.get_field('a_life_above') %}
 {% set a_life_above = post.get_field('a_life_above') %}
 {% set l_posts = a_life_above[0]['posts'] %}
-<section class="block-life" id="block-life">
+<section class="block-hover block-life" id="block-life">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -13,15 +13,15 @@
         </div>
 
         {% if l_posts %}
-        <div class="row block-life__list">
+        <div class="row block-hover__list">
             {% for item in l_posts %}
-            <div class="block-life__item col-sm-6">
+            <div class="block-hover__item col-sm-6">
                 <a href="{{item.link}}">
-                    <div class="block-life__item__thumb">
+                    <div class="block-hover__item__thumb">
                         <img src="{{Image(item.image).src|resize(555, 362)}}" alt="{{Image(item.image).title}}" class="img-responsive">
                     </div>
-                    <div class="block-life__item__detail">
-                        <p class="block-life__item__title">{{item.title}}</p>
+                    <div class="block-hover__item__detail">
+                        <p class="block-hover__item__title">{{item.title}}</p>
                         <p>{{item.description}}</p>
                     </div>
                 </a>

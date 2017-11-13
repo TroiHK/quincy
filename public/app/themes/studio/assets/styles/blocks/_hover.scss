@@ -1,13 +1,8 @@
-.block-life {
+.block-hover {
 	padding: 10px 0 0;
 
 	@include breakpoint(tablet) {
 		padding: 30px 0;
-	}
-
-	header {
-		text-align: center;
-		margin-bottom: 30px;
 	}
 
 	&__title {
@@ -80,6 +75,13 @@
 		}
 		img {
 			width: 100%;
+		}
+	}
+
+	&.block-life {
+		header {
+			text-align: center;
+			margin-bottom: 30px;
 		}
 	}
 }
