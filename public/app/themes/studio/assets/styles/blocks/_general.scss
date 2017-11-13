@@ -1,4 +1,4 @@
-.block-hover {
+.block-general {
 	padding: 10px 0 0;
 
 	@include breakpoint(tablet) {
@@ -9,10 +9,6 @@
 		color: $main-color;
 		font-size: 50px;
 		font-weight: 300;
-	}
-
-	&__list {
-
 	}
 
 	&__item {
@@ -73,15 +69,29 @@
 				visibility: hidden;
 			}
 		}
-		img {
-			width: 100%;
-		}
 	}
 
-	&.block-life {
-		header {
-			text-align: center;
-			margin-bottom: 30px;
+
+}
+
+.block-life {
+	header {
+		text-align: center;
+		margin-bottom: 30px;
+	}
+}
+
+.block-retail {
+	&.block-general {
+		.block-general__item {
+			&__thumb {
+				background-color: $gray-bg-color;
+
+				img {
+					display: block;
+					margin: 0 auto;
+				}
+			}
 		}
 	}
 }

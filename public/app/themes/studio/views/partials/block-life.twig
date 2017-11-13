@@ -1,27 +1,27 @@
 {% if post.get_field('a_life_above') %}
 {% set a_life_above = post.get_field('a_life_above') %}
 {% set l_posts = a_life_above[0]['posts'] %}
-<section class="block-hover block-life" id="block-life">
+<section class="block-general block-life" id="block-life">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <header>
-                    <h2 class="block-life__title">{{a_life_above[0]['title']}}</h2>
+                    <h2 class="block-general__title">{{a_life_above[0]['title']}}</h2>
                     {{a_life_above[0]['description']}}
                 </header>
             </div>
         </div>
 
         {% if l_posts %}
-        <div class="row block-hover__list">
+        <div class="row block-general__list">
             {% for item in l_posts %}
-            <div class="block-hover__item col-sm-6">
+            <div class="block-general__item col-sm-6">
                 <a href="{{item.link}}">
-                    <div class="block-hover__item__thumb">
-                        <img src="{{Image(item.image).src|resize(555, 362)}}" alt="{{Image(item.image).title}}" class="img-responsive">
+                    <div class="block-general__item__thumb">
+                        <img src="{{Image(item.image).src|resize(555, 362)}}" alt="{{Image(item.image).title}}" class="w-100">
                     </div>
-                    <div class="block-hover__item__detail">
-                        <p class="block-hover__item__title">{{item.title}}</p>
+                    <div class="block-general__item__detail">
+                        <p class="block-general__item__title">{{item.title}}</p>
                         <p>{{item.description}}</p>
                     </div>
                 </a>
