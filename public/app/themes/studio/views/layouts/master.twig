@@ -29,6 +29,8 @@
 
   <body class="{{body_class}}">
 
+    <div class="wrap-pages" style="overflow: hidden;">
+
     {{print_svg_sprite()}}
 
     {% block header %}
@@ -41,6 +43,12 @@
 
     {% block footer %}
       {% include 'partials/footer.twig' %}
+    {% endblock %}
+
+    {{ function('wp_footer') }}
+
+    {% block body_js %}
+
     {% endblock %}
 
     <script>
@@ -66,10 +74,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.24/gmaps.min.js"></script>
     <script type="text/javascript" src="{{script_url('maps')}}"></script>
 
-    {% block body_js %}
-
-    {% endblock %}
-
-    {{ function('wp_footer') }}
+    </div>
+    
   </body>
 </html>

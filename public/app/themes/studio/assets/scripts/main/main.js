@@ -11,28 +11,6 @@
 		$('#quick-search').submit();
 	});
 
-	// scroll-next-section
-	$('.scroll-next-section').on('click', function(event) {
-		// Make sure this.hash has a value before overriding default behavior
-    	if (this.hash !== "") {
-      		// Prevent default anchor click behavior
-			event.preventDefault();
-
-			// Store hash
-			var hash = this.hash;
-
-			// Using jQuery's animate() method to add smooth page scroll
-			// The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-			$('html, body').animate({
-				scrollTop: $(hash).offset().top
-			}, 800, function(){
-
-				// Add hash (#) to URL when done scrolling (default click behavior)
-				window.location.hash = hash;
-			});
-		} 	// End if
-	});
-
 	// nav__button
 	$('.nav__button').on('click', function() {
 		$(this).closest('.nav').toggleClass('open');
@@ -40,11 +18,33 @@
 	});
 
 	// Home page
-	if ( $('body').hasClass('home') ) {
+	if ( $('body').hasClass('page-template-home') ) {
+
+		// scroll-next-section
+		$('.scroll-next-section').on('click', function(event) {
+			// Make sure this.hash has a value before overriding default behavior
+	    	if (this.hash !== "") {
+	      		// Prevent default anchor click behavior
+				event.preventDefault();
+
+				// Store hash
+				var hash = this.hash;
+
+				// Using jQuery's animate() method to add smooth page scroll
+				// The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+				$('html, body').animate({
+					scrollTop: $(hash).offset().top
+				}, 800, function(){
+
+					// Add hash (#) to URL when done scrolling (default click behavior)
+					window.location.hash = hash;
+				});
+			} 	// End if
+		});
 
 		// verticalSlider
 		var verticalSlider = document.getElementById('slider-vertical');
-	    var homebg = $('.home .block-header__thumb');
+	    var homebg = $('.page-template-home .block-header__thumb');
 
 		noUiSlider.create(verticalSlider, {
 			start: 50,
@@ -72,7 +72,7 @@
 		var controller = new ScrollMagic.Controller({globalSceneOptions: {duration: 500}});
 
 		// get all life__item
-		var life__items = document.querySelectorAll(".block-life__item");
+		var life__items = document.querySelectorAll(".block-general__item");
 
 		// create scene for every life__item
 		for (var i=0; i<life__items.length; i++) {
@@ -84,17 +84,58 @@
 				.addTo(controller);
 		}
 
-	}
+	} else {
+		// Internal page
+		// scroll-next-section
+		$('.scroll-next-section').on('click', function(event) {
+			// Make sure this.hash has a value before overriding default behavior
+	    	if (this.hash !== "") {
+	      		// Prevent default anchor click behavior
+				event.preventDefault();
 
-    //Flex Slider
-    $('.gallery-slider').slick({
-        dots: false,
-        infinite: false,
-        speed: 300,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa fa-caret-left' aria-hidden='true'></i></button>",
-        nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-caret-right' aria-hidden='true'></i></button>"
-    });
+				// Store hash
+				var toDiv = $('.quick-search').next();
+
+				// Using jQuery's animate() method to add smooth page scroll
+				// The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+				$('html, body').animate({
+					scrollTop: $(toDiv).offset().top
+				}, 800);
+			} 	// End if
+		});
+
+		// scroll-content-block
+		$('.scroll-content-block').on('click', function(event) {
+			// Make sure this.hash has a value before overriding default behavior
+	    	if (this.hash !== "") {
+	      		// Prevent default anchor click behavior
+				event.preventDefault();
+
+				// Store hash
+				var hash = this.hash;
+
+				// Using jQuery's animate() method to add smooth page scroll
+				// The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+				$('html, body').animate({
+					scrollTop: $(hash).offset().top
+				}, 800, function(){
+
+					// Add hash (#) to URL when done scrolling (default click behavior)
+					window.location.hash = hash;
+				});
+			} 	// End if
+		});
+
+	    //Flex Slider
+	    $('.gallery-slider').slick({
+	        dots: false,
+	        infinite: false,
+	        speed: 300,
+	        slidesToShow: 1,
+	        slidesToScroll: 1,
+	        prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa fa-caret-left' aria-hidden='true'></i></button>",
+	        nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-caret-right' aria-hidden='true'></i></button>"
+	    });
+	}
 
 })(jQuery);

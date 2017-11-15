@@ -83,28 +83,42 @@ gulp.task('styles-min', function () {
 })
 
 // Concatenate & Minify JS
-gulp.task('scripts', function () {
-	return gulp.src([
-			paths.vendor + '/fancyBox/dist/jquery.fancybox.js',
-			paths.vendor + '/slick-carousel/slick/slick.js',
-			paths.vendor + '/scrollmagic/scrollmagic/minified/ScrollMagic.min.js',
-			paths.vendor + '/scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min.js',
-			paths.vendor + '/nouislider/distribute/nouislider.js',
-			paths.vendor + '/lodash/dist/lodash.js',
-			paths.scripts + '/main/*.js'
-		])
-		.pipe(concat('all.js'))
-		.pipe(gulp.dest(paths.bundles))
-		.pipe(rename('all.min.js'))
-		.pipe(uglify())
-		.pipe(gulp.dest(paths.dist))
-})
+// gulp.task('scripts', function () {
+// 	return gulp.src([
+// 			paths.vendor + '/fancyBox/dist/jquery.fancybox.js',
+// 			paths.vendor + '/slick-carousel/slick/slick.js',
+// 			paths.vendor + '/scrollmagic/scrollmagic/minified/ScrollMagic.min.js',
+// 			paths.vendor + '/scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min.js',
+// 			paths.vendor + '/nouislider/distribute/nouislider.js',
+// 			paths.vendor + '/lodash/dist/lodash.js',
+// 			paths.scripts + '/main/*.js'
+// 		])
+// 		.pipe(concat('all.js'))
+// 		.pipe(gulp.dest(paths.bundles))
+// 		.pipe(rename('all.min.js'))
+// 		.pipe(uglify())
+// 		.pipe(gulp.dest(paths.dist))
+// })
 
 // Lint javascript
 gulp.task('jslint', function () {
 	return gulp.src(paths.scripts + '/*/*.js')
 		.pipe(jshint())
 		.pipe(jshint.reporter('default'))
+})
+
+// Concatenate Libs JS
+gulp.task('scripts-libs', function () {
+	return gulp.src([
+			paths.vendor + '/fancyBox/dist/jquery.fancybox.js',
+			paths.vendor + '/slick-carousel/slick/slick.js',
+			paths.vendor + '/scrollmagic/scrollmagic/minified/ScrollMagic.min.js',
+			paths.vendor + '/scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min.js',
+			paths.vendor + '/nouislider/distribute/nouislider.js',
+			paths.vendor + '/lodash/dist/lodash.js'
+		])
+		.pipe(concat('libs.js'))
+		.pipe(gulp.dest(paths.bundles))
 })
 
 // Concatenate & Minify JS in folders into one file per folder
@@ -125,8 +139,21 @@ gulp.task('scripts_folders', function () {
 	return merge(tasks)
 })
 
+// Concatenate & Minify JS deploy
+gulp.task('scripts-deploy', function () {
+	return gulp.src([
+			paths.bundles + '/libs.js',
+  			paths.bundles + '/main.js'
+		])
+		.pipe(concat('all.js'))
+		.pipe(gulp.dest(paths.bundles))
+		.pipe(rename('all.min.js'))
+		.pipe(uglify())
+		.pipe(gulp.dest(paths.dist))
+})
+
 // jsreload
-gulp.task('jsreload', ['jslint', 'scripts'], function (done) {
+gulp.task('jsreload', ['jslint', 'scripts_folders'], function (done) {
 	browserSync.reload();
 	done();
 });
@@ -155,7 +182,7 @@ gulp.task('svg', function () {
 });
 
 // Watch Files For Changes
-gulp.task('watch', ['jslint', 'styles-libs', 'styles'], function () {
+gulp.task('watch', ['styles-libs', 'styles', 'jslint', 'scripts-libs', 'scripts_folders'], function () {
 
 	browserSync.init({
 		proxy: siteUrl
@@ -178,4 +205,4 @@ gulp.task('watch', ['jslint', 'styles-libs', 'styles'], function () {
 })
 
 // Default Task
-gulp.task('default', ['styles', 'styles-libs', 'styles-min', 'scripts', 'scripts_folders'])
+gulp.task('default', ['styles-libs', 'styles', 'styles-min', 'jslint', 'scripts-libs', 'scripts_folders', 'scripts-deploy'])

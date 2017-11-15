@@ -1,0 +1,16 @@
+{% set contentblock = post.get_field('pgs_content_block') %}
+{% if contentblock %}
+<main class="main-content">
+	<div class="container">
+	    {% for content in contentblock %}
+
+	    	{% if content.acf_fc_layout == 'contact_us' %}
+				{% include 'content-blocks/contact_us.twig' %}
+
+	    	{% elseif content.acf_fc_layout == 'get_directions' %}
+				{% include 'content-blocks/get_directions.twig' %}
+	    	{% endif %}
+
+	    {% endfor %}
+	</div>
+{% endif %}
