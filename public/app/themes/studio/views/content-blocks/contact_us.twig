@@ -1,3 +1,39 @@
-<div id="{{ content.acf_fc_layout }}" class="">
-	{{ dump(content) }}
+<div id="{{ content.acf_fc_layout }}" class="contact__page">
+	<div class="contact__page--top">
+		<h2>{{content["title"]}}</h2>
+		<div class="contact__description">
+			{{content['description']}}
+		</div>
+	</div>
+	<div class="contact__page--container">
+		<div class="contact__page--left">
+			{{ content.shortcode_form|shortcodes }}
+		</div>
+		<div class="contact__page--right">
+			{% if global.name %}
+			<h3 class="title">{{global.name}}</h3>
+			{% endif %}
+			{% if global.street %}
+				<p>{{global.street}}</p>
+			{% endif %}
+			<p>{{global.city}}, {{global.state}}, {{global.zip}}</p>
+			{% if global.phone %}
+                <p class="phone--number"><a href="tel:{{global.phone|replace({' ': ''})}}">{{global.phone|replace({' ': '.'})}}</a></p>
+            {% endif %}
+            <h3 class="title">LEASING OFFICE HOURS:</h3>
+            {% set leasing_office_hours = content["leasing_office_hours"] %}
+
+            {% for item in leasing_office_hours %}
+	            {% if item.text %}
+	            	<p>{{item.text}}</p>
+	            {% endif %}
+
+            	{% if item.value %}
+	            	<p>{{item.value}}</p>
+	            {% endif %}
+
+            {% endfor %}
+            
+		</div>
+	</div>
 </div>

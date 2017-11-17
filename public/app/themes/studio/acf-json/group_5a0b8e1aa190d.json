@@ -123,7 +123,7 @@
                         {
                             "key": "field_5a0b9b460e36f",
                             "label": "LEASING OFFICE HOURS:",
-                            "name": "leasing_office_hours:",
+                            "name": "leasing_office_hours",
                             "type": "repeater",
                             "instructions": "",
                             "required": 0,
@@ -361,5 +361,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1510712038
+    "modified": 1510791166
 }

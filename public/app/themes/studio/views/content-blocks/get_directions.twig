@@ -1,3 +1,17 @@
-<div id="{{ content.acf_fc_layout }}" class="">
-	{{ dump(content) }}
+<div id="{{ content.acf_fc_layout }}" class="directions">
+	<div class="directions__container">
+		<p class="title">{{ content.title }}</p>
+		<div class="directions__form">
+			<div class="directions__form--container">
+				<div class="form-input">
+					<input type="text" placeholder="{{ content.text_placeholder }}" class="go-address">
+					{% set map_location = global.map_location %}
+					<input type="hidden" class="come-address" value="{{map_location.address}}">
+				</div>
+				<div class="form-input line-before">
+					<input type="submit" value="{{ content.text_button }}" class="redirect-submit">
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

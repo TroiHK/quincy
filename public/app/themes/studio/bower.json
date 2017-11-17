@@ -14,7 +14,8 @@
     "fancyBox": "*",
     "nouislider": "*",
     "lodash": "*",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "@fengyuanchen/datepicker" : "^0.6.3"
   },
   "devDependencies": {
     "scrollmagic": "^2.0.5"

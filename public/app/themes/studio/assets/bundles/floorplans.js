@@ -215,7 +215,7 @@ function loadFilterEvents(floorplans, config) {
             inputFilterChangeEvent(current_filter.input_id, floorplans, config);
         } 
     }
-}
+} 
 
 /**
  * Creates

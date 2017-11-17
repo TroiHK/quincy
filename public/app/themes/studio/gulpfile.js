@@ -65,6 +65,8 @@ gulp.task('styles-libs', function () {
   		paths.vendor + '/fancyBox/dist/jquery.fancybox.min.css',
   		paths.vendor + '/nouislider/distribute/nouislider.min.css',
   		paths.vendor + '/slick-carousel/slick/slick.css',
+  		paths.vendor + '/select2-master/dist/css/select2.css',
+  		paths.vendor + '/datepicker-master/dist/datepicker.css',
   	])
   	.pipe(concat('libs.css'))
 	.pipe(gulp.dest(paths.bundles))
@@ -111,12 +113,14 @@ gulp.task('jslint', function () {
 gulp.task('scripts-libs', function () {
 	return gulp.src([
 			paths.vendor + '/fancyBox/dist/jquery.fancybox.js',
+			paths.vendor + '/datepicker-master/dist/datepicker.js',
 			paths.vendor + '/slick-carousel/slick/slick.js',
 			paths.vendor + '/scrollmagic/scrollmagic/minified/ScrollMagic.min.js',
 			paths.vendor + '/scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min.js',
 			paths.vendor + '/nouislider/distribute/nouislider.js',
+			paths.vendor + '/select2-master/dist/js/select2.js',
 			paths.vendor + '/lodash/dist/lodash.js'
-		])
+		]) 
 		.pipe(concat('libs.js'))
 		.pipe(gulp.dest(paths.bundles))
 })

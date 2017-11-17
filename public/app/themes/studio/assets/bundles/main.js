@@ -126,6 +126,40 @@
 			} 	// End if
 		});
 
+		$("#datepicker").datepicker({
+			months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+			monthsShort: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+		}); 
+
+		$('#apartment-type').select2({
+		  placeholder: 'Apartment Type',
+		  minimumResultsForSearch: -1
+		}); 
+
+		$('#price-range').select2({
+		  placeholder: 'Price Range',
+		  minimumResultsForSearch: -1
+		}); 
+
+		$('#contact-me').select2({
+		  placeholder: 'Contact Me',
+		  minimumResultsForSearch: -1
+		}); 
+
+		$(".wpcf7-form-control-wrap").hover(function(){
+			$(this).find(".wpcf7-not-valid-tip").hide(400);
+		}, function(){});
+
+		$(".redirect-submit").click(function(e){
+			e.preventDefault();
+			var go = $(".go-address").val();
+			var come = $(".come-address").val();
+			var url = 'https://www.google.com/maps/dir/'+go+'/'+come;
+			if(go){
+				window.open(url, '_blank');
+			}	
+		});
+			
 	    //Flex Slider
 	    $('.gallery-slider').slick({
 	        dots: false,
@@ -136,6 +170,8 @@
 	        prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa fa-caret-left' aria-hidden='true'></i></button>",
 	        nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-caret-right' aria-hidden='true'></i></button>"
 	    });
+
+
 	}
 
 })(jQuery);
