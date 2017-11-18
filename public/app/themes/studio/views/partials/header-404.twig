@@ -1,0 +1,45 @@
+<header class="block-header block-header--internal">
+    <div id="img-banner" class="block-header__thumb" style="background-image: url('{{Image(global.banner_image_404).src|resize(1920)}}')">
+    </div>
+
+    <div class="call-action-button hidden-xs container text-right">
+        {% if not global.availability_off and global.apply_link %}
+            <a class="apply-link" href="{{global.apply_link}}" target="_blank">APPLY NOW</a>
+        {% endif %}
+
+        {% if global.phone %}
+            <a class="phone-link" href="tel:{{global.phone|replace({' ': ''})}}">{{global.phone}}</a>
+        {% endif %}
+    </div>
+
+    {% include 'partials/menu.twig' %}
+
+    <div class="block-header__detail">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset1">
+                    <h1 class="text-uppercase">{{ global.title__404 }}</h1>
+
+                    {% if global.custom_link__404 %}
+                    <ul class="list-default text-uppercase">
+                        {% for custom in global.custom_link__404 %}
+                        <li><a href="{{ custom.link }}">{{ custom.text }}</a></li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#block-life" title="" class="scroll-next-section"><i class="fa fa-caret-down"></i></a>
+</header>
+
+<div class="quick-search">
+    <div class="title">{{global.title_qs}}</div>
+    {% for item in global.item_qs %}
+        <a href="{{item.link}}">
+            {{item.label}}
+            <span class="description">{{item.description}}</span>
+        </a>
+    {% endfor %}
+</div>

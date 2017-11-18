@@ -16,8 +16,17 @@
 			{% elseif content.acf_fc_layout == 'gallery' %}
 				{% include 'content-blocks/gallery.twig' %}
 
+			{% elseif content.acf_fc_layout == 'retail' %}
+				{% include 'content-blocks/retail.twig' %}
+
 	    	{% endif %}
 
 	    {% endfor %}
 	</div>
+</main>
+{% else %}
+<main class="main-content">
+	<div class="container" style="height: 40px;">
+	</div>
+</main>
 {% endif %}

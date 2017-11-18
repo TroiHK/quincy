@@ -18,7 +18,7 @@
             "default_value": "",
             "placeholder": "",
             "maxlength": "",
-            "rows": 3,
+            "rows": 5,
             "new_lines": "br"
         },
         {
@@ -111,5 +111,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1510973755
+    "modified": 1511043684
 }

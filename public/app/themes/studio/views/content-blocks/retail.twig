@@ -1,0 +1,24 @@
+<section id="{{ content.acf_fc_layout ~ '-' ~ loop.index }}" class="block-retail block-general">
+	{% if content.company %}
+	<div class="row">
+		{% for company in content.company %}
+		<div class="block-general__item col-sm-4">
+			<a href="{{ company.link }}">
+				<div class="block-general__item__thumb">
+					<img src="{{ Image(company.logo).src|resize(360, 360) }}" alt="{{ company.name }}">
+				</div>
+				<div class="block-general__item__detail">
+					<p class="block-general__item__title">{{ company.name }}</p>
+					<p>
+						<span class="address">{{ company.address }}</span>
+						<br><span class="phone">{{ company.phone }}</span>
+						<br><span class="website">{{ company.website }}</span>
+						<br><br><span class="description">{{ company.description }}</span>
+					</p>
+				</div>
+			</a>
+		</div>
+		{% endfor %}
+	</div>
+	{% endif %}
+</section>
