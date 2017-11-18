@@ -1,6 +1,7 @@
 .block-location {
-	padding-top: 50px;
-	padding-bottom: 30px;
+	margin: 40px 0 30px;
+
+	background-color: $gray-bg-color;
 
 	> .row {
 		display: flex;
@@ -77,6 +78,7 @@
 		position: relative;
 		width: 100%;
 		height: auto;
+		padding: 45px 0;
 
 		ul {
 			list-style: none;
