@@ -25,10 +25,15 @@
 						</div>
 						<div class="block-location__list">
 							{% for location_category in locations %}
-							<div class="neighborhood-list-wrap" id="{{ 'content' ~ location_category.location_category_id }}">
-								<ul class="neighborhood-list" id="{{ 'results' ~ location_category.location_category_id }}">
-									{# locations get dumped into here #}
-								</ul>
+							<div class="neighborhood-list-wrap is-scroll" id="{{ 'content' ~ location_category.location_category_id }}">
+								<div class="wrap-absolute" data-content>
+									<ul class="neighborhood-list" id="{{ 'results' ~ location_category.location_category_id }}">
+                                        {# locations get dumped into here #}
+									</ul>
+								</div>
+								<div class="wrap-scroll wrap-vertical" data-scroll>
+									<div class="slider-scroll" class="hidden-xs"></div>
+								</div>
 							</div>
 							{% endfor %}
 						</div>
