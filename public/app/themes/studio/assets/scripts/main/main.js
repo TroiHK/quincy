@@ -178,7 +178,7 @@
                 var scrollSlider = this;
                 var ulContainer = $(this).siblings('.block-amenity__item__list').children('ul');
                 var heightUl = $(this).siblings('.block-amenity__item__list').children('ul').outerHeight();
-				var heightParent = $(this).parent().outerHeight();
+				var heightParent = $(this).siblings('.block-amenity__item__list').outerHeight();
 
 				if ( heightUl >= heightParent ) {
                     noUiSlider.create(scrollSlider, {
