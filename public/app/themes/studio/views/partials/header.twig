@@ -1,24 +1,7 @@
 {% if fn('is_front_page') %}
 
     <header class="block-header">
-        <div id="img-banner" class="block-header__thumb" style="background-image: url('{{Image(post._thumbnail_id).src|resize(1920)}}')">
-        </div>
-
-        <div class="call-action-button hidden-xs container text-right">
-            {% if not global.availability_off and global.apply_link %}
-                <a class="apply-link" href="{{global.apply_link}}" target="_blank">APPLY NOW</a>
-            {% endif %}
-
-            {% if global.phone %}
-                <a class="phone-link" href="tel:{{global.phone|replace({' ': ''})}}">{{global.phone}}</a>
-            {% endif %}
-        </div>
-
-        {#<div class="visible-xs">#}
-            {#<img src="{{Image(post._thumbnail_id).src|resize(767)}}" class="img-responsive" alt="hero-image {{site.title}}">#}
-        {#</div>#}
-
-        {% include 'partials/menu.twig' %}
+        {% include 'partials/header-top.twig' %}
 
         <div class="block-header__detail">
             <div class="block-header__logo">
@@ -35,40 +18,10 @@
 {% else %}
 
     <header class="block-header block-header--internal">
-        <div id="img-banner" class="block-header__thumb" style="background-image: url('{{Image(post._thumbnail_id).src|resize(1920)}}')">
-        </div>
+        {% include 'partials/header-top.twig' %}
 
-        <div class="call-action-button hidden-xs container text-right">
-            {% if not global.availability_off and global.apply_link %}
-                <a class="apply-link" href="{{global.apply_link}}" target="_blank">APPLY NOW</a>
-            {% endif %}
+        {% include 'partials/header-bottom.twig' %}
 
-            {% if global.phone %}
-                <a class="phone-link" href="tel:{{global.phone|replace({' ': ''})}}">{{global.phone}}</a>
-            {% endif %}
-        </div>
-
-        {% include 'partials/menu.twig' %}
-
-        <div class="block-header__detail">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-10 col-sm-offset1">
-                        <h1>{{ post.post_title }}</h1>
-                        <p>{{ post.get_field('pgs_excerpt') }}</p>
-
-                        {% set contentblock = post.get_field('pgs_content_block') %}
-                        {% if contentblock and contentblock|length > 1 %}
-                        <ul class="list-default text-uppercase">
-                            {% for content in contentblock %}
-                            <li><a href="#{{ content.acf_fc_layout ~ '-' ~ loop.index }}" class="scroll-content-block">{{ content.anchor_text }}</a></li>
-                            {% endfor %}
-                        </ul>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
         <a href="#block-life" title="" class="scroll-next-section"><i class="fa fa-caret-down"></i></a>
     </header>
 

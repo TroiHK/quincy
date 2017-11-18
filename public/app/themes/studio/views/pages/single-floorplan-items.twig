@@ -1,5 +1,9 @@
 {% extends "layouts/master.twig" %}
 
+{% block header %}
+      {% include 'partials/header-floorplan-single.twig' %}
+{% endblock %}
+
 {% block content %}
 	<p>
 		{{ post.name }}<br>
