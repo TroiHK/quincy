@@ -374,6 +374,49 @@ if (typeof google !== 'undefined' && typeof GMaps !== 'undefined') {
             }
 
         });
+
+        if ($(gmaps_config.maps.contact).length !== 0) {
+            $(function() {
+                var map;
+
+                var settings = gmaps_config.settings.contact();
+                settings.div = gmaps_config.maps.contact;
+                settings.lat = properties[0].latitude;
+                settings.lng = properties[0].longitude;
+
+                map = new GMaps(settings);
+
+                /* Set up the Google Maps styles */
+                var styles = gmaps_config.styles.contact;
+
+                map.addStyle({
+                    styledMapName: 'Styled Map',
+                    styles: styles,
+                    mapTypeId: 'map_style'
+                });
+
+                map.setStyle('map_style');
+
+                for (var key in properties) {
+                    var property = properties[key];
+                    map.addMarker({
+                        lat: property.latitude,
+                        lng: property.longitude,
+                        title: property.name,
+                        optimized: !1,
+                        icon: gmaps_config.markers.properties[key].contact,
+                        click: function() {
+                            map.hideInfoWindows();
+                        },
+                        infoWindow: {
+                            content: gmaps_config.info_windows.property.contact(property)
+                        },
+                        draggable: false,
+                        animation: google.maps.Animation.DROP
+                    });
+                }
+            });
+        }
     } else { // contact page
         if ($(gmaps_config.maps.contact).length !== 0) {
             $(function() {
