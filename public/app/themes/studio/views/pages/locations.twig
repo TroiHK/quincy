@@ -3,7 +3,7 @@
 {% block content %}
 	<main class="main-content">
 		<div class="container">
-			<section class="block-location">
+			<section class="block-location" id="locations">
 				<div class="row">
 					<div class="col-md-7">
 						<div id="map-area" style="height: 650px;"></div>
@@ -35,55 +35,39 @@
 					</div>
 				</div>
 			</section>
-
-			<section class="block-general">
-				<div class="row">
-					<div class="col-md-8">
-						<header>
-							<h2 class="block-general__title">AREA VIEWS</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad.
-							</p>
-						</header>
-					</div>
-				</div>
-				<div class="row">
-					<div class="block-general__item col-sm-6">
-						<div class="block-general__item__thumb">
-							<img src="{{theme.link}}/assets/images/amen3.jpg" class="w-100">
-						</div>
-						<div class="block-general__item__detail">
-							<p>Lorem ipsum dolor sit amet conse ctetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+			
+			{% set local_area_items = post.get_field('local_area_items') %}
+			{% if local_area_items %}
+				{% for local in local_area_items %}
+				<section class="block-general" id="area_views">
+					<div class="row">
+						<div class="col-md-8">
+							<header>
+								<h2 class="block-general__title">{{ local.title }}</h2>
+	                            <p>{{ local.description }}</p>
+							</header>
 						</div>
 					</div>
 
-					<div class="block-general__item col-sm-6">
-						<div class="block-general__item__thumb">
-							<img src="{{theme.link}}/assets/images/amen2.png" class="w-100">
+					{% if local.area %}
+					<div class="row">
+						{% for item in local.area %}
+						<div class="block-general__item col-sm-6">
+							<a href="{{ item.link }}">
+								<div class="block-general__item__thumb">
+									<img src="{{Image(item.image).src|resize(750, 430)}}" class="w-100">
+								</div>
+								<div class="block-general__item__detail">
+									<p>{{ item.description }}</p>
+								</div>
+							</a>
 						</div>
-						<div class="block-general__item__detail">
-							<p>Lorem ipsum dolor sit amet conse ctetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
-						</div>
+						{% endfor %}
 					</div>
-
-					<div class="block-general__item col-sm-6">
-						<div class="block-general__item__thumb">
-							<img src="{{theme.link}}/assets/images/amen1.jpg" class="w-100">
-						</div>
-						<div class="block-general__item__detail">
-							<p>Lorem ipsum dolor sit amet conse ctetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
-						</div>
-					</div>
-
-					<div class="block-general__item col-sm-6">
-						<div class="block-general__item__thumb">
-							<img src="{{theme.link}}/assets/images/amen3.jpg" class="w-100">
-						</div>
-						<div class="block-general__item__detail">
-							<p>Lorem ipsum dolor sit amet conse ctetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
-						</div>
-					</div>
-				</div>
-			</section>
+					{% endif %}
+				</section>
+				{% endfor %}
+			{% endif %}
 		</div>
 	</main>
 {% endblock %}
