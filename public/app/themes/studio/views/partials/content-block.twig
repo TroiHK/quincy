@@ -9,6 +9,13 @@
 
 	    	{% elseif content.acf_fc_layout == 'get_directions' %}
 				{% include 'content-blocks/get_directions.twig' %}
+
+			{% elseif content.acf_fc_layout == 'amenities' %}
+				{% include 'content-blocks/amenities.twig' %}
+
+			{% elseif content.acf_fc_layout == 'gallery' %}
+				{% include 'content-blocks/gallery.twig' %}
+
 	    	{% endif %}
 
 	    {% endfor %}

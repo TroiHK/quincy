@@ -1,0 +1,40 @@
+<div id="{{ content.acf_fc_layout ~ '-' ~ loop.index }}" class="block-amenity">
+	<div class="block-amenity__item">
+		<header>
+			<div class="row">
+				<div class="col-md-7">
+					<h2 class="block-amenity__item__title">{{ content.title }}</h2>
+					<p>{{ content.description }}</p>
+				</div>
+			</div>
+		</header>
+		<div class="block-amenity__item__detail">
+			<div class="row">
+				<div class="col-md-7">
+					{% if content.slider %}
+					<div class="block-amenity__item__gallery">
+						<div class="gallery-slider">
+							{% for image in content.slider %}
+							<div>
+								<img src="{{ Image(image).src|resize(653, 430) }}" class="w-100" alt="{{ image.alt }}">
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+					{% endif %}
+				</div>
+				<div class="col-md-5">
+					{% if content.amenities_listings %}
+					<div class="block-amenity__item__list">
+						<ul class="list-default">
+							{% for item in content.amenities_listings %}
+							<li>{{ item.text }}</li>
+							{% endfor %}
+						</ul>
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

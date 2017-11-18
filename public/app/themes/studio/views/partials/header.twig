@@ -61,7 +61,7 @@
                         {% if contentblock and contentblock|length > 1 %}
                         <ul class="list-default text-uppercase">
                             {% for content in contentblock %}
-                            <li><a href="#{{ content.acf_fc_layout }}" class="scroll-content-block">{{ content.anchor_text }}</a></li>
+                            <li><a href="#{{ content.acf_fc_layout ~ '-' ~ loop.index }}" class="scroll-content-block">{{ content.anchor_text }}</a></li>
                             {% endfor %}
                         </ul>
                         {% endif %}
