@@ -23,9 +23,9 @@
 					</div>
 					{% endif %}
 				</div>
-				<div class="col-md-5">
+				<div class="col-md-5 is-scroll">
 					{% if content.amenities_listings %}
-					<div class="block-amenity__item__list">
+					<div class="block-amenity__item__list" data-content>
 						<ul class="list-default">
 							{% for item in content.amenities_listings %}
 							<li>{{ item.text }}</li>
@@ -33,7 +33,9 @@
 						</ul>
 					</div>
 					{% endif %}
-					<div class="slider-scroll" data-scroll-target="img-banner" class="hidden-xs" style="height: 200px;"></div>
+					<div class="wrap-scroll wrap-vertical" data-scroll>
+						<div class="slider-scroll" class="hidden-xs"></div>
+					</div>
 				</div>
 			</div>
 		</div>

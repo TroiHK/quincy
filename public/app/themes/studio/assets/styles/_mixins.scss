@@ -39,3 +39,15 @@
 	-o-transform: $transform;
 	transform: $transform;
 }
+
+@mixin border-radius($radius) {
+	border-radius: $radius;
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+}
+
+@mixin box-shadow($option) {
+	box-shadow: $option;
+	-webkit-box-shadow: $option;
+	-moz-box-shadow: $option;
+}

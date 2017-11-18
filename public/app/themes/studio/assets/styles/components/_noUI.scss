@@ -1,0 +1,35 @@
+.wrap-vertical {
+	position: absolute;
+	height: 100%!important;
+	width: 54px;
+	top: 0;
+	right: 15px;
+	background-color: $main-color;
+
+	.noUi-vertical {
+		width: 1px;
+		height: 238px;
+		border: none;
+		@include border-radius(0);
+		@extend %absolute-center;
+
+		.noUi-handle {
+			border: none;
+			@include box-shadow(none);
+			width: 25px;
+			height: 25px;
+			left: 50%;
+			@include transform(translateX(-50%));
+			background: $white url(../svg/sources/scrollbar.svg) no-repeat center;
+			@include border-radius(50%);
+			background-size: 15px;
+			outline: none;
+			cursor: pointer;
+
+			&:before,
+			&:after {
+				content: none;
+			}
+		}
+	}
+}

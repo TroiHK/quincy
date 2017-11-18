@@ -1,11 +1,17 @@
 .block-amenity {
-	&__item {
-		margin-bottom: 30px;
+	margin-bottom: 30px;
 
+	header {
+		font-size: 14px;
+		padding: 25px;
+	}
+
+	&__item {
 		&__title {
 			color: $main-color;
 			font-weight: 300;
 			font-size: 36px;
+			margin: 0;
 
 			a {
 				color: inherit;
@@ -16,7 +22,7 @@
 			background-color: $gray-bg-color;
 
 			> .row {
-				@include breakpoint(tablet) {
+				@media screen and (min-width: 992px) {
 					display: flex;
 
 					&>* {
@@ -28,22 +34,30 @@
 
 		&__list {
 			padding: 30px 15px 20px;
-			@include breakpoint(tablet) {
-				padding: 0 30px;
-				position: absolute;
-				left: 15px;
-				right: 15px;
-				top: 60px;
-				bottom: 30px;
-				overflow: hidden;
+			padding: 0 30px;
+			position: absolute;
+			left: 15px;
+			right: 15px;
+			top: 60px;
+			bottom: 30px;
+			overflow: hidden;
 
-				ul {
-					position: absolute;
-					top: 0;
-					left: 30px;
-					right: 30px;
-				}
+			ul {
+				position: absolute;
+				top: 0;
+				left: 30px;
+				right: 70px;
 			}
+
+
+		}
+	}
+
+	.is-scroll {
+		height: 450px;
+
+		@include breakpoint(desktop) {
+			height: auto;
 		}
 	}
 }
