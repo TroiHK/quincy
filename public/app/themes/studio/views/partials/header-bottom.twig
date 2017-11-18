@@ -7,7 +7,7 @@
 
                 {% set contentblock = post.get_field('pgs_content_block') %}
                 {% set customlinks = post.get_field('pgs_custom_links_on_banner') %}
-                {% set chkcontentblock = chkcontentblock and contentblock|length > 1 %}
+                {% set chkcontentblock = contentblock and contentblock|length > 1 %}
                 {% if chkcontentblock or customlinks %}
                 <ul class="list-default text-uppercase">
                     {% for custom in customlinks %}

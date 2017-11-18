@@ -83,6 +83,10 @@
 		&:before, &:after {
 			display: none;
 		}
+
+		&:focus {
+			outline: none;
+		}
 	}
 }
 

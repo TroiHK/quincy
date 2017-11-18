@@ -171,6 +171,40 @@
 	        nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-caret-right' aria-hidden='true'></i></button>"
 	    });
 
+	    // slider scroll
+		if ( $('.slider-scroll').length ) {
+			$('.slider-scroll').each(function () {
+                // scrollSlider
+                var scrollSlider = this;
+                var ulContainer = $(this).siblings('.block-amenity__item__list').children('ul');
+                var heightUl = $(this).siblings('.block-amenity__item__list').children('ul').outerHeight();
+				var heightParent = $(this).parent().outerHeight();
+
+				if ( heightUl >= heightParent ) {
+                    noUiSlider.create(scrollSlider, {
+                        start: 0,
+                        orientation: 'vertical',
+                        range: {
+                            'min': 0,
+                            'max': (heightUl - heightParent) + 30
+                        }
+                    });
+
+                    scrollSlider.noUiSlider.on('slide', setPosition);
+
+                    // setBgPosition
+                    function setPosition() {
+                        // Get the slider values,
+                        // stick them together.
+                        var position = scrollSlider.noUiSlider.get();
+                        console.log(position);
+
+                        // Set position bg.
+                        ulContainer.css('top', - position + 'px');
+                    };
+                }
+            });
+		}
 
 	}
 
