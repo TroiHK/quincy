@@ -157,24 +157,24 @@ var gmaps_config = {
     markers: {
         location_categories: [
             {
-                url: site_url + '/assets/images/icons/location.png',
-                scaledSize: new google.maps.Size(66, 84)
+                url: site_url + '/assets/svg/sources/local-item.svg',
+                scaledSize: new google.maps.Size(22, 22)
             },
             {
-                url: site_url + '/assets/images/icons/location.png',
-                scaledSize: new google.maps.Size(66, 84)
+                url: site_url + '/assets/svg/sources/local-item.svg',
+                scaledSize: new google.maps.Size(22, 22)
             },
             {
-                url: site_url + '/assets/images/icons/location.png',
-                scaledSize: new google.maps.Size(66, 84)
+                url: site_url + '/assets/svg/sources/local-item.svg',
+                scaledSize: new google.maps.Size(22, 22)
             },
             {
-                url: site_url + '/assets/images/icons/location.png',
-                scaledSize: new google.maps.Size(66, 84)
+                url: site_url + '/assets/svg/sources/local-item.svg',
+                scaledSize: new google.maps.Size(22, 22)
             },
             {
-                url: site_url + '/assets/images/icons/location.png',
-                scaledSize: new google.maps.Size(66, 84)
+                url: site_url + '/assets/svg/sources/local-item.svg',
+                scaledSize: new google.maps.Size(22, 22)
             }
         ],
         properties: [

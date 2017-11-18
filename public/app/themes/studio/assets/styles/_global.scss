@@ -127,35 +127,35 @@ a {
         }
     }
 
-    &__icon-restaurants {
+    &__icon-restaurants, &__icon-restaurants-hover {
         svg {
             width: 56px;
             height: 52px;
         }
     }
 
-    &__icon-cake {
+    &__icon-cake, &__icon-cake-hover {
         svg {
             width: 46px;
             height: 45px;
         }
     }
 
-    &__icon-ticket {
+    &__icon-ticket, &__icon-ticket-hover {
         svg {
             width: 61px;
             height: 35px;
         }
     }
 
-    &__icon-bicycle {
+    &__icon-bicycle, &__icon-bicycle-hover {
         svg {
             width: 78px;
             height: 45px;
         }
     }
 
-    &__icon-shops {
+    &__icon-shops, &__icon-shops-hover {
         svg {
             width: 45px;
             height: 57px;
