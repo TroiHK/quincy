@@ -2,9 +2,12 @@
 	padding-top: 50px;
 	padding-bottom: 30px;
 
+	> .row {
+		display: flex;
+	}
+
 	&__detail {
 		display: flex;
-		height: 650px;
 		overflow: hidden;
 	}
 
@@ -71,6 +74,10 @@
 	}
 
 	&__list {
+		position: relative;
+		width: 100%;
+		height: auto;
+
 		ul {
 			list-style: none;
 
@@ -92,6 +99,25 @@
 
 			&:hover {
 				color: $luxor-gold;
+			}
+		}
+
+		.is-scroll {
+			position: relative;
+			height: 100%;
+		}
+
+		.wrap-absolute {
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			overflow: hidden;
+
+			ul {
+				position: absolute;
+				top: 0;
 			}
 		}
 	}
