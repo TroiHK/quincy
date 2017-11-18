@@ -33,6 +33,8 @@ foreach ($location_categories as $index => $location_category) {
 	$locations[$index] = new WP_Query( $args );
 	// Add the location category name for easy access
 	$locations[$index]->location_category_name = $location_category->name;
+	// Add the location category icon so locations can reference
+	$locations[$index]->location_category_icon = get_field('icon', 'location_categories_' . $location_category->term_id);
 	// Add the location category id so locations can reference
 	$locations[$index]->location_category_id = $index;
 }

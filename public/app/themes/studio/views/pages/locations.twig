@@ -14,7 +14,10 @@
 								{% for location_category in locations %}
 								<li class="category category-{{ location_category.location_category_name|lower|replace({' ': '_'}) }}">
 									<a data-category="{{ location_category.location_category_id }}" href="#">
-										{{get_svg_icon('icon-1', '0 0 16.4 16.17')}}
+										{% for icon in location_category.location_category_icon %}
+											{{ get_svg_icon( 'icon-' ~ icon.icon_name, icon.icon_view) }}
+											{{ get_svg_icon( 'icon-' ~ icon.icon_name ~ '-hover', icon.icon_view) }}
+										{% endfor %}
 									</a>
 								</li>
 								{% endfor %}

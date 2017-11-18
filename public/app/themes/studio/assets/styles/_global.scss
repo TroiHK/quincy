@@ -126,4 +126,39 @@ a {
             height: 16px;
         }
     }
+
+    &__icon-restaurants {
+        svg {
+            width: 56px;
+            height: 52px;
+        }
+    }
+
+    &__icon-cake {
+        svg {
+            width: 46px;
+            height: 45px;
+        }
+    }
+
+    &__icon-ticket {
+        svg {
+            width: 61px;
+            height: 35px;
+        }
+    }
+
+    &__icon-bicycle {
+        svg {
+            width: 78px;
+            height: 45px;
+        }
+    }
+
+    &__icon-shops {
+        svg {
+            width: 45px;
+            height: 57px;
+        }
+    }
 }
