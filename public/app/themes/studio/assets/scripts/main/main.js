@@ -207,7 +207,7 @@
             });
         }
 
-        // slider scroll
+        // slider image scroll
         if ( $('.is-scroll-image').length ) {
             $('.is-scroll-image').each(function () {
                 // scrollSlider

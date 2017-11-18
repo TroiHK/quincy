@@ -96,6 +96,46 @@ if (typeof google !== 'undefined' && typeof GMaps !== 'undefined') {
             $('.' + gmaps_config.locations_container.parent_class).not(':first').hide();
             $('.' + gmaps_config.location_category.class + ':first').addClass(gmaps_config.location_category.selected_class);
 
+            // scroll bar custom
+            setTimeout(function(){ 
+                if ( jQuery('#content0.is-scroll').length ) {
+                    jQuery('#content0.is-scroll').each(function () {
+                        // scrollSlider
+                        var scrollSlider = jQuery(this).find('[data-scroll]').children('.slider-scroll').get(0);
+                        var ulContainer = jQuery(this).find('[data-content]').children('ul');
+                        var heightUl = ulContainer.outerHeight();
+                        var heightParent = jQuery(this).find('[data-content]').outerHeight();
+
+                        if ( heightUl >= heightParent ) {
+                            noUiSlider.create(scrollSlider, {
+                                start: 0,
+                                orientation: 'vertical',
+                                range: {
+                                    'min': 0,
+                                    'max': (heightUl - heightParent) + 30
+                                }
+                            });
+
+                            scrollSlider.noUiSlider.on('slide', setPosition);
+
+                            // setBgPosition
+                            function setPosition() {
+                                // Get the slider values,
+                                // stick them together.
+                                var position = scrollSlider.noUiSlider.get();
+
+                                // Set position bg.
+                                ulContainer.css('top', - position + 'px');
+                            };
+                            jQuery(this).find('[data-scroll]').show();
+                            jQuery(this).addClass('install')
+                        } else {
+                            jQuery(this).find('[data-scroll]').hide();
+                        }
+                    });
+                }
+            }, 500);
+
             if (gmaps_config.tinyscrollbar.use) {
               tinyscrollbar();
             }
@@ -140,6 +180,49 @@ if (typeof google !== 'undefined' && typeof GMaps !== 'undefined') {
                       tinyscrollbar();
                     }
                 });
+
+                console.log('#' + gmaps_config.locations_container.parent_id + category);
+
+                // scroll bar custom
+                setTimeout(function(){ 
+                    if ( jQuery('#' + gmaps_config.locations_container.parent_id + category + '.is-scroll:not(.install)').length ) {
+                        jQuery('#' + gmaps_config.locations_container.parent_id + category + '.is-scroll:not(.install)').each(function () {
+                            // scrollSlider
+                            var scrollSlider = jQuery(this).find('[data-scroll]').children('.slider-scroll').get(0);
+                            var ulContainer = jQuery(this).find('[data-content]').children('ul');
+                            var heightUl = ulContainer.outerHeight();
+                            var heightParent = jQuery(this).find('[data-content]').outerHeight();
+
+                            if ( heightUl >= heightParent ) {
+                                noUiSlider.create(scrollSlider, {
+                                    start: 0,
+                                    orientation: 'vertical',
+                                    range: {
+                                        'min': 0,
+                                        'max': (heightUl - heightParent) + 30
+                                    }
+                                });
+
+                                scrollSlider.noUiSlider.on('slide', setPosition);
+
+                                // setBgPosition
+                                function setPosition() {
+                                    // Get the slider values,
+                                    // stick them together.
+                                    var position = scrollSlider.noUiSlider.get();
+
+                                    // Set position bg.
+                                    ulContainer.css('top', - position + 'px');
+                                };
+                                jQuery(this).find('[data-scroll]').show();
+                                jQuery(this).addClass('install');
+                            } else {
+                                jQuery(this).find('[data-scroll]').hide();
+                            }
+                        });
+                    }
+                }, 500);
+                
             });
 
             /* Location link to marker */
