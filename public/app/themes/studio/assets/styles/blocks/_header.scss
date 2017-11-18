@@ -28,6 +28,7 @@
 			height: 161px;
 			display: block;
 			font-size: 0;
+			background-repeat: no-repeat;
 
 			@include breakpoint(tablet) {
 				width: 403px;

@@ -172,15 +172,15 @@
 	    });
 
 	    // slider scroll
-		if ( $('.slider-scroll').length ) {
-			$('.slider-scroll').each(function () {
+        if ( $('.is-scroll').length ) {
+            $('.is-scroll').each(function () {
                 // scrollSlider
-                var scrollSlider = this;
-                var ulContainer = $(this).siblings('.block-amenity__item__list').children('ul');
-                var heightUl = $(this).siblings('.block-amenity__item__list').children('ul').outerHeight();
-				var heightParent = $(this).siblings('.block-amenity__item__list').outerHeight();
+                var scrollSlider = $(this).find('[data-scroll]').children('.slider-scroll').get(0);
+                var ulContainer = $(this).find('[data-content]').children('ul');
+                var heightUl = ulContainer.outerHeight();
+                var heightParent = $(this).find('[data-content]').outerHeight();
 
-				if ( heightUl >= heightParent ) {
+                if ( heightUl >= heightParent ) {
                     noUiSlider.create(scrollSlider, {
                         start: 0,
                         orientation: 'vertical',
@@ -197,15 +197,15 @@
                         // Get the slider values,
                         // stick them together.
                         var position = scrollSlider.noUiSlider.get();
-                        console.log(position);
 
                         // Set position bg.
                         ulContainer.css('top', - position + 'px');
                     };
+                } else {
+                    $(this).find('[data-scroll]').hide();
                 }
             });
-		}
-
+        }
 	}
 
 })(jQuery);
