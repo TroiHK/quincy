@@ -162,3 +162,16 @@ a {
         }
     }
 }
+
+// is-scroll-image
+.is-scroll-image {
+    position: relative;
+    *[data-scroll-image] {
+        right: 0;
+    }
+    *[data-content-image] {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+}
