@@ -4,6 +4,8 @@
 
 	&__detail {
 		display: flex;
+		height: 650px;
+		overflow: hidden;
 	}
 
 	&__icon {
@@ -24,7 +26,47 @@
 
 		.category {
 			text-align: center;
-			
+			font-size: 0;
+
+			&.selected {
+				a {
+					i:not([class*="-hover"] ) {
+						@include transform(translateY(100%))
+					}
+
+					i[class*="-hover"] {
+						opacity: 1;
+						@include transform(translateY(100%))
+					}
+				}
+			}
+		}
+
+		a {
+			position: relative;
+			display: inline-block;
+			overflow: hidden;
+
+			i {
+				@include transition(all 0.3s ease);
+			}
+
+			i[class*="-hover"] {
+				position: absolute;
+				left: 0;
+				bottom: 100%;
+			}
+
+			&:hover {
+				i:not([class*="-hover"] ) {
+					@include transform(translateY(100%))
+				}
+
+				i[class*="-hover"] {
+					opacity: 1;
+					@include transform(translateY(100%))
+				}
+			}
 		}
 	}
 
@@ -42,6 +84,14 @@
 				+ li {
 					margin-top: 30px;
 				}
+			}
+		}
+
+		a {
+			color: $black;
+
+			&:hover {
+				color: $luxor-gold;
 			}
 		}
 	}

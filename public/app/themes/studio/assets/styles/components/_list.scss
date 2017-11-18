@@ -11,8 +11,7 @@
 			bottom: 0;
 			width: 20px;
 			height: 1px;
-			top: 50%;
-			@include transform(translateY(-50%));
+			top: 12px;
 			background-color: $luxor-gold;
 		}
 
