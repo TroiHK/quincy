@@ -145,7 +145,6 @@ gulp.task('scripts_folders', function () {
 			.pipe(concat(folder + '.js'))
 			.pipe(gulp.dest(paths.bundles))
 			.pipe(rename(folder + '.min.js'))
-			.pipe(uglify())
 			.pipe(gulp.dest(paths.dist))
 	})
 
