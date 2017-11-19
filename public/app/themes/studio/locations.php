@@ -6,7 +6,7 @@
 
 // Gets all Location categories from taxonomy
 $location_categories = get_terms( 'location_categories', array(
-	'orderby'			=> 'id',
+	'orderby'			=> 'menu_order',
 	'order'				=> 'ASC',
 	'hide_empty'	=> 0,
 	'nopaging'		=> true, //tells wordpress to pull all posts instead of limiting to 10
