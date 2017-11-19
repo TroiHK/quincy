@@ -38,3 +38,48 @@
 	}
 }
 
+.wrap-horizontal {
+	position: absolute;
+	max-width: 550px;
+	height: 35px;
+	bottom: 0;
+	right: 15px;
+	left: 15px;
+	margin: 0 auto;
+	background-color: $main-color;
+
+	@media screen and (min-width: 992px) {
+		height: 54px;
+	}
+
+	.noUi-horizontal {
+		height: 1px;
+		border: none;
+		@include border-radius(0);
+		position: absolute;
+		top: 50%;
+		@include transform(translateY(-50%));
+		left: 25px;
+		right: 25px;
+		margin: 0 auto;
+
+		.noUi-handle {
+			border: none;
+			@include box-shadow(none);
+			width: 25px;
+			height: 25px;
+			top: 50%;
+			@include transform(translateY(-50%));
+			background: $white url(../svg/sources/scrollbar.svg) no-repeat center;
+			@include border-radius(50%);
+			background-size: 15px;
+			outline: none;
+			cursor: pointer;
+
+			&:before,
+			&:after {
+				content: none;
+			}
+		}
+	}
+}

@@ -261,6 +261,7 @@
                 } else {
                 	img.addClass('h-100');
                 	var newWidth = widthImg*450/heightImg;
+                    $(this).find('[data-scroll-image]').removeClass('wrap-vertical').addClass('wrap-horizontal');
 
                 	img.css('margin-left', -((newWidth - widthtParent)/2));
 

@@ -135,3 +135,15 @@
 		}
 	}
 }
+
+@media screen and (max-width: 991px) {
+	#map-area {
+		height: 480px!important;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	#map-area {
+		height: 300px!important;
+	}
+}
