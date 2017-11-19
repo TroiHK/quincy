@@ -1,0 +1,13 @@
+{% extends "layouts/master.twig" %}
+
+{% block header %}
+      {% include 'partials/header-floorplan.twig' %}
+{% endblock %}
+
+{% block content %}
+    <main class="main-content">
+		<div class="container" style="padding: 30px">
+			<iframe src="{{ global.sightmap_iframe_link }}" frameborder="0" width="100%" height="560"></iframe>
+		</div>
+	</main>
+{% endblock %}

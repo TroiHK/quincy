@@ -870,6 +870,11 @@
                 "param": "page_template",
                 "operator": "!=",
                 "value": "floorplans.php"
+            },
+            {
+                "param": "page_template",
+                "operator": "!=",
+                "value": "sightmap.php"
             }
         ]
     ],
@@ -889,5 +894,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1511045347
+    "modified": 1511113317
 }

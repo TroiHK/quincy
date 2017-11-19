@@ -59,6 +59,14 @@
 			}
 		}
 	}
+
+	&--floorplan {
+		.block-header {
+			&__thumb {
+				max-height: 320px;
+			}
+		}
+	}
 }
 
 #slider-vertical {
