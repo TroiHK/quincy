@@ -68,6 +68,10 @@
 				opacity: 0;
 				visibility: hidden;
 			}
+
+			.website {
+				color: $main-color
+			}
 		}
 	}
 
@@ -91,6 +95,18 @@
 					display: block;
 					margin: 0 auto;
 				}
+			}
+
+			&__title {
+				margin-bottom: 30px;
+			}
+
+			&__detail {
+				display: flex;
+				flex-flow: column wrap;
+				justify-content: center;
+				top: 0;
+				text-transform: uppercase;
 			}
 		}
 	}
