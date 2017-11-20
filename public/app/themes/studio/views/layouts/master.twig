@@ -9,7 +9,7 @@
 
     <title>{% if post.get_field('title') %}{{post.get_field('title')}}{% else %}{{ site.title }}{% endif %}</title>
 
-    <link rel="shortcut icon" href="{{site.theme.uri}}/assets/images/favicon.png">
+    <link rel="shortcut icon" href="{{ global.favicon }}">
 
     <meta name="description" content="{% if post.get_field('meta_description') %}{{post.get_field('meta_description')}}{% else %}{{ site.description }}{% endif %}">
     <meta name="keywords" content="{{post.get_field('meta_keywords')}}">
