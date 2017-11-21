@@ -4,7 +4,7 @@
 	width: 35px;
 	top: 0;
 	right: 0;
-	background-color: $main-color;
+	background-color: rgba($main-color, 0.9);
 
 	@media screen and (min-width: 992px) {
 		width: 54px;
@@ -46,7 +46,7 @@
 	right: 15px;
 	left: 15px;
 	margin: 0 auto;
-	background-color: $main-color;
+	background-color: rgba($main-color, 0.9);
 
 	@media screen and (min-width: 992px) {
 		height: 54px;
