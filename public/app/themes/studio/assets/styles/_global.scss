@@ -18,6 +18,9 @@ a {
     &:hover, &:active, &:focus {
         text-decoration: none;
     }
+    &:hover {
+        color: $main-color;
+    }
 }
 
 .ieblock {

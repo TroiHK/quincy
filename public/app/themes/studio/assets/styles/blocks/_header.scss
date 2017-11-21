@@ -208,6 +208,7 @@
 		}
 		&:hover {
 			text-decoration: none;
+			color: $main-color;
 		}
 	}
 }
@@ -483,10 +484,19 @@
 				@include transform(translateY(-50%));
 				background-color: $luxor-gold;
 			}
+			&.current-menu-item {
+				&>a {
+					color: $luxor-gold;
+				}
+			}
 		}
 
 		a {
 			color: $main-text-color;
+			@include transition(all .3s ease-in-out);
+			&:hover {
+				color: $luxor-gold;
+			}
 		}
 	}
 
