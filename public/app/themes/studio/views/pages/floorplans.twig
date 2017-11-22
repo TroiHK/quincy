@@ -5,56 +5,79 @@
 {% endblock %}
 
 {% block content %}
-	<div id="fp-filters">
-		<ul id="fp-filters--bedrooms">
-			<li><a href="#" data-value="false">All</a></li>
-			<li><a href="#" data-value="0">Studio</a></li>
-			<li><a href="#" data-value="1">1 Bedroom</a></li>
-			<li><a href="#" data-value="2">2 Bedroom</a></li>
-			<li><a href="#" data-value="3">3 Bedroom</a></li>
-		</ul>
-
-		{# Select option for bedroom filter #}
-		{#<select id="fp-filters--bedrooms" value="">
-			<option value="false">All Bedrooms</option>
-			<option value="0">Studio</option>
-			<option value="1">1 Bedroom</option>
-			<option value="2">2 Bedroom</option>
-			<option value="3">3 Bedroom</option>
-		</select>#}
-
-		<select id="fp-filters--date">
-			<option value="false">Select a Timeframe</option>
-			<option value="30">WITHIN 30 DAYS</option>
-			<option value="60">WITHIN 60 DAYS</option>
-			<option value="90">WITHIN 90 DAYS</option>
-			<option value="365">WITHIN 90+ DAYS</option>
-		</select>
-
-		<select id="fp-filters--price">
-			<option value="false">All</option>
-			<option value="1000-1500">$1,000-$1,500</option>
-			<option value="1500-2000">$1,500-$2,000</option>
-			<option value="2000-2500">$2,000-$2,500</option>
-			<option value="2500-3000">$2,500-$3,000</option>
-		</select>
-	</div>
-
+	{% set bedrooms = [] %}
 	{% for floorplan in floorplans %}
-	<div id="fp{{ floorplan.id }}">
-		<img src="{{ floorplan.floorplan_image }}" alt="{{ floorplan.name }}" />
-		<p>
-			{{ floorplan.name }}<br>
-			{{ floorplan.bedroomcount }} Bedroom<br>
-			{{ floorplan.bedroomcount }} Bathroom<br>
-			{{ floorplan.areamin }} - {{ floorplan.areamax }} Sq. Ft.
-			<a href="{{ floorplan.floorplan_link }}">View Details</a>
-		</p>
-	</div>
+		{% if floorplan.bedroomcount not in bedrooms %}
+			{% set bedrooms = bedrooms|merge([floorplan.bedroomcount]) %}
+		{% endif %}
 	{% endfor %}
+
+	<div class="residences">
+		<div class="container">
+			<div class="residences__filters">
+				<div class="input-group">
+					<select id="fp-filters--bedrooms" class="filter__bedroom">
+						<option value="false">BEDROOMS</option>
+						{% for bedroom in bedrooms|sort %}
+							{% if bedroom ==0 %}
+								<option value="{{bedroom}}">Studio</option>
+							{% else %}
+								<option value="{{bedroom}}">{{bedroom}} {{ bedroom > 1 ? 'BEDROOMS' : 'BEDROOM' }}</option>
+							{% endif %}
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="input-group">
+					<select id="fp-filters--price">
+						<option value="false">PRICE</option>
+						{% for price in global.price_list %}
+						<option value="{{ price.value }}">{{ price.text }}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="input-group move-in">
+					<input type="text" id="datepicker" placeholder="Move In">
+				</div>
+			</div>
+
+			<div class="residences__container">
+				{% for floorplan in floorplans %}
+
+					{# Units proccessing #}
+					{% set engrain_ap_id = floorplan.floorplan_id %}
+					{% set units = floorplan.property_id and engrain_ap_id ? fn('engrain::get_units', floorplan.property_id, engrain_ap_id) : '' %}
+
+					<div id="fp{{ floorplan.id }}" class="residences__item {{ floorplan.bedroomcount }}-room">
+						<div class="residences__item--image">
+							<img src="{{ floorplan.floorplan_image }}" alt="{{ floorplan.name }}" class="img-responsive" />
+						</div>
+
+						<div class="residences__item--main">
+							<div class="residences__item--info">
+								<p class="room__name">{{ floorplan.name }}</p>
+								<div class="room__info"><span>{{ floorplan.bedroomcount }} Bedroom</span> <span>{{ floorplan.bathroomcount }} Bathroom</span></div>
+								<div class="room__area">{{ floorplan.areamin|number_format }}{% if floorplan.areamax %}, {{ floorplan.areamax|number_format }} {% endif %} Sq Ft</div>
+								<p class="room__price">{{ floorplan.pricemin ? 'Starting at $' ~ floorplan.pricemin | number_format ~ ' / month' : global.pricing_call_label_text }}</p>
+							</div>
+
+							<div class="residences__item--view">
+								<a href="{{ floorplan.floorplan_link }}" style="pointer-events: {{ priceMin ? 'visible' : 'none'}};">View Details</a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="back-to-top">
+				<a href="">Back to top</a>
+			</div>
+		</div>
+	</div>
 {% endblock %}
 
 {% block body_js %}
+	<!--
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
 	<script type="text/javascript">
@@ -99,4 +122,27 @@
 		}
 	</script>
 	<script type="text/javascript" src="{{script_url('floorplans')}}"></script>
+	-->
+
+	<script>
+		var properties = [
+		  {
+		      "id":"0",
+		      "name":"{{ global.name }}",
+		      "address":"{{ global.street }}",
+		      "city":"{{ global.city }}",
+		      "state":"{{ global.state }}",
+		      "zip":"{{ global.zip }}",
+		      "phone":"{{ global.phone }}",
+		      "latitude":"{{ global.map_location.lat }}",
+		      "longitude":"{{ global.map_location.lng }}"
+		  }
+		];
+		var site_url = "{{ theme.link }}";
+		var google_map_styler = {{ global.google_map_styler }};
+  	</script>
+
+  	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ global.api_key }}"></script>
+  	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.24/gmaps.min.js"></script>
+  	<script type="text/javascript" src="{{script_url('maps')}}"></script>
 {% endblock %}

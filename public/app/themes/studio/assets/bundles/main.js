@@ -128,24 +128,26 @@
 				} 	// End if
 			});
 
+			// contact page
 			$("#datepicker").datepicker({
 				months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 				monthsShort: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 			}); 
 
 			$('#apartment-type').select2({
-			  placeholder: 'Apartment Type',
-			  minimumResultsForSearch: -1
+				placeholder: 'Apartment Type',
+				minimumResultsForSearch: -1
 			}); 
 
+
 			$('#price-range').select2({
-			  placeholder: 'Price Range',
-			  minimumResultsForSearch: -1
+				placeholder: 'Price Range',
+				minimumResultsForSearch: -1
 			}); 
 
 			$('#contact-me').select2({
-			  placeholder: 'Contact Me',
-			  minimumResultsForSearch: -1
+				placeholder: 'Contact Me',
+				minimumResultsForSearch: -1
 			}); 
 
 			$(".wpcf7-form-control-wrap").hover(function(){
@@ -160,6 +162,24 @@
 				if(go){
 					window.open(url, '_blank');
 				}	
+			});
+
+			// floorplan page
+			// 
+			$('#fp-filters--bedrooms').select2({
+			  	placeholder: 'BEDROOMS',
+			  	minimumResultsForSearch: -1
+			});
+
+			$('#fp-filters--price').select2({
+			  	placeholder: 'PRICE',
+			  	minimumResultsForSearch: -1
+			});
+
+			// scroll to top
+			$(".back-to-top a").click(function() {
+				$("html, body").animate({ scrollTop: 0 }, "slow");
+				return false;
 			});
 				
 		    //Flex Slider
