@@ -104,3 +104,6 @@ new BootstrapSite();
 
 // This file customizes the wordpress admin ui to match needs
 require( 'lib/wordpress-admin-cleanup.php' );
+
+// Load extra functions
+require( 'lib/extras.php' );

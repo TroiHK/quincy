@@ -21,7 +21,7 @@
                 <p class="phone--number"><a href="tel:{{global.phone|replace({' ': ''})}}">{{global.phone|replace({' ': '.'})}}</a></p>
             {% endif %}
             <h3 class="title">LEASING OFFICE HOURS:</h3>
-            {% set leasing_office_hours = content["leasing_office_hours"] %}
+            {% set leasing_office_hours = content.leasing_office_hours %}
 
             {% for item in leasing_office_hours %}
 	            {% if item.text %}

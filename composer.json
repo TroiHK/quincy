@@ -6,11 +6,11 @@
     "type": "project",
     "require": {
         "php": ">=5.6",
-        "johnpbloch/wordpress": "^4.7.4",
+        "johnpbloch/wordpress": "^4.9",
         "studio/wordpress-foundation": "^1.0.0",
         "wpackagist-plugin/timber-library": "^1.1",
         "wp-plugin/advanced-custom-fields-pro": "^5.4",
-        "wp-plugin/engrain": "^1.0"
+        "wp-plugin/engrain": "^1.2"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^2.5.1"

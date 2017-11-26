@@ -15,7 +15,7 @@
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
+            "placement": "left",
             "endpoint": 0
         },
         {
@@ -97,25 +97,6 @@
             },
             "message": "",
             "default_value": 0
-        },
-        {
-            "key": "field_5a11bdee86bd6",
-            "label": "SIGHTMAP iframe Link",
-            "name": "sightmap_iframe_link",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
         },
         {
             "key": "field_5833e7d7c0415",
@@ -814,7 +795,7 @@
         },
         {
             "key": "field_5a14bc4e25d1d",
-            "label": "Filters",
+            "label": "Floor Plan",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -827,25 +808,6 @@
             },
             "placement": "top",
             "endpoint": 0
-        },
-        {
-            "key": "field_5a14bc8525d1e",
-            "label": "Pricing call label text",
-            "name": "pricing_call_label_text",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "Call for Pricing",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
         },
         {
             "key": "field_5a14bcaf25d1f",
@@ -905,6 +867,158 @@
                     "maxlength": ""
                 }
             ]
+        },
+        {
+            "key": "field_5a11bdee86bd6",
+            "label": "SIGHTMAP iframe Link",
+            "name": "sightmap_iframe_link",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5a14bc8525d1e",
+            "label": "Pricing call label text",
+            "name": "pricing_call_label_text",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Call for Pricing",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5a15b108f9c0d",
+            "label": "Message no result",
+            "name": "message_no_result",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_5a15cdfdd88ea",
+            "label": "BACK TO RESIDENCES",
+            "name": "back_to_residences",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50%",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "BACK TO RESIDENCES",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5a15ce55d88eb",
+            "label": "BACK TO RESIDENCES LINK",
+            "name": "back_to_residences_link",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "\/the-quincy-residences\/",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5a15ce9ed88ec",
+            "label": "Print Label",
+            "name": "print_label",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "PRINT PLAN DETAILS",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5a15d030c2acb",
+            "label": "Apply Label Text",
+            "name": "apply_label_text",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "APPLY NOW",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5a15d051c2acc",
+            "label": "View location label text",
+            "name": "view_location_label_text",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "VIEW LOCATION",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -924,5 +1038,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1511308498
+    "modified": 1511467305
 }

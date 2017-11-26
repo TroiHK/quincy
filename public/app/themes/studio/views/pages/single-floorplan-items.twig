@@ -5,12 +5,79 @@
 {% endblock %}
 
 {% block content %}
-	<p>
-		{{ post.name }}<br>
-		{{ post.get_field('bedroom_count') }} Bedroom<br>
-		{{ post.get_field('bathroom_count') }} Bathroom<br>
-		{{ post.get_field('area_min') }} - {{ post.get_field('area_max') }} Sq. Ft.
-	</p>
+<section class="apartment-sinle">	
+	<div class="container">
+		<div class="content-apartment-detail">
+			<div class="apartment-detail">
+				<div class="nav-apartment-detail">
+					<ul>
+						<li><a class="back-apartments" href="{{ global.back_to_residences_link }}">{{ global.back_to_residences }}</a></li>
+						<li><a class="print-apartment" target="_blank" href="{{ post.get_field('print_pdf') }}">{{ global.print_label }}</a></li>
+					</ul>
+				</div>
 
-	<img src="{{ post.floorplan_image }}" alt="{{ post.name }}" />
+				<h1>{{ post.title }}</h1>
+				<p class="info-apartment">
+					{% if post.get_field('bedroom_count') == 0 %}
+						{% set room = 'Studio' %}
+					{% elseif not ( post.get_field('bedroom_count') matches '/^[-+]?[0-9]*\\.?[0-9]+$/' ) %}
+						{% set room = 'Row Home' %}
+					{% elseif ( post.get_field('bedroom_count') == 1 ) %}
+						{% set room = post.get_field('bedroom_count') ~ ' Bedroom' %}
+					{% else %}
+						{% set room = post.get_field('bedroom_count') ~ ' Bedrooms' %}
+					{% endif %}
+
+					{% if ( post.get_field('bathroom_count') <= 1 ) %}
+						{% set bath = post.get_field('bathroom_count') ~ ' Bath' %}
+					{% else %}
+						{% set bath = post.get_field('bathroom_count') ~ ' Baths' %}
+					{% endif %}
+
+				
+					{{ room }} | {{ bath }} <br>{{ post.get_field('area_min')|number_format }}{% if post.get_field('area_max') %}, {{ post.get_field('area_max')|number_format }} {% endif %} Sq Ft <br/>{{ units | length ? ( min_price ? 'Starting at $' ~ min_price | number_format ~ ' / month' : global.pricing_call_label_text ) : global.pricing_call_label_text }}</p>
+			</div>
+
+			<div class="thumb-detail">
+				<a href="{{ fn('get_the_post_thumbnail_url', value.ID, 'full') }}" class="fancybox" data-fancybox="thumb-detail">
+					<img src="{{ fn('get_the_post_thumbnail_url', value.ID, 'full') }}" class="img-responsive" alt="thumb-apartment">
+				</a>
+			</div>
+		</div>
+
+		<div class="list-available">
+
+			{% if units %}
+			<table class="table text-center">
+				<tr>
+					<th>UNIT</th>
+					<th>PRICE</th>
+					<th>DATE AVAILABLE</th>
+					<th></th>
+					<th></th>
+				</tr>
+				{% set embed_link = global.sightmap_iframe_link %}
+				{% for unit in units %}
+				<tr>
+					<td class="unit-id" data-id="{{ unit.skip_step_id }}">{{ unit.unit_number }}</td>
+					<td class="price">{{ unit.price ? '$' ~ unit.price | number_format ~ '/month' : global.pricing_call_label_text }}</td>
+					<td class="move-date">
+						{% set filter_date = fn('unitDateFilter', unit.available_on) %}
+						<span title="{{ filter_date }} ">
+							{{ fn('isDate1GreaterThanDate2', now | date('m-d-Y'), unit.available_on, true) ? 'Available now' : filter_date }}
+						</span>
+					</td>
+					<td><a class="apply-row" href="{{ site.url }}/apply/?stepname=RentalOptions&myOlePropertyId=556406&UnitID={{ unit.skip_step_id }}&MoveInDate={{ fn('isDate1GreaterThanDate2', now | date('m-d-Y'), unit.available_on, true) ? now|date('m-d-Y') : filter_date }}">{{ global.apply_label_text }}</a></td>
+					<td><a class="viewlocation-row fancybox" data-fancybox data-type="iframe" data-src="https://sightmap.com/embed/dgow3k51p2m?unit_id={{ unit.provider_id }}&display_details=0" class="viewlocation-row" href="javascript:;">{{ global.view_location_label_text }}</a></td>
+				</tr>
+				{% endfor %}
+			</table>
+			{% endif %}
+		</div>
+
+		<div class="container-sightmap">
+			<iframe src="{{ global.sightmap_iframe_link }}" frameborder="0" width="100%" height="560"></iframe>
+		</div>
+	</div>
+</section>
 {% endblock %}

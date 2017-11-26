@@ -7,8 +7,6 @@
   <head>
     <meta charset="{{site.charset}}">
 
-    <title>{% if post.get_field('title') %}{{post.get_field('title')}}{% else %}{{ site.title }}{% endif %}</title>
-
     <link rel="shortcut icon" href="{{ global.favicon }}">
 
     <meta name="description" content="{% if post.get_field('meta_description') %}{{post.get_field('meta_description')}}{% else %}{{ site.description }}{% endif %}">

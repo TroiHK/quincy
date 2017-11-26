@@ -68,8 +68,9 @@ gulp.task('styles-libs', function () {
   		paths.vendor + '/fancyBox/dist/jquery.fancybox.min.css',
   		paths.vendor + '/nouislider/distribute/nouislider.min.css',
   		paths.vendor + '/slick-carousel/slick/slick.css',
-  		paths.vendor + '/select2-master/dist/css/select2.css',
+  		paths.vendor + '/select2/dist/css/select2.css',
   		paths.vendor + '/datepicker-master/dist/datepicker.css',
+  		paths.vendor + '/stacktable.js/stacktable.css',
   	])
   	.pipe(concat('libs.css'))
 	.pipe(gulp.dest(paths.bundles))
@@ -124,7 +125,10 @@ gulp.task('scripts-libs', function () {
 			paths.vendor + '/scrollmagic/scrollmagic/minified/ScrollMagic.min.js',
 			paths.vendor + '/scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min.js',
 			paths.vendor + '/nouislider/distribute/nouislider.js',
-			paths.vendor + '/select2-master/dist/js/select2.js',
+			paths.vendor + '/select2/dist/js/select2.js',
+			paths.vendor + '/masonry/dist/masonry.pkgd.min.js',
+			paths.vendor + '/isotope/dist/isotope.pkgd.min.js',
+			paths.vendor + '/stacktable.js/stacktable.js',
 			paths.vendor + '/lodash/dist/lodash.js'
 		]) 
 		.pipe(concat('libs.js'))

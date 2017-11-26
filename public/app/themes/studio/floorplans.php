@@ -10,6 +10,21 @@ $args = array(
 	'post_type'			=>	'floorplan-items',
 	'post_status'		=>	'publish',
 	'nopaging'		=> true, //tells wordpress to pull all posts instead of limiting to 10
+	'meta_query' => array(
+        'relation' => 'AND',
+        'bed_clause' => array(
+            'key' => 'bedroom_count',
+            'compare' => 'EXISTS',
+        ),
+        'area_clause' => array(
+            'key' => 'area_min',
+            'compare' => 'EXISTS',
+        ), 
+    ),
+    'orderby' => array(
+        'bed_clause' => 'ASC',
+        'area_clause' => 'ASC',
+    ),
 );
 
 // Push location category with associated post to the locations array
@@ -21,6 +36,7 @@ foreach ($floorplans_data->posts as $floorplan) {
 
 	$floorplans[] = [
 		'id'							=>	$floorplan->ID,
+		'floorplan_id'			=>	get_field( 'floorplan_id', $floorplan->ID ),
 		'property_id'			=>	get_field( 'property_id', $floorplan->ID ),
 		'name'						=>	$floorplan->post_title,
 		'bedroomcount'		=>	get_field( 'bedroom_count', $floorplan->ID ),

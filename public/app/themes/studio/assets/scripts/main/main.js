@@ -34,14 +34,16 @@
 
 					// Using jQuery's animate() method to add smooth page scroll
 					// The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+					var scrollMB = $(window).width() < 850 ? 50 : 0;
 					$('html, body').animate({
-						scrollTop: $(hash).offset().top
+						scrollTop: $(hash).offset().top - scrollMB
 					}, 800, function(){
 
 						// Add hash (#) to URL when done scrolling (default click behavior)
 						window.location.hash = hash;
 					});
 				} 	// End if
+				return false;
 			});
 
 			// verticalSlider
@@ -100,10 +102,12 @@
 
 					// Using jQuery's animate() method to add smooth page scroll
 					// The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+					var scrollMB = $(window).width() < 850 ? 50 : 0;
 					$('html, body').animate({
-						scrollTop: $(toDiv).offset().top
+						scrollTop: $(toDiv).offset().top - scrollMB
 					}, 800);
 				} 	// End if
+				return false;
 			});
 
 			// scroll-content-block
@@ -118,14 +122,17 @@
 
 					// Using jQuery's animate() method to add smooth page scroll
 					// The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+					var scrollMB = $(window).width() < 850 ? 50 : 0;
 					$('html, body').animate({
-						scrollTop: $(hash).offset().top
+						scrollTop: $(hash).offset().top - scrollMB
 					}, 800, function(){
 
 						// Add hash (#) to URL when done scrolling (default click behavior)
-						window.location.hash = hash;
+						// window.location.hash = hash;
 					});
 				} 	// End if
+
+				return false;
 			});
 
 			// contact page
@@ -167,12 +174,10 @@
 			// floorplan page
 			// 
 			$('#fp-filters--bedrooms').select2({
-			  	placeholder: 'BEDROOMS',
 			  	minimumResultsForSearch: -1
 			});
 
 			$('#fp-filters--price').select2({
-			  	placeholder: 'PRICE',
 			  	minimumResultsForSearch: -1
 			});
 
@@ -319,6 +324,128 @@
 	            });
 	        }
 		}
+
+		// init Isotope
+		var $grid = $('.residences__container').isotope({
+			itemSelector: '.residences__item',
+			layoutMode: 'fitRows',
+			getSortData: {
+				name: '.name',
+				symbol: '.symbol',
+				number: '.number parseInt',
+				category: '[data-category]',
+				weight: function( itemElem ) {
+					var weight = $( itemElem ).find('.weight').text();
+					return parseFloat( weight.replace( /[\(\)]/g, '') );
+				}
+			}
+		});
+
+		function goFilter($this) {
+
+			var filter = '';
+			$('.residences__filters select,.residences__filters input').each(function() {
+
+				var value = $(this).val();
+				if ($(this).attr('data-reset')) {
+					value = '';
+				}
+				var bed = $(this).attr('filter-bed');
+
+				if ( $(this).hasClass('datepicker') ) {
+
+					if (value) {
+						var filtered_date = value.replace(/\//g, '-');
+						filter += ('.date-' + filtered_date);
+
+						dateFilter(filtered_date);
+					}
+
+				} else {
+					if (value) {
+
+						filter += ('.' + value);
+					}	
+					if (bed) {
+
+						filter += ('.' + bed);
+					}				
+				}
+
+			});
+
+			if (filter) {
+				window.location = "#" + filter;
+			} else {
+				history.pushState("", document.title, window.location.pathname);
+			}
+
+			filter = filter ? filter : '*';
+
+			$grid.isotope({ filter: filter });
+			showNoResultsMessage($grid);
+
+		}
+
+		function dateFilter(filtered_date) {
+
+			var parts_filtered = filtered_date.split('-');
+			var filtered_date_obj = new Date( parts_filtered[2], parseInt(parts_filtered[0]) - 1, parts_filtered[1] );
+
+			$('.residences__container .residences__item').each(function() {
+
+				var parts = $(this).attr('data-date').split('-');
+				var item_date = new Date( parts[2], parseInt(parts[0]) - 1, parts[1] );
+
+				if (item_date.getTime() <= filtered_date_obj.getTime()) {
+
+					$(this).addClass('date-' + filtered_date);
+
+				}
+			});
+
+			$('.residences__container .residences__item.now').addClass('date-' + filtered_date);
+		}
+
+		
+		function showNoResultsMessage($container) {
+			var $noFilters = $('.no-filters-results');
+
+			$container.each(function() {
+				var filteredData = $(this).data('isotope');
+				$(this).next('.filters-orig-message').remove();
+				
+				if (! filteredData.filteredItems.length ) {
+
+					var $cloned = $noFilters.clone();
+					$cloned.removeClass('no-filters-results');
+					$(this).after($cloned);
+					$cloned.fadeIn();
+				}
+			});
+		}
+
+		$('.residences__filters select').on('change', function() {
+			goFilter($(this));
+		});
+		
+		$('.datepicker').datepicker({
+			startDate: new Date(),
+			autoclose: true,
+			todayHighlight: true,
+		}).attr('readonly', 'readonly').on("changeDate", function (e) {
+			if ( $('.apartment-date').length ) {
+				$(this).attr('data-reset','');
+				goFilter($(this));
+			}
+		});
+
+		$( ".datepicker" ).click(function(){
+			$(this).attr('data-reset','reset-date').val('');
+			goFilter($(this));
+		});
+
+		$('.list-available table').stacktable();
 
 	});
 		

@@ -192,6 +192,7 @@ input{
 	margin-bottom: 20px;
 	.select2-selection--single{
 		border: none;
+		height: 100%;
 		.select2-selection__rendered{
 			line-height: 48px;
 			text-transform: uppercase;
@@ -215,7 +216,6 @@ input{
 	} 
 	&.select2-container--open{
 		.select2-dropdown{
-			top:29px;
 			border: 1px solid $main-color;
 			@media screen and (max-width: 767px){
 				top:45px;
@@ -233,6 +233,7 @@ input{
 			b{
 				border-width: 8px 5px 0 5px;
 				border-color:$main-color transparent transparent transparent;
+				@include transform(rotate(180deg));
 			}
 		}
 	}

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width"/>
+	<title>Quincy Email</title>
+
+	<style type="text/css">
+		/*////// RESET STYLES //////*/
+		body, #bodyTable, #bodyCell{height:100% !important; margin:0; padding:0; width:100% !important; font-family: Arial, Helvetica, sans-serif;}
+		table{border-collapse:collapse;}
+		img, a img{border:0; outline:none; text-decoration:none;}
+		h1, h2, h3, h4, h5, h6{margin:0; padding:0;}
+		p{margin: 0.5em 0 2em;line-height: 1.4}
+
+		/*////// CLIENT-SPECIFIC STYLES //////*/
+		.ReadMsgBody{width:100%;} .ExternalClass{width:100%;} /* Force Hotmail/Outlook.com to display emails at full width. */
+		.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div{line-height:100%;} /* Force Hotmail/Outlook.com to display line heights normally. */
+		table, td{mso-table-lspace:0pt; mso-table-rspace:0pt;} /* Remove spacing between tables in Outlook 2007 and up. */
+		#outlook a{padding:0;} /* Force Outlook 2007 and up to provide a "view in browser" message. */
+		img{-ms-interpolation-mode: bicubic;} /* Force IE to smoothly render resized images. */
+		body, table, td, p, a, li, blockquote{-ms-text-size-adjust:100%; -webkit-text-size-adjust:100%;} /* Prevent Windows- and Webkit-based mobile platforms from changing declared text sizes. */
+
+		/*////// FRAMEWORK STYLES //////*/
+		.flexibleContainerCell{}
+		.flexibleImage{height:auto;}
+		.imageContent, .imageContentLast{padding-bottom:20px;}
+		.nestedContainerCell{}
+
+		/*////// GENERAL STYLES //////*/
+		body, #bodyTable{background-color:#ffffff;}
+		/*#bodyCell{padding-top:40px; padding-bottom:40px;}*/
+		#emailBody{background-color:#FFFFFF; border-collapse:separate; border-radius:4px;}
+		h1, h2, h3, h4, h5, h6 {color:#202020; font-size:18px; line-height:125%;}
+		.textContent, .textContentLast{color:#35383A; font-size:11px; line-height:125%; text-align:Left; padding-bottom:20px;}
+		.textContent a, .textContentLast a{color:#2C9AB7; text-decoration:underline;}
+
+		/*Email Style*/
+		body { font-size: 11px!important;}
+		table td {border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; padding: 0; vertical-align: top}
+		#mainContent {}
+		#header .flexibleContainer td { padding: 50px 0 167px;}
+		#mainContent .flexibleContainer { padding: 30px 50px!important;}
+		h1 { font-size: 30px; font-weight: 400; color: #D4A358;}
+		#mainContent td.mainPadding { padding: 20px 50px 0;}
+		.img-item { display: block; margin-bottom: 20px; width: 100%}
+		.col-5 { width: 50%;}
+		.item-content { padding: 3px 30px; vertical-align: text-top; box-sizing: border-box;}
+		.item-content h2 { color: #D4A358; text-transform: uppercase; margin-bottom: 7px; font-weight: 400; font-size: 13px;}
+		.item-content li { font-size: 12px; margin-bottom: 3px; padding-left: 35px; background: url("https://i.imgur.com/6vm3dbK.png") left center/ 25px 2px no-repeat}
+		ul {list-style: none; padding: 0; margin: 0;}
+		.address {font-size: 25px;color: #A17830; text-transform: uppercase}
+		.address p { margin-bottom: 0;margin-top: 5px;}
+		.address a {color: inherit}
+		.phone { font-weight: 700; text-decoration: none}
+		.social { margin-top: 20px;}
+		.social li { display: inline-block; vertical-align: middle;}
+		.bottom-list td { padding-left: 5px;}
+
+		#footer .bottom td { vertical-align: middle; }
+		#footer .bottom p { margin-bottom: 0;}
+		#footer .bottom a { color: #35383A; text-decoration: none}
+		#footer .bottom .flexibleContainer { margin-top: 40px;}
+		#footer .menu td  {font-size: 11px; font-weight: 600;}
+		#footer .menu td + td { border-left: 1px solid #000; line-height: 50px;}
+
+		/*////// MOBILE STYLES //////*/
+		@media only screen and (max-width: 600px){
+			/*////// CLIENT-SPECIFIC STYLES //////*/
+			body{width:100% !important; min-width:100% !important;} /* Force iOS Mail to render the email at full width. */
+
+			/*////// FRAMEWORK STYLES //////*/
+			/*
+				CSS selectors are written in attribute
+				selector format to prevent Yahoo Mail
+				from rendering media query styles on
+				desktop.
+			*/
+			table[id="emailBody"], table[class="flexibleContainer"]{width:100% !important;}
+
+			/*
+				The following style rule makes any
+				image classed with 'flexibleImage'
+				fluid when the query activates.
+				Make sure you add an inline max-width
+				to those images to prevent them
+				from blowing out.
+			*/
+			img[class="flexibleImage"]{height:auto !important; width:100% !important;}
+
+			/*
+				Make buttons in the email span the
+				full width of their container, allowing
+				for left- or right-handed ease of use.
+			*/
+			table[class="emailButton"]{width:100% !important;}
+			td[class="buttonContent"]{padding:0 !important;}
+			td[class="buttonContent"] a{padding:15px !important;}
+
+			td[class="textContentLast"], td[class="imageContentLast"]{padding-top:20px !important;}
+
+			/*////// GENERAL STYLES //////*/
+			td[id="bodyCell"]{padding-top:10px !important; padding-right:10px !important; padding-left:10px !important;}
+
+		    /*Email Style*/
+			.logo img { max-width: 100%; width: 200px;}
+			#mainContent td.mainPadding { padding: 20px 20px 0!important;}
+			.col-5 { width: 100%!important; display: block!important;}
+			.item-content {padding-bottom: 20px!important;}
+			.address {font-size: 15px;}
+			#footer .bottom td.item { width: 100%!important; display: block!important; text-align: center!important;}
+			#footer td.item table { margin: 0 auto!important;}
+		}
+
+	</style>
+</head>
+<body>
+	<center>
+		<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
+			<tr>
+				<td align="center" valign="top" id="bodyCell">
+					<table border="0" cellpadding="0" cellspacing="0" width="600" id="emailBody">
+						<tr>
+							<td align="center" valign="top">
+								<table border="0" cellpadding="0" cellspacing="0" width="100%" id="header">
+									<tr>
+										<td align="center" valign="top">
+											<table border="0" cellpadding="0" cellspacing="0" width="100%" class="flexibleContainer" style="background: url('https://i.imgur.com/PqQVdiO.png') center center/cover no-repeat">
+												<tr>
+													<td style="text-align: center" class="logo">
+														<a href="#" title="" mc:edit="logo"><img src="https://i.imgur.com/WspJaB6.png" alt="Quincy"></a>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td align="center" valign="top">
+								<table border="0" cellpadding="0" cellspacing="0" width="100%" id="mainContent">
+									<tr>
+										<td align="center" valign="top" class="mainPadding">
+											<table border="0" cellpadding="0" cellspacing="0" width="100%" class="flexibleContainer" style="text-align: center">
+												<tr>
+													<td>
+														<h1 mc:edit="header">A LIFE ABOVE</h1>
+													</td>
+												</tr>
+												<tr>
+													<td mc:edit="body">
+														<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh eui smod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper olore magna aliquam era.</p>
+														<p>Kem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh smod tincidunt ut laoreet dolore magna aliquam erat. </p>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td align="center" valign="top" class="">
+											<table border="0" cellpadding="0" cellspacing="0" width="100%" class="flexibleContainer">
+												<tr>
+													<td class="col-5">
+														<img mc:edit="img1" mc:repeatable src="https://i.imgur.com/um870wq.png" alt="Quincy" class="img-item">
+													</td>
+													<td mc:edit="body1" class="col-5 item-content">
+														<h2>INTERIOR FINISHES</h2>
+														<ul>
+															<li>Granite countertops</li>
+															<li>Designer backsplash</li>
+															<li>Wood-style flooring</li>
+															<li>Solid wood cabinetry</li>
+															<li>Brushed nickel hardware</li>
+															<li>Decorative light fixtures</li>
+															<li>Upper and under cabinet lighting</li>
+															<li>Stainless steel appliances</li>
+															<li>Washer and dryer</li>
+															<li>Keyless entry</li>
+														</ul>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td align="center" valign="top" class="">
+											<table border="0" cellpadding="0" cellspacing="0" width="100%" class="flexibleContainer">
+												<tr>
+													<td class="col-5">
+														<img mc:edit="img2" mc:repeatable src="https://i.imgur.com/z1HcD42.png" alt="Quincy" class="img-item">
+														<img mc:edit="img3" mc:repeatable src="https://i.imgur.com/5TQops3.png" alt="Quincy" class="img-item">
+													</td>
+													<td mc:edit="body2" class="col-5 item-content">
+														<h2>COMMUNITY AMENITIES</h2>
+														<ul>
+															<li>24-hour concierge</li>
+															<li>Private parking</li>
+															<li>Amenity deck</li>
+															<li>Glass-sided sky pool that hangs over the building’s edge</li>
+															<li>Spa</li>
+															<li>BBQ area</li>
+															<li>Outdoor theater</li>
+															<li>Social spaces</li>
+															<li>Fire pits</li>
+															<li>Outdoor exercise area</li>
+															<li>Resident lounge with TV</li>
+															<li>Entertainment kitchen</li>
+															<li>Pool tables</li>
+															<li>Fitness center</li>
+															<li>Yoga studio</li>
+															<li>Business center</li>
+															<li>Pet spa</li>
+															<li>Dry cleaning service</li>
+															<li>On-site parcel and grocery storage</li>
+															<li>Bike and ski storage</li>
+															<li>Coffee lounge</li>
+														</ul>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td align="center" valign="top">
+								<table border="0" cellpadding="0" cellspacing="0" width="100%" id="footer">
+									<tr>
+										<td align="center" class="top">
+											<table border="0" cellpadding="0" cellspacing="0" width="100%" class="flexibleContainer" style="text-align: center">
+												<tr>
+													<td mc:edit="address" class="address">
+														<p>1776 Curtis Street, Denver, CO 80202</p>
+														<p><a href="tel:123.456.7890" title="" class="phone">123.456.7890</a></p>
+														<p><a href="#" class="site-url" title="">quincydowntown.com</a></p>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<ul class="social">
+															<li mc:repeatable><a href="#" mc:edit="social1"><img src="https://i.imgur.com/PcWCHVO.png" alt=""></a></li>
+															<li mc:repeatable><a href="#" mc:edit="social2"><img src="https://i.imgur.com/9GlxR8p.png" alt=""></a></li>
+														</ul>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td align="center" class="bottom">
+											<table border="0" cellpadding="0" cellspacing="0" width="100%" class="flexibleContainer">
+												<tr>
+													<td class="item">
+														<table class="menu">
+															<tr  mc:edit="menu">
+																<td>
+																	<a href="#" title="">Shea</a>
+																</td>
+																<td>
+																	<a href="#" title="">Apartment Living</a>
+																</td>
+															</tr>
+														</table>
+													</td>
+													<td class="item" style="font-size: 8px;">
+														<p mc:edit="copyright">© 2017 SHEA APARTMENT LIVING. All rights reserved. Privacy Policy. Design by STUDIO.</p>
+													</td>
+													<td class="item">
+														<table class="bottom-list">
+															<tr  mc:edit="bottom-list">
+																<td>
+																	<a href="#"><img src="https://i.imgur.com/yV9YmlH.png" alt="Quincy" class=""</a>
+																</td>
+																<td>
+																	<a href="#"><img src="https://i.imgur.com/ePNjem0.png" alt="Quincy" class=""</a>
+																</td>
+																<td>
+																	<a href="#"><img src="https://i.imgur.com/GCSRJyN.png" alt="Quincy" class=""</a>
+																</td>
+																<td>
+																	<a href="#"><img src="https://i.imgur.com/m7kgyV6.png" alt="Quincy" class=""</a>
+																</td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</center>
+</body>
+</html>

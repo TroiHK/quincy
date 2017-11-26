@@ -15,9 +15,11 @@
     "nouislider": "*",
     "lodash": "*",
     "slick-carousel": "^1.8.1",
-    "@fengyuanchen/datepicker" : "^0.6.3"
+    "bootstrap-datepicker": "bootstrap-3-datepicker#^1.7.1",
+    "isotope": "^3.0.4"
   },
   "devDependencies": {
-    "scrollmagic": "^2.0.5"
+    "scrollmagic": "^2.0.5",
+    "select2": "^4.0.5"
   }
 }
