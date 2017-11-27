@@ -1,0 +1,22 @@
+input, textarea {
+	&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	  	color:$black!important;
+		font-size: 13px;
+		text-transform: uppercase;
+	}
+	&::-moz-placeholder { /* Firefox 19+ */
+	  	color:$black!important;
+		font-size: 13px;
+		text-transform: uppercase;
+	}
+	&:-ms-input-placeholder { /* IE 10+ */
+	  	color:$black!important;
+		font-size: 13px;
+		text-transform: uppercase;
+	}
+	&:-moz-placeholder { /* Firefox 18- */
+	 	color:$black!important;
+		font-size: 13px;
+		text-transform: uppercase;
+	}
+}

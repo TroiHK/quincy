@@ -1,0 +1,7 @@
+.page-template-sightmap {
+	.main-content iframe {
+		@media (max-width: 991px) {
+			border: 1px solid $black;
+		}
+	}
+}

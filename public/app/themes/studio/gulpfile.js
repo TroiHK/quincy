@@ -55,9 +55,6 @@ gulp.task('styles', function () {
 	.pipe(sourcemaps.write())
 	.pipe(concat('custom.css'))
 	.pipe(gulp.dest(paths.bundles))
-  	.pipe(rename('custom.min.css'))
-  	.pipe(postcss([cssnano()]))
-  	.pipe(gulp.dest(paths.dist))
 	.pipe(browserSync.stream())
 })
 
@@ -74,9 +71,6 @@ gulp.task('styles-libs', function () {
   	])
   	.pipe(concat('libs.css'))
 	.pipe(gulp.dest(paths.bundles))
-  	.pipe(rename('libs.min.css'))
-  	.pipe(postcss([cssnano()]))
-  	.pipe(gulp.dest(paths.dist))
 })
 
 gulp.task('styles-min', function () {
@@ -133,9 +127,6 @@ gulp.task('scripts-libs', function () {
 		]) 
 		.pipe(concat('libs.js'))
 		.pipe(gulp.dest(paths.bundles))
-        .pipe(rename('libs.min.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest(paths.dist))
 })
 
 // Concatenate & Minify JS in folders into one file per folder
@@ -221,4 +212,6 @@ gulp.task('watch', ['styles-libs', 'styles', 'jslint', 'scripts-libs', 'scripts_
 })
 
 // Default Task
-gulp.task('default', ['styles-libs', 'styles', 'styles-min', 'jslint', 'scripts-libs', 'scripts_folders', 'scripts-deploy'])
+gulp.task('default', ['styles-libs', 'styles', 'jslint', 'scripts-libs', 'scripts_folders'])
+
+gulp.task('deploy', ['styles-min', 'scripts-deploy'])

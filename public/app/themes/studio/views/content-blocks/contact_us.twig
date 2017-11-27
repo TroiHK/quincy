@@ -1,14 +1,23 @@
 <div id="{{ content.acf_fc_layout ~ '-' ~ loop.index }}" class="contact__page">
 	<div class="contact__page--top">
-		<h2>{{content["title"]}}</h2>
+		<h2>{{ content.title }}</h2>
 		<div class="contact__description">
-			{{content['description']}}
+			{{ content.description }}
 		</div>
 	</div>
+
 	<div class="contact__page--container">
 		<div class="contact__page--left">
 			{{ content.shortcode_form|shortcodes }}
+
+			{% for thank in content.thank_you_section %}
+			<div class="content-thanks">
+				<h3>{{ thank.title }}</h3>
+				<p>{{ thank.description }}</p>
+			</div>
+			{% endfor %}
 		</div>
+		
 		<div class="contact__page--right">
 			{% if global.name %}
 			<h3 class="title">{{global.name}}</h3>

@@ -1,27 +1,27 @@
 .list-default {
 	list-style: none;
-
 	li {
-		position: relative;
-
-		&:hover {
-			opacity: 0.35;
-		}
-
-		&:before {
-			content: "";
-			position: absolute;
-			left: -30px;
-			bottom: 0;
-			width: 20px;
-			height: 1px;
-			top: 12px;
-			background-color: $luxor-gold;
-		}
 
 		a {
 			color: $black;
 			@include transition(all 0.3s ease);
+
+			position: relative;
+
+			&:hover {
+				opacity: 0.35;
+			}
+
+			&:before {
+				content: "";
+				position: absolute;
+				left: -30px;
+				bottom: 0;
+				width: 20px;
+				height: 1px;
+				top: 10px;
+				background-color: $luxor-gold;
+			}
 		}
 	}
 }

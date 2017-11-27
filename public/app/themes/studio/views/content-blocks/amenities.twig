@@ -28,7 +28,7 @@
 					<div class="block-amenity__item__list" data-content>
 						<ul class="list-default">
 							{% for item in content.amenities_listings %}
-							<li><a href="#" title="">{{ item.text }}</a></li>
+							<li><a href="#" title="{{ item.text }}" style="pointer-events: none;">{{ item.text }}</a></li>
 							{% endfor %}
 						</ul>
 					</div>

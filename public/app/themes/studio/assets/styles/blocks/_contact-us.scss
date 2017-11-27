@@ -1,8 +1,25 @@
+.content-thanks {
+	display: none;
+	margin-bottom: 30px;
+	@include breakpoint(tablet) {
+		margin-top: 60px;
+	}
+
+	h3 {
+		font-size: 36px;
+		color:$main-color;
+		margin-top: 25px;
+		text-transform: uppercase;
+		font-weight: 300;
+	}
+
+	p {
+		font-size: 14px;
+		font-weight: 300;
+	}
+}
 .contact__page{
 	margin-bottom: 60px;
-	@media screen and (max-width: 1045px){
-		padding-left: 30px;
-	}
 	@media screen and (max-width: 991px){
 		padding-left: 0px;
 	}
@@ -12,6 +29,7 @@
 			font-size: 36px;
 			color:$main-color;
 			margin-top: 25px;
+			font-weight: 300;
 		}
 		.contact__description{
 			font-size: 14px;
@@ -46,12 +64,13 @@
 					display: block;
 					&>*{
 						border: 1px solid $main-color;
-						height: 48px; 
+						line-height: 28px; 
 						border-radius: 0;
 						color:$black;
 						font-size: 13px;
-						padding:20px 12px;
+						padding:10px 20px;
 						margin-bottom: 20px;
+						height: 48px;
 						@media screen and (min-width: 991px){
 							margin-bottom: 0;
 						}
@@ -63,11 +82,12 @@
 					span.wpcf7-not-valid-tip{
 						position: absolute;
 					    top: 0px;
-					    line-height: 10px;
+					    line-height: 28px;
+					    padding: 10px 20px;
 					    background: $white;
 					    display: block;
 					    width: 100%;
-					    height: auto;
+					    height: 48px;
 					    color:red;
 					}
 					select{
@@ -90,18 +110,22 @@
 					}
 				}
 				textarea{
-					padding:14px 12px;
+					padding:10px 20px;
+					text-transform: uppercase;
 				}
 				&.line-before{
 					input[type="submit"]{
 						text-transform: uppercase;
-						font-size: 24px;
+						font-size: 15px;
 						font-weight: $font-weight--medium;	
-						color:$main-color;
+						color:$luxor-gold;
 						border:none;
 						background: none;
 						box-shadow: none;
 						outline: none;
+						display: inline-block;
+						margin-bottom: 0;
+						width: auto;
 					}
 					@media screen and (max-width: 767px){
 						margin: 30px auto 0;
@@ -153,32 +177,38 @@
 }
 input{
 	border: 1px solid $main-color;
-	height: 48px; 
 	border-radius: 0;
+	line-height: 28px;
 	color:$black;
 	font-size: 13px;
-	padding:20px 12px;
+	padding:10px 12px;
 	margin-bottom: 20px;
 	width: 100%;
+	-webkit-appearance: none;
+	
 	&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 	  	color:$black;
 		font-size: 13px;
 		text-transform: uppercase;
+		opacity: 1;
 	}
 	&::-moz-placeholder { /* Firefox 19+ */
 	  	color:$black;
 		font-size: 13px;
 		text-transform: uppercase;
+		opacity: 1;
 	}
 	&:-ms-input-placeholder { /* IE 10+ */
 	  	color:$black;
 		font-size: 13px;
 		text-transform: uppercase;
+		opacity: 1;
 	}
 	&:-moz-placeholder { /* Firefox 18- */
 	 	color:$black;
 		font-size: 13px;
 		text-transform: uppercase;
+		opacity: 1;
 	}
 }
 .select2-container--default{
@@ -265,9 +295,17 @@ ul[data-view="days"] > li:hover{
 		content:"";
 		width: 45px;
 		height:1px;
-		background: $main-color;
+		background: $luxor-gold;
 		position: absolute;
 		left:15px;
 		top:calc(50% - 1px);
 	}
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+	color: $black;
+}
+
+div.wpcf7 .ajax-loader {
+	position: absolute;
 }

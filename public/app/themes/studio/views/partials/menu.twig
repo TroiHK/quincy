@@ -9,11 +9,11 @@
 			<span class="nav__button-text"></span>
 		</button>
 
-		<div class="visible-xs phone-local">
+		<div class="visible-custom-xs phone-local">
 			{% if global.phone %}
 				<a href="tel:{{global.phone|replace({' ': ''})}}">{{get_svg_icon('phone', '0 0 21.12 21.06')}}</a>
 	        {% endif %}
-            <a href="#">{{get_svg_icon('local', '0 0 19.82 24.93')}}</a>
+            <a href="{{ global.location_link }}">{{get_svg_icon('local', '0 0 19.82 24.93')}}</a>
 		</div>
 
 		<a href="{{site.url}}" class="logo-text">

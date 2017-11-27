@@ -9,6 +9,14 @@
 		color: $main-color;
 		font-size: 50px;
 		font-weight: 300;
+
+		@include breakpoint(phone) {
+			font-size: 30px;
+
+			~* {
+				font-size: 11px;
+			}
+		}
 	}
 
 	&__item {
@@ -34,9 +42,11 @@
 		}
 
 		&.is-visible & {
-			&__thumb {
-				-webkit-filter: grayscale(0); /* Safari 6.0 - 9.0 */
-				filter: grayscale(0);
+			@include breakpoint(phone) {
+				&__thumb {
+					-webkit-filter: grayscale(0); /* Safari 6.0 - 9.0 */
+					filter: grayscale(0);
+				}
 			}
 		}
 
@@ -45,6 +55,18 @@
 			color: $main-color;
 			font-size: 22px;
 			border-bottom: 1px solid $main-color;
+			margin-bottom: 15px;
+			
+			@include breakpoint(tablet) {
+				margin-bottom: 25px;
+			}
+
+			@include breakpoint(phone) {
+				font-size: 15px;
+				~* {
+					font-size: 11px;
+				}
+			}
 		}
 
 		&__thumb {

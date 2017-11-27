@@ -2,16 +2,16 @@
 	<div class="directions__container">
 		<p class="title">{{ content.title }}</p>
 		<div class="directions__form">
-			<div class="directions__form--container">
-				<div class="form-input">
-					<input type="text" placeholder="{{ content.text_placeholder }}" class="go-address">
-					{% set map_location = global.map_location %}
-					<input type="hidden" class="come-address" value="{{map_location.address}}">
+			<form class="get-dir">
+				<div class="directions__form--container">
+					<div class="form-input">
+						<input type="text" placeholder="{{ content.text_placeholder }}" class="go-address">
+					</div>
+					<div class="form-input line-before">
+						<input  data-address="{{ global.street }}, {{ global.city }}, {{ global.state }}" type="submit" value="{{ content.text_button }}">
+					</div>
 				</div>
-				<div class="form-input line-before">
-					<input type="submit" value="{{ content.text_button }}" class="redirect-submit">
-				</div>
-			</div>
+			</form>
 		</div>
 	</div>
 </div>

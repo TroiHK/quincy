@@ -99,6 +99,25 @@
             "default_value": 0
         },
         {
+            "key": "field_5a1a37e280e04",
+            "label": "Location Link",
+            "name": "location_link",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_5833e7d7c0415",
             "label": "Social",
             "name": "",
@@ -1038,5 +1057,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1511467305
+    "modified": 1511667776
 }

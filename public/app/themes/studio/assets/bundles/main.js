@@ -1,21 +1,13 @@
 (function($) {
-	// Quick Search Bedroom Filter
-	$('#quick-search ul li a').click(function (event) {
-		event.preventDefault();
-		$('#quick-search ul li a.selected').removeClass('selected');
-		$(this).addClass('selected');
-		$('#quick-search--bedroom').val($(this).attr('data-value'));
-	});
-
-	$('#quick-search--submit').click(function () {
-		$('#quick-search').submit();
-	});
 
 	// nav__button
 	$('.nav__button').on('click', function() {
 		$(this).closest('.nav').toggleClass('open');
 		$(this).toggleClass('active');
 	});
+
+	// sightmap
+	// $('.sightmap a').addClass('fancybox').attr({ 'data-type':'iframe', 'data-fancybox' : '', 'data-src' : sightmap_url });
 
 	$(document).ready(function() {
 
@@ -161,14 +153,20 @@
 				$(this).find(".wpcf7-not-valid-tip").hide(400);
 			}, function(){});
 
-			$(".redirect-submit").click(function(e){
-				e.preventDefault();
-				var go = $(".go-address").val();
-				var come = $(".come-address").val();
-				var url = 'https://www.google.com/maps/dir/'+go+'/'+come;
-				if(go){
-					window.open(url, '_blank');
-				}	
+			// get-dir
+			$('.get-dir input[type=submit]').click(function(event) {
+				event.preventDefault();
+				var myDir = $(this).attr('data-address').replace(/[\,\s]+/g, '+');
+				myDir = myDir.replace(/[\+]+/g, '+');
+
+				var yourDir = $(this).closest('form').find('input[type=text]').val().replace(/[\,\s]+/g, '+');
+				// yourDir = yourDir.replace(/[\+]+/g, '+');
+				yourDir = yourDir.replace(/[^\w\s]/gi, '+')
+
+				var win = window.open('https://www.google.com/maps/dir/' + yourDir + '/' + myDir, '_blank');
+				win.focus();
+
+				return false;
 			});
 
 			// floorplan page
@@ -409,18 +407,13 @@
 
 		
 		function showNoResultsMessage($container) {
-			var $noFilters = $('.no-filters-results');
 
 			$container.each(function() {
 				var filteredData = $(this).data('isotope');
-				$(this).next('.filters-orig-message').remove();
+				$(this).next('.filters-orig-message').fadeOut();
 				
 				if (! filteredData.filteredItems.length ) {
-
-					var $cloned = $noFilters.clone();
-					$cloned.removeClass('no-filters-results');
-					$(this).after($cloned);
-					$cloned.fadeIn();
+					$(this).next('.filters-orig-message').fadeIn();
 				}
 			});
 		}
@@ -433,7 +426,7 @@
 			startDate: new Date(),
 			autoclose: true,
 			todayHighlight: true,
-		}).attr('readonly', 'readonly').on("changeDate", function (e) {
+		}).attr('readonly', 'readonly').on("change", function (e) {
 			if ( $('.apartment-date').length ) {
 				$(this).attr('data-reset','');
 				goFilter($(this));
@@ -446,6 +439,22 @@
 		});
 
 		$('.list-available table').stacktable();
+
+		document.addEventListener( 'wpcf7mailsent', function() {
+			$('.contact__page--left .wpcf7').hide();
+		    $('.contact__page--left .content-thanks').show();
+		}, false );
+
+		// Function to get query variable from URL
+		// function getQueryVariable(variable) {
+		// 	var query = window.location.hash;
+		// 	var vars = query.split("&");
+		// 	for (var i=0;i<vars.length;i++) {
+		// 		var pair = vars[i].split("=");
+		// 		if(pair[0] == variable){return pair[1];}
+		// 	}
+		// 	return ''
+		// }
 
 	});
 		

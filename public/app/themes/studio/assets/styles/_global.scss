@@ -5,6 +5,7 @@ html {
         line-height: $base__line-height;
         font-size: $base__font-size;
         font-family: $main-font;
+        color: $black;
     }
 }
 
@@ -185,5 +186,14 @@ a {
         *[data-scroll-image] {
             right: 0;
         }
+    }
+}
+
+// visible-custom-xs
+.visible-custom-xs {
+    display: block;
+
+    @include breakpoint(custom_tablet) {
+        display: none;
     }
 }
