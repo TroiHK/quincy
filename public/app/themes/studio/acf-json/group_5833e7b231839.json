@@ -618,8 +618,8 @@
         },
         {
             "key": "field_5a011ab8adf38",
-            "label": "Menu",
-            "name": "menu_ft",
+            "label": "Shea company",
+            "name": "shea_company",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -630,16 +630,16 @@
                 "id": ""
             },
             "collapsed": "",
-            "min": "",
-            "max": "",
+            "min": 1,
+            "max": 1,
             "layout": "table",
             "button_label": "Add Row",
             "sub_fields": [
                 {
                     "key": "field_5a011ad5adf39",
-                    "label": "Text",
-                    "name": "text",
-                    "type": "text",
+                    "label": "Logo",
+                    "name": "logo",
+                    "type": "image",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -648,11 +648,16 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "return_format": "url",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
                 },
                 {
                     "key": "field_5a011adeadf3a",
@@ -1057,5 +1062,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1511667776
+    "modified": 1511993790
 }

@@ -77,7 +77,8 @@ function master_scripts() {
 		wp_enqueue_script( 'main-script', $url_obj->scriptUrl('main', true), array('jquery'), null, true );
 	} else {
 		wp_enqueue_style( 'main-style', $url_obj->styleUrl('all', true), array(), null );
-		wp_enqueue_script( 'main-script', $url_obj->scriptUrl('all', true), array('jquery'), null, true );
+		wp_enqueue_script( 'main-libs-script', $url_obj->scriptUrl('all', true), array('jquery'), null, true );
+		wp_enqueue_script( 'main-script', $url_obj->scriptUrl('main', true), array('jquery'), null, true );
 	};
 
 }

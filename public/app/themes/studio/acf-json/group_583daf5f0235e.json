@@ -92,7 +92,7 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
+            "placeholder": "xxx xxx xxxx",
             "prepend": "",
             "append": "",
             "maxlength": ""
@@ -158,5 +158,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1481308223
+    "modified": 1511813657
 }

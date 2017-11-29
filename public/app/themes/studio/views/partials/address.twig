@@ -1,6 +1,8 @@
 {{get_svg_icon('logo-white', '0 0 216.33 131.97')}}
 <address>
-    {{global.street}}, {{global.city}}, {{global.state}} {{global.zip}}<br/>
+    <a href="https://www.google.com/maps/dir//{{global.street}}+{{global.city}}+{{global.state}}" target="_blank" style="color: inherit; font-weight: 400;">
+        {{global.street}}, {{global.city}}, {{global.state}} {{global.zip}}
+    </a><br/>
     {% if global.phone %}
         <a href="tel:{{global.phone|replace({' ': ''})}}" title="phone">
             {{global.phone|replace({' ': '.'})}}

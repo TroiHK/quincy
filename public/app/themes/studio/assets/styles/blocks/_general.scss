@@ -112,6 +112,8 @@
 		.block-general__item {
 			&__thumb {
 				background-color: $gray-bg-color;
+				-webkit-filter: grayscale(0); /* Safari 6.0 - 9.0 */
+				filter: grayscale(0);
 
 				img {
 					display: block;
@@ -145,6 +147,14 @@
 
 			p {
 				font-size: 14px;
+			}
+		}
+
+		.block-general__item {
+			&__thumb {
+				background-color: $gray-bg-color;
+				-webkit-filter: grayscale(0); /* Safari 6.0 - 9.0 */
+				filter: grayscale(0);
 			}
 		}
 	}

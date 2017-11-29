@@ -21,9 +21,11 @@
 		ul {
 			list-style: none;
 			padding-left: 10px;
+			padding-right: 10px;
 
 			@media screen and (min-width: 992px) {
 				padding-left: 30px;
+				padding-right: 30px;
 			}
 
 			li {
@@ -102,11 +104,18 @@
 			}
 		}
 
-		a {
+		span {
 			color: $black;
+			font-size: 14px;
+			line-height: 18px;
+			cursor: pointer;
 
-			&:hover {
+			&:hover, &.active {
 				color: $luxor-gold;
+			}
+
+			a {
+				color: inherit;
 			}
 		}
 

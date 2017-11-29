@@ -64,6 +64,9 @@
 			text-align: center;
 			margin-top: 15px;
 		}
+		a:not(:hover) {
+			color: inherit;
+		}
 	}
 
 	@include breakpoint(phone) {

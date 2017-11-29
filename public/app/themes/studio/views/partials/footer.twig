@@ -1,17 +1,21 @@
-{% set menu_ft = global.menu_ft %}
+{% set menu_ft = global.shea_company %}
 {% set icons_link_ft = global.icons_link_ft %}
 {% include "partials/ft-contact.twig" %}
 <footer class="block-ft">
     <div class="container">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <ul class="block-ft__list">
                     {% for item in menu_ft %}
-                        <li><a href="{{item.link}}" title="{{item.text}}" target="_blank">{{item.text}}</a></li>
+                        <li>
+                            <a href="{{item.link}}" target="_blank">
+                                <img src="{{item.logo}}" width="150" alt="shea-company-logo">
+                            </a>
+                        </li>
                     {% endfor %}
                 </ul>
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-9">
                 <div class="list-icons text-right">
                     <span>{{get_svg_icon('icon-1', '0 0 16.4 16.17')}}</span>
                     <span>{{get_svg_icon('icon-2', '0 0 15.72 15.17')}}</span>

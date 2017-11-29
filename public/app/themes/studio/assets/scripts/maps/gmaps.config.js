@@ -105,12 +105,13 @@ var gmaps_config = {
 
                 return '' +
                 '<li>' +
-                    '<a href="#" class="pan-to-marker" data-marker-index="' + index + '">' +
-                        marker.title + '<br/>' +
+                    '<span href="#" class="pan-to-marker" data-marker-index="' + index + '">' + '<strong class="text-uppercase">' +
+                        marker.title + '</strong><br/>' +
                         address + '<br/>' +
                         city + ', ' + state + ' ' + zip + '<br/>' +
                         phone + '<br/>' +
-                    '</a>' +
+                        link +
+                    '</span>' +
                 '</li>';
             }
         }

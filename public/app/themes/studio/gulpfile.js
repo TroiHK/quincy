@@ -147,10 +147,9 @@ gulp.task('scripts_folders', function () {
 })
 
 // Concatenate & Minify JS deploy
-gulp.task('scripts-deploy', function () {
+gulp.task('scripts-min', function () {
 	return gulp.src([
-			paths.bundles + '/libs.js',
-  			paths.bundles + '/main.js'
+			paths.bundles + '/libs.js'
 		])
 		.pipe(concat('all.js'))
 		.pipe(gulp.dest(paths.bundles))
@@ -214,4 +213,4 @@ gulp.task('watch', ['styles-libs', 'styles', 'jslint', 'scripts-libs', 'scripts_
 // Default Task
 gulp.task('default', ['styles-libs', 'styles', 'jslint', 'scripts-libs', 'scripts_folders'])
 
-gulp.task('deploy', ['styles-min', 'scripts-deploy'])
+gulp.task('deploy', ['styles-min', 'scripts-min'])

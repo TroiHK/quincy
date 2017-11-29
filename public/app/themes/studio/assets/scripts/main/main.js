@@ -122,9 +122,9 @@
 						// Add hash (#) to URL when done scrolling (default click behavior)
 						// window.location.hash = hash;
 					});
+					return false;
 				} 	// End if
 
-				return false;
 			});
 
 			// contact page
@@ -445,16 +445,26 @@
 		    $('.contact__page--left .content-thanks').show();
 		}, false );
 
-		// Function to get query variable from URL
-		// function getQueryVariable(variable) {
-		// 	var query = window.location.hash;
-		// 	var vars = query.split("&");
-		// 	for (var i=0;i<vars.length;i++) {
-		// 		var pair = vars[i].split("=");
-		// 		if(pair[0] == variable){return pair[1];}
-		// 	}
-		// 	return ''
-		// }
+		if ( $('body').hasClass('page-template-floorplans') ) {
+
+			// Function to get hash from URL
+			var filter = window.location.hash;
+			if ( filter ) {
+				filter = filter.replace("#.", "");
+
+				var vars = filter.split(".");
+				for (var i=0;i<vars.length;i++) {
+					console.log(vars[i]);
+					n = vars[i].search("bed");
+					console.log(n);
+					if ( n ) {
+						$("#fp-filters--bedrooms").val(vars[i]).trigger('change');
+						return false;
+					}
+				}
+			}
+
+		}
 
 	});
 		

@@ -46,7 +46,7 @@
 			&__detail {
 				text-align: left;
 				left: 30px;
-				width: 100%;
+				right: 0;
 				@include transform(translateY(-50%));
 
 				a {
@@ -208,7 +208,7 @@
 		}
 		&:hover {
 			text-decoration: none;
-			color: $main-color;
+			opacity: 0.35;
 		}
 	}
 }

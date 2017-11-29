@@ -126,6 +126,11 @@
 						display: inline-block;
 						margin-bottom: 0;
 						width: auto;
+						transition: all .3s ease-in-out;
+
+						&:hover {
+							color: $main-color;
+						}
 					}
 					@media screen and (max-width: 767px){
 						margin: 30px auto 0;

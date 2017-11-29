@@ -105,12 +105,13 @@ var gmaps_config = {
 
                 return '' +
                 '<li>' +
-                    '<a href="#" class="pan-to-marker" data-marker-index="' + index + '">' +
-                        marker.title + '<br/>' +
+                    '<span href="#" class="pan-to-marker" data-marker-index="' + index + '">' + '<strong class="text-uppercase">' +
+                        marker.title + '</strong><br/>' +
                         address + '<br/>' +
                         city + ', ' + state + ' ' + zip + '<br/>' +
                         phone + '<br/>' +
-                    '</a>' +
+                        link +
+                    '</span>' +
                 '</li>';
             }
         }
@@ -359,7 +360,7 @@ if (typeof google !== 'undefined' && typeof GMaps !== 'undefined') {
                     show[i] = true;
                 }
 
-                $('#' + gmaps_config.locations_container.id + category + ' a').each(function() {
+                $('#' + gmaps_config.locations_container.id + category + ' span').each(function() {
                     var index = parseInt($(this).attr('data-marker-index'));
                     show[index] = true;
                 });
@@ -434,6 +435,8 @@ if (typeof google !== 'undefined' && typeof GMaps !== 'undefined') {
                 event.preventDefault();
                 var position, lat, lng, $index;
                 $index = $(this).data('marker-index');
+                $(this).closest('.neighborhood-list').find('span').removeClass('active');
+                $(this).addClass('active');
 
                 map.hideInfoWindows();
                 /* Open the infoWindow */

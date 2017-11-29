@@ -155,7 +155,7 @@ if (typeof google !== 'undefined' && typeof GMaps !== 'undefined') {
                     show[i] = true;
                 }
 
-                $('#' + gmaps_config.locations_container.id + category + ' a').each(function() {
+                $('#' + gmaps_config.locations_container.id + category + ' span').each(function() {
                     var index = parseInt($(this).attr('data-marker-index'));
                     show[index] = true;
                 });
@@ -230,6 +230,8 @@ if (typeof google !== 'undefined' && typeof GMaps !== 'undefined') {
                 event.preventDefault();
                 var position, lat, lng, $index;
                 $index = $(this).data('marker-index');
+                $(this).closest('.neighborhood-list').find('span').removeClass('active');
+                $(this).addClass('active');
 
                 map.hideInfoWindows();
                 /* Open the infoWindow */
