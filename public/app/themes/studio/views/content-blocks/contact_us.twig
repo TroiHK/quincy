@@ -22,10 +22,11 @@
 			{% if global.name %}
 			<h3 class="title">{{global.name}}</h3>
 			{% endif %}
-			{% if global.street %}
-				<p>{{global.street}}</p>
-			{% endif %}
-			<p>{{global.city}}, {{global.state}}, {{global.zip}}</p>
+			<p>
+				<a href="https://www.google.com/maps/dir//{{global.street}}+{{global.city}}+{{global.state}}" target="_blank" style="color: inherit; font-weight: 400;">
+			        {{global.street}}<br> {{global.city}}, {{global.state}}, {{global.zip}}
+			    </a>
+			</p>
 			{% if global.phone %}
                 <p class="phone--number"><a href="tel:{{global.phone|replace({' ': ''})}}">{{global.phone|replace({' ': '.'})}}</a></p>
             {% endif %}

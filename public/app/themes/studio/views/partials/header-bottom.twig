@@ -11,7 +11,11 @@
                 {% if chkcontentblock or customlinks %}
                 <ul class="list-default text-uppercase">
                     {% for custom in customlinks %}
-                    <li><a href="{{ custom.link }}" class="scroll-content-block" target="_blank">{{ custom.text }}</a></li>
+                    <li>
+                        <a href="{{ custom.link }}" class="scroll-content-block"{% if custom.target == 'new' %} target="_blank"{% endif %}>
+                            {{ custom.text }}
+                        </a>
+                    </li>
                     {% endfor %}
 
                     {% for content in contentblock %}
@@ -19,19 +23,20 @@
                     {% endfor %}
                 </ul>
                 {% endif %}
-
-                {% for residents in contentblock %}
-                    {% if residents.acf_fc_layout == 'residents' %}
+                
+                {% set customlinksicon = post.get_field('pgs_custom_links_on_banner_icon') %}
+                {% if customlinksicon %}
                     <div class="res-list">
-                        {% for resident in residents.resident_list %}
+                        {% for custom in customlinksicon %}
                         <div class="res-item">
-                            <a target="_blank" href="{{resident.link}}"><img src="{{resident.image.url | resize( 65, 60, 'center') }}" alt=""></a>
-                            <a class="res-title" target="_blank" href="{{resident.link}}">{{resident.label}}</a>
+                            <a href="{{ custom.link }}"{% if custom.target == 'new' %} target="_blank"{% endif %}>
+                                <img src="{{custom.icon.url | resize( 65, 60, 'center') }}" alt="">
+                            </a>
+                            <a class="res-title" target="_blank" href="{{resident.link}}">{{ custom.text }}</a>
                         </div>
                         {% endfor %}
                     </div>
-                    {% endif %}
-                {% endfor %}
+                {% endif %}
             </div>
         </div>
     </div>
