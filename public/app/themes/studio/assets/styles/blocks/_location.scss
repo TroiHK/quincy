@@ -61,7 +61,7 @@
 			overflow: hidden;
 
 			i {
-				@include transition(all 0.3s ease);
+				// @include transition(all 0.3s ease);
 			}
 
 			i[class*="-hover"] {
@@ -120,7 +120,9 @@
 		}
 
 		.is-scroll {
-			position: relative;
+			position: absolute;
+			width: 100%;
+			padding-right: 50px;
 			height: 100%;
 		}
 
@@ -129,7 +131,7 @@
 			top: 45px;
 			left: 0;
 			bottom: 45px;
-			right: 0;
+			right: 50px;
 			overflow: hidden;
 
 			ul {
@@ -154,5 +156,22 @@
 @media screen and (max-width: 767px) {
 	#map-area {
 		height: 300px!important;
+	}
+}
+
+.info_window {
+	font-size: 14px;
+	line-height: 18px;
+	font-family: "WorkSans";
+	font-weight: 400;
+
+	strong {
+		text-transform: uppercase;
+		display: inline-block;
+		margin-top: 10px;
+	}
+
+	a {
+		color: $luxor-gold;
 	}
 }

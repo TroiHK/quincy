@@ -5,7 +5,7 @@
     </a><br/>
     {% if global.phone %}
         <a href="tel:{{global.phone|replace({' ': ''})}}" title="phone">
-            {{global.phone|replace({' ': '.'})}}
+            {{global.phone}}
         </a>
     {% endif %}
 </address>

@@ -1,12 +1,12 @@
 .block-header {
 	position: relative;
 
-	&:before {
+	body:not(.page-template-home) &:before {
 		content: "";
 		position: absolute;
 		width: 100%;
 		height: 100%;
-		background-color: rgba(#000,0.6 );
+		background-color: rgba(#000,0.7 );
 	}
 
 	&__thumb {
@@ -20,6 +20,63 @@
 		@extend %absolute-center;
 		text-align: center;
 		color: $white;
+
+		h1, h1~p {
+			font-weight: $font-weight--light;
+		}
+		.res-list {
+		    overflow: hidden;
+		    margin-top: 50px;
+		    margin-left: -14px;
+		    @media(max-width: 480px){
+			    margin-top: 10px;
+			}
+		    .res-item {
+			    width: 33.33%;
+			    float: left;
+			    text-align: center;
+			    padding: 0 14px;
+			    img {
+				    width: 65px;
+				    height: 60px;
+				    display: block;
+				    margin: 0 auto;
+				    @media(max-width: 768px){
+					    width: 45px;
+				    	height: 40px;
+					}
+				    @media(max-width: 480px){
+					    width: 35px;
+				    	height: 30px;
+					}
+				}
+				a {
+					transition: 0.5s;
+					-webkit-transition: 0.5s;
+					-moz-transition: 0.5s;
+					-ms-transition: 0.5s;
+					&.res-title{
+						border-top: 1px solid #fff;
+						display: block;
+					    padding-top: 15px;
+					    margin-top: 15px;
+					    font-size: 14px;
+					    line-height: 14px;
+					    
+					    @media(max-width: 768px){
+								font-size: 12px;
+						}
+					    @media(max-width: 480px){
+								font-size: 10px;
+						}
+						&:hover{
+					    	opacity: .35;
+					    }
+					}
+				}
+			}
+		}
+		
 	}
 
 	&__logo {
@@ -56,6 +113,31 @@
 				.list-default {
 					margin-top: 50px;
 				}
+
+				h1 {
+					letter-spacing: .1rem;
+				}
+
+				@media (min-width: 1280px) {
+					top: 90px;
+					@include transform(translate(0,0));
+
+					.admin-bar & {
+						top: 122px;
+					}
+
+					h1 {
+						margin-top: -5px;
+					}
+
+					.list-default {
+						margin-top: 90px;
+					}
+
+					.page-template-sightmap & .list-default, .page-template-floorplans & .list-default {
+						margin-top: 50px;
+					}
+				}
 			}
 		}
 	}
@@ -63,7 +145,9 @@
 	&--floorplan {
 		.block-header {
 			&__thumb {
-				max-height: 320px;
+				@include breakpoint(custom_tablet) {
+					max-height: 320px;
+				}
 			}
 		}
 	}
@@ -117,6 +201,12 @@
 		}
 	}
 
+	@include breakpoint(custom_phone) {
+		body:not(.page-template-home) & {
+			display: none;
+		}
+	}
+
 	.title {
 		padding-bottom: 25px;
 		font-size: 11px;
@@ -147,7 +237,11 @@
 			opacity: 0;
 			height: 100%;
 			right: 100%;
-			transition: all .3s ease-in-out;
+			/* The default, as in, you get this without defining anything */
+			transition: .1s;
+			transition-timing-function: ease;
+			/* Also the same as */
+			transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
 			font-size: 11px;
 			line-height: 15px;
 			padding: 10px 20px;
@@ -157,7 +251,8 @@
 			background: $main-color;
 			font-weight: $font-weight--medium;
 			visibility: hidden;
-			@include transform(translate(-50%));
+			z-index: -1;
+			@include transform(translate(50%));
 
 			@include breakpoint(custom_phone) {
 				display: none;
@@ -203,6 +298,11 @@
 		padding: 0 10px 5px;
 		border-bottom: 2px solid $main-color;
 		text-transform: uppercase;
+		transition: .3s;
+		transition-timing-function: ease;
+		/* Also the same as */
+		transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+
 		+a {
 			margin-left: 30px;
 		}
@@ -224,6 +324,17 @@
 		left: 0;
 		top: 50%;
 		@include transform(translate(0%,-50%));
+	}
+
+	@media (min-width: 1280px) {
+		body:not(.page-template-home) & {
+			top: 90px;
+			@include transform(translate(0,0));
+		}
+
+		.admin-bar:not(.page-template-home) & {
+			top: 122px;
+		}
 	}
 
 	@include breakpoint(custom_phone) {
@@ -455,7 +566,7 @@
 	}
 
 	.main-nav {
-		font-size: 11px;
+		font-size: 12px;
 		font-weight: $font-weight--medium;
 		list-style: none;
 		text-transform: uppercase;
@@ -493,6 +604,7 @@
 
 		a {
 			color: $main-text-color;
+			letter-spacing: .3rem;
 			@include transition(all .3s ease-in-out);
 			&:hover {
 				color: $luxor-gold;

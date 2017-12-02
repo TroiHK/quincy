@@ -1,0 +1,85 @@
+.block-life {
+	padding: 10px 0 0;
+
+	@include breakpoint(tablet) {
+		padding: 30px 0;
+	}
+
+	header {
+		text-align: center;
+		margin-bottom: 30px;
+	}
+
+	&__title {
+		color: $main-color;
+		font-size: 50px;
+		font-weight: 300;
+	}
+
+	&__list {
+
+	}
+
+	&__item {
+		position: relative;
+		margin-bottom: 15px;
+		overflow: hidden;
+
+		@include breakpoint(tablet) {
+			margin-bottom: 30px;
+		}
+
+		&:hover & {
+			&__thumb {
+				-webkit-filter: grayscale(0); /* Safari 6.0 - 9.0 */
+				filter: grayscale(0);
+			}
+
+			&__detail {
+				opacity: 1;
+				visibility: visible;
+				bottom: 0;
+			}
+		}
+
+		&.is-visible & {
+			&__thumb {
+				-webkit-filter: grayscale(0); /* Safari 6.0 - 9.0 */
+				filter: grayscale(0);
+			}
+		}
+
+		&__title {
+			font-weight: 500;
+			color: $main-color;
+			font-size: 22px;
+			border-bottom: 1px solid $main-color;
+		}
+
+		&__thumb {
+			-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+			filter: grayscale(100%);
+			@include transition(all 0.3s ease-in-out);
+		}
+
+		&__detail {
+			color: $white;
+			text-align: center;
+			padding: 25px 45px;
+			background-color: rgba($black, 0.7);
+			@include transition(all 0.5s ease-in-out);
+
+			@include breakpoint(tablet) {
+				position: absolute;
+				left: 15px;
+				right: 15px;
+				bottom: -100%;
+				opacity: 0;
+				visibility: hidden;
+			}
+		}
+		img {
+			width: 100%;
+		}
+	}
+}

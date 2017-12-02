@@ -1,14 +1,20 @@
 .block-general {
 	padding: 10px 0 0;
+	font-weight: 300;
 
 	@include breakpoint(tablet) {
 		padding: 30px 0;
+	}
+
+	.page-template-home &, &.block-retail {
+		padding-bottom: 0;
 	}
 
 	&__title {
 		color: $main-color;
 		font-size: 50px;
 		font-weight: 300;
+		letter-spacing: .1rem;
 
 		@include breakpoint(phone) {
 			font-size: 30px;
@@ -56,6 +62,10 @@
 			font-size: 22px;
 			border-bottom: 1px solid $main-color;
 			margin-bottom: 15px;
+
+			~* {
+				font-weight: 400;
+			}
 			
 			@include breakpoint(tablet) {
 				margin-bottom: 25px;
@@ -89,6 +99,9 @@
 				bottom: -100%;
 				opacity: 0;
 				visibility: hidden;
+				.page-template-home & {
+					min-height: 60%;
+				}
 			}
 
 			.website {

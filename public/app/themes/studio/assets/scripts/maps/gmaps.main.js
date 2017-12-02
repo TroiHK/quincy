@@ -21,6 +21,37 @@ if (typeof google !== 'undefined' && typeof GMaps !== 'undefined') {
             });
 
             map.setStyle('map_style');
+
+            var hightlightPath = [
+                [39.740123, -104.990181],
+                [39.740156, -104.998135],
+                [39.740174, -104.998304],
+                [39.740185, -104.998580],
+                [39.742111, -104.999597],
+                [39.743547, -105.000266],
+                [39.745483, -105.000447],
+                [39.753229, -104.990493],
+                [39.750873, -104.987420],
+                [39.748970, -104.987370],
+                [39.740802, -104.987444],
+                [39.740278, -104.988087],
+                [39.740639, -104.988648],
+                [39.740612, -104.989187],
+                [39.740332, -104.989638],
+                [39.740143, -104.990019],
+                [39.740123, -104.990181]
+            ];
+
+            // Hightlight area
+            var pg = map.drawPolygon({
+                paths: hightlightPath,
+                strokeColor: '#a17830',
+                strokeOpacity: 0.3,
+                strokeWeight: 2,
+                fillColor: '#a17830',
+                fillOpacity: 0.2
+            });
+
             /* Properties Markers */
             for (var key in properties) {
                 var property = properties[key];
@@ -278,6 +309,36 @@ if (typeof google !== 'undefined' && typeof GMaps !== 'undefined') {
 
                 map.setStyle('map_style');
 
+                var hightlightPath = [
+                    [39.740123, -104.990181],
+                    [39.740156, -104.998135],
+                    [39.740174, -104.998304],
+                    [39.740185, -104.998580],
+                    [39.742111, -104.999597],
+                    [39.743547, -105.000266],
+                    [39.745483, -105.000447],
+                    [39.753229, -104.990493],
+                    [39.750873, -104.987420],
+                    [39.748970, -104.987370],
+                    [39.740802, -104.987444],
+                    [39.740278, -104.988087],
+                    [39.740639, -104.988648],
+                    [39.740612, -104.989187],
+                    [39.740332, -104.989638],
+                    [39.740143, -104.990019],
+                    [39.740123, -104.990181]
+                ];
+
+                // Hightlight area
+                var pg = map.drawPolygon({
+                    paths: hightlightPath,
+                    strokeColor: '#a17830',
+                    strokeOpacity: 0.3,
+                    strokeWeight: 2,
+                    fillColor: '#a17830',
+                    fillOpacity: 0.2
+                });
+
                 for (var key in properties) {
                     var property = properties[key];
                     map.addMarker({
@@ -320,6 +381,36 @@ if (typeof google !== 'undefined' && typeof GMaps !== 'undefined') {
                 });
 
                 map.setStyle('map_style');
+
+                var hightlightPath = [
+                    [39.740123, -104.990181],
+                    [39.740156, -104.998135],
+                    [39.740174, -104.998304],
+                    [39.740185, -104.998580],
+                    [39.742111, -104.999597],
+                    [39.743547, -105.000266],
+                    [39.745483, -105.000447],
+                    [39.753229, -104.990493],
+                    [39.750873, -104.987420],
+                    [39.748970, -104.987370],
+                    [39.740802, -104.987444],
+                    [39.740278, -104.988087],
+                    [39.740639, -104.988648],
+                    [39.740612, -104.989187],
+                    [39.740332, -104.989638],
+                    [39.740143, -104.990019],
+                    [39.740123, -104.990181]
+                ];
+
+                // Hightlight area
+                var pg = map.drawPolygon({
+                    paths: hightlightPath,
+                    strokeColor: '#a17830',
+                    strokeOpacity: 0.3,
+                    strokeWeight: 2,
+                    fillColor: '#a17830',
+                    fillOpacity: 0.2
+                });
 
                 for (var key in properties) {
                     var property = properties[key];

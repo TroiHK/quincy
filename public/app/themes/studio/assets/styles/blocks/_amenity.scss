@@ -7,11 +7,14 @@
 	}
 
 	&__item {
+		font-weight: 300;
+
 		&__title {
 			color: $main-color;
 			font-weight: 300;
 			font-size: 36px;
 			margin: 0;
+			letter-spacing: .1rem;
 
 			a {
 				color: inherit;

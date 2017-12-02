@@ -10,16 +10,35 @@
 			bottom: 0;
 			width: 20px;
 			height: 1px;
-			top: 10px;
+			top: 12px;
 			background-color: $luxor-gold;
 		}
 
 		a {
 			color: $black;
+			transition: .3s;
+			transition-timing-function: ease;
+			/* Also the same as */
+			transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
 
 			&:hover {
 				opacity: 0.35;
 			}
+		}
+	}
+
+	.block-header__detail & {
+		li {
+			padding-left: 15px;
+
+			&:before {
+				width: 45px;
+				left: -40px;
+			}
+		}
+		a {
+			font-weight: $font-weight--medium;
+			letter-spacing: 0.3rem;
 		}
 	}
 }

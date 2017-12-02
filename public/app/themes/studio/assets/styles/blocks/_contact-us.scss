@@ -127,6 +127,7 @@
 						margin-bottom: 0;
 						width: auto;
 						transition: all .3s ease-in-out;
+						letter-spacing: .3rem;
 
 						&:hover {
 							color: $main-color;
@@ -168,7 +169,7 @@
 		}
 	}
 }
-&.move-in{
+.move-in{
 	position: relative;
 	&:after{
 		content:"";

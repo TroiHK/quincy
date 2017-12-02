@@ -46,7 +46,7 @@ gulp.task('styles', function () {
 	.pipe(sass())
 	.pipe(postcss([lost()]))
 	.pipe(postcss([autoprefixer({
-		browsers: ['last 5 versions']
+		browsers: ['last 10 versions']
 	})]))
 	.pipe(postcss([pxtorem({
 		prop_white_list: [] // Leave Array Blank to transform all px values to rem

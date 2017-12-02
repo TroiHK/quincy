@@ -19,6 +19,19 @@
                     {% endfor %}
                 </ul>
                 {% endif %}
+
+                {% for residents in contentblock %}
+                    {% if residents.acf_fc_layout == 'residents' %}
+                    <div class="res-list">
+                        {% for resident in residents.resident_list %}
+                        <div class="res-item">
+                            <a target="_blank" href="{{resident.link}}"><img src="{{resident.image.url | resize( 65, 60, 'center') }}" alt=""></a>
+                            <a class="res-title" target="_blank" href="{{resident.link}}">{{resident.label}}</a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>

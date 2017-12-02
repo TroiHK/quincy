@@ -7,6 +7,14 @@ html {
         font-family: $main-font;
         color: $black;
     }
+    
+    .admin-bar {
+        padding-top: 46px;
+
+        @media screen and (min-width: 783px) {
+            padding-top: 32px;
+        }
+    }
 }
 
 a img {
@@ -67,6 +75,16 @@ a {
 .flexlayout {
     @include breakpoint(tablet) {
         display: flex;
+
+        .block-ft-contact & > * {
+            position: relative;
+
+            .map-contact {
+                position: absolute;
+                left: 15px;
+                right: 15px;
+            }
+        }
     }
 }
 
@@ -204,4 +222,41 @@ a {
 
 .spacing-200 {
     letter-spacing: 0.2rem;
+}
+
+// .slick-arrow.slick-next
+.slick-arrow.slick-next {
+    display: block;
+    border-radius: 0;
+    i {
+        width: 0;
+        height: 0;
+        font-size: 0;
+        border-left: 10px solid $white;
+        border-top: 11px solid transparent;
+        border-bottom: 11px solid transparent;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -11px;
+        margin-left: -5px;
+    }
+}
+
+.slick-arrow.slick-prev {
+    display: block;
+    border-radius: 0;
+    i {
+        width: 0;
+        height: 0;
+        font-size: 0;
+        border-right: 10px solid $white;
+        border-top: 11px solid transparent;
+        border-bottom: 11px solid transparent;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -11px;
+        margin-left: -5px;
+    }
 }
