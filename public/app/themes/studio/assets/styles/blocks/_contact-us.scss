@@ -228,6 +228,12 @@ input{
 		text-transform: uppercase;
 		opacity: 1;
 	}
+
+	&:focus {
+		+.overlay-focus {
+			z-index: 10;
+		}
+	}
 }
 .select2-container--default{
 	text-transform: uppercase;
@@ -326,4 +332,13 @@ ul[data-view="days"] > li:hover{
 
 div.wpcf7 .ajax-loader {
 	position: absolute;
+}
+
+.overlay-focus {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: -1;
 }

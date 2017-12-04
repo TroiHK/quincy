@@ -8,12 +8,45 @@
 	width: 50px;
 	height: 43px;
 	font-size: 42px;
-	display: flex;
-	justify-content: center;
 	z-index: 1;
 	outline: none;
+	display: block;
+	border-radius: 0;
 
 	&.slick-next {
 		left: 65px;
 	}
+}
+
+// .slick-arrow.slick-next
+.slick-arrow.slick-next {
+    i {
+        width: 0;
+        height: 0;
+        font-size: 0;
+        border-left: 10px solid $white;
+        border-top: 11px solid transparent;
+        border-bottom: 11px solid transparent;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -11px;
+        margin-left: -5px;
+    }
+}
+
+.slick-arrow.slick-prev {
+    i {
+        width: 0;
+        height: 0;
+        font-size: 0;
+        border-right: 10px solid $white;
+        border-top: 11px solid transparent;
+        border-bottom: 11px solid transparent;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -11px;
+        margin-left: -5px;
+    }
 }

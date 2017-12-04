@@ -27,7 +27,7 @@
 
 		h1 {
 			@include breakpoint(phone) {
-				font-size: 30px;
+				font-size: 20px;
 			}
 		}
 
@@ -126,7 +126,13 @@
 				}
 
 				h1 {
-					letter-spacing: .1rem;
+					@include breakpoint(tablet) {
+						letter-spacing: .1rem;
+					}
+					
+					@include breakpoint(phone) {
+						font-weight: 400;
+					}
 				}
 
 				@media (min-width: 1280px) {
@@ -251,12 +257,8 @@
 			position: absolute;
 			opacity: 0;
 			height: 100%;
-			right: 100%;
-			/* The default, as in, you get this without defining anything */
-			transition: .1s;
-			transition-timing-function: ease;
-			/* Also the same as */
-			transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+			right: 20%;
+			transition: right .3s ease-in-out;
 			font-size: 11px;
 			line-height: 15px;
 			padding: 10px 20px;
@@ -267,7 +269,6 @@
 			font-weight: $font-weight--medium;
 			visibility: hidden;
 			z-index: -1;
-			@include transform(translate(50%));
 
 			@include breakpoint(custom_phone) {
 				display: none;
@@ -281,7 +282,7 @@
 				.description {
 					visibility: visible;
 					opacity: 1;
-					@include transform(translate(0%));
+					right: 100%;
 				}
 			}
 

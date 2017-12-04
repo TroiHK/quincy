@@ -11,6 +11,8 @@
 
 	$(document).ready(function() {
 
+		$('.scroll-bar').mCustomScrollbar();
+
 		// Home page
 		if ( $('body').hasClass('page-template-home') ) {
 
@@ -194,8 +196,8 @@
 		        speed: 300,
 		        slidesToShow: 1,
 		        slidesToScroll: 1,
-		        prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa fa-caret-left' aria-hidden='true'></i></button>",
-		        nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-caret-right' aria-hidden='true'></i></button>"
+		        prevArrow:"<button type='button' class='slick-prev'><i class='fa fa-caret-left' aria-hidden='true'></i></button>",
+		        nextArrow:"<button type='button' class='slick-next'><i class='fa fa-caret-right' aria-hidden='true'></i></button>"
 		    });
 
 		    // stacktable
