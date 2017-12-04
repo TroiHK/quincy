@@ -131,6 +131,8 @@
 			$("#datepicker").datepicker({
 				months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 				monthsShort: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+			}).on("change", function (e) {
+				$(this).datepicker('hide');
 			}); 
 
 			$('#apartment-type').select2({
@@ -196,7 +198,27 @@
 		        nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-caret-right' aria-hidden='true'></i></button>"
 		    });
 
-		    // slider scroll
+		    // stacktable
+		    $('.list-available table').stacktable();
+		    $('.stacktable.small-only .apply-row').each(function(){
+				var buttonSelect = $(this).clone();
+				$(this).closest('tr').find('.st-key').append(buttonSelect);
+			});
+			$('.stacktable.small-only .viewlocation-row').each(function(){
+				var buttonView = $(this).clone();
+				$(this).closest('tr').prev().find('.st-val').empty().append(buttonView);
+				$(this).closest('tr').remove();
+			});
+
+		}
+
+	});
+	
+	// loaded
+	$(window).on('load', function(){
+		if ( !$('body').hasClass('page-template-home') ) {
+
+			// slider scroll
 	        if ( $('.is-scroll').length ) {
 	            $('.is-scroll').each(function () {
 	                // scrollSlider
@@ -321,152 +343,152 @@
 	                }
 	            });
 	        }
-		}
 
-		// init Isotope
-		var $grid = $('.residences__container').isotope({
-			itemSelector: '.residences__item',
-			layoutMode: 'fitRows',
-			getSortData: {
-				name: '.name',
-				symbol: '.symbol',
-				number: '.number parseInt',
-				category: '[data-category]',
-				weight: function( itemElem ) {
-					var weight = $( itemElem ).find('.weight').text();
-					return parseFloat( weight.replace( /[\(\)]/g, '') );
+	        // init Isotope
+			var $grid = $('.residences__container').isotope({
+				itemSelector: '.residences__item',
+				layoutMode: 'fitRows',
+				getSortData: {
+					name: '.name',
+					symbol: '.symbol',
+					number: '.number parseInt',
+					category: '[data-category]',
+					weight: function( itemElem ) {
+						var weight = $( itemElem ).find('.weight').text();
+						return parseFloat( weight.replace( /[\(\)]/g, '') );
+					}
 				}
-			}
-		});
+			});
 
-		function goFilter($this) {
+			// filter
+			function goFilter($this) {
 
-			var filter = '';
-			$('.residences__filters select,.residences__filters input').each(function() {
+				var filter = '';
+				$('.residences__filters select,.residences__filters input').each(function() {
 
-				var value = $(this).val();
-				if ($(this).attr('data-reset')) {
-					value = '';
-				}
-				var bed = $(this).attr('filter-bed');
+					var value = $(this).val();
+					if ($(this).attr('data-reset')) {
+						value = '';
+					}
+					var bed = $(this).attr('filter-bed');
 
-				if ( $(this).hasClass('datepicker') ) {
+					if ( $(this).hasClass('datepicker') ) {
 
-					if (value) {
-						var filtered_date = value.replace(/\//g, '-');
-						filter += ('.date-' + filtered_date);
+						if (value) {
+							var filtered_date = value.replace(/\//g, '-');
+							filter += ('.date-' + filtered_date);
 
-						dateFilter(filtered_date);
+							dateFilter(filtered_date);
+						}
+
+					} else {
+						if (value) {
+
+							filter += ('.' + value);
+						}	
+						if (bed) {
+
+							filter += ('.' + bed);
+						}				
 					}
 
+				});
+
+				if (filter) {
+					window.location = "#" + filter;
 				} else {
-					if (value) {
-
-						filter += ('.' + value);
-					}	
-					if (bed) {
-
-						filter += ('.' + bed);
-					}				
+					history.pushState("", document.title, window.location.pathname);
 				}
 
-			});
+				filter = filter ? filter : '*';
 
-			if (filter) {
-				window.location = "#" + filter;
-			} else {
-				history.pushState("", document.title, window.location.pathname);
+				$grid.isotope({ filter: filter });
+				showNoResultsMessage($grid);
+
 			}
 
-			filter = filter ? filter : '*';
+			function dateFilter(filtered_date) {
 
-			$grid.isotope({ filter: filter });
-			showNoResultsMessage($grid);
+				var parts_filtered = filtered_date.split('-');
+				var filtered_date_obj = new Date( parts_filtered[2], parseInt(parts_filtered[0]) - 1, parts_filtered[1] );
 
-		}
+				$('.residences__container .residences__item').each(function() {
 
-		function dateFilter(filtered_date) {
+					var parts = $(this).attr('data-date').split('-');
+					var item_date = new Date( parts[2], parseInt(parts[0]) - 1, parts[1] );
 
-			var parts_filtered = filtered_date.split('-');
-			var filtered_date_obj = new Date( parts_filtered[2], parseInt(parts_filtered[0]) - 1, parts_filtered[1] );
+					if (item_date.getTime() <= filtered_date_obj.getTime()) {
 
-			$('.residences__container .residences__item').each(function() {
+						$(this).addClass('date-' + filtered_date);
 
-				var parts = $(this).attr('data-date').split('-');
-				var item_date = new Date( parts[2], parseInt(parts[0]) - 1, parts[1] );
+					}
+				});
 
-				if (item_date.getTime() <= filtered_date_obj.getTime()) {
+				$('.residences__container .residences__item.now').addClass('date-' + filtered_date);
+			}
 
-					$(this).addClass('date-' + filtered_date);
+			
+			function showNoResultsMessage($container) {
 
-				}
-			});
+				$container.each(function() {
+					var filteredData = $(this).data('isotope');
+					$(this).next('.filters-orig-message').fadeOut();
+					
+					if (! filteredData.filteredItems.length ) {
+						$(this).next('.filters-orig-message').fadeIn();
+					}
+				});
+			}
 
-			$('.residences__container .residences__item.now').addClass('date-' + filtered_date);
-		}
-
-		
-		function showNoResultsMessage($container) {
-
-			$container.each(function() {
-				var filteredData = $(this).data('isotope');
-				$(this).next('.filters-orig-message').fadeOut();
-				
-				if (! filteredData.filteredItems.length ) {
-					$(this).next('.filters-orig-message').fadeIn();
-				}
-			});
-		}
-
-		$('.residences__filters select').on('change', function() {
-			goFilter($(this));
-		});
-		
-		$('.datepicker').datepicker({
-			startDate: new Date(),
-			autoclose: true,
-			todayHighlight: true,
-		}).attr('readonly', 'readonly').on("change", function (e) {
-			if ( $('.apartment-date').length ) {
-				$(this).attr('data-reset','');
+			$('.residences__filters select').on('change', function() {
 				goFilter($(this));
-			}
-		});
+			});
+			
+			$('.datepicker').datepicker({
+				startDate: new Date(),
+				autoclose: true,
+				todayHighlight: true,
+			}).attr('readonly', 'readonly').on("change", function (e) {
+				$(this).datepicker('hide');
+			
+				if ( $('.apartment-date').length ) {
+					$(this).attr('data-reset','');
+					goFilter($(this));
+				}
+			});
 
-		$( ".datepicker" ).click(function(){
-			$(this).attr('data-reset','reset-date').val('');
-			goFilter($(this));
-		});
+			$( ".datepicker" ).click(function(){
+				$(this).attr('data-reset','reset-date').val('');
+				goFilter($(this));
+			});
 
-		$('.list-available table').stacktable();
+			if ( $('body').hasClass('page-template-floorplans') ) {
 
-		document.addEventListener( 'wpcf7mailsent', function() {
-			$('.contact__page--left .wpcf7').hide();
-		    $('.contact__page--left .content-thanks').show();
-		}, false );
+				// Function to get hash from URL
+				var filter = window.location.hash;
+				if ( filter ) {
+					filter = filter.replace("#.", "");
 
-		if ( $('body').hasClass('page-template-floorplans') ) {
-
-			// Function to get hash from URL
-			var filter = window.location.hash;
-			if ( filter ) {
-				filter = filter.replace("#.", "");
-
-				var vars = filter.split(".");
-				for (var i=0;i<vars.length;i++) {
-					console.log(vars[i]);
-					n = vars[i].search("bed");
-					console.log(n);
-					if ( n ) {
-						$("#fp-filters--bedrooms").val(vars[i]).trigger('change');
-						return false;
+					var vars = filter.split(".");
+					for (var i=0;i<vars.length;i++) {
+						console.log(vars[i]);
+						n = vars[i].search("bed");
+						console.log(n);
+						if ( n ) {
+							$("#fp-filters--bedrooms").val(vars[i]).trigger('change');
+							return false;
+						}
 					}
 				}
+
 			}
 
 		}
-
-	});
+ 	});
 		
+	document.addEventListener( 'wpcf7mailsent', function() {
+		$('.contact__page--left .wpcf7').hide();
+	    $('.contact__page--left .content-thanks').show();
+	}, false );
 
 })(jQuery);

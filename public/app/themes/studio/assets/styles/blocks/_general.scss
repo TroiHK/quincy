@@ -10,6 +10,12 @@
 		padding-bottom: 0;
 	}
 
+	header {
+		@include breakpoint(phone) {
+			text-align: center;
+		}
+	}
+
 	&__title {
 		color: $main-color;
 		font-size: 50px;
@@ -156,6 +162,10 @@
 		header {
 			.block-general__title {
 				font-size: 36px;
+
+				@include breakpoint(phone) {
+					font-size: 30px;
+				}
 			}
 
 			p {

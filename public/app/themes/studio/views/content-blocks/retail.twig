@@ -3,7 +3,9 @@
 	<div class="row">
 		{% for company in content.company %}
 		<div class="block-general__item col-sm-4">
+			{% if company.link|trim != '#' and company.link|trim != '' %}
 			<a href="{{ company.link }}" target="_blank">
+			{% endif %}
 				<div class="block-general__item__thumb">
 					<img src="{{ Image(company.logo).src|resize(360, 360) }}" alt="{{ company.name }}" class="w-100">
 				</div>
@@ -16,7 +18,9 @@
 						<br><br><span class="description">{{ company.description }}</span>
 					</p>
 				</div>
+			{% if company.link|trim != '#' and company.link|trim != '' %}
 			</a>
+			{% endif %}
 		</div>
 		{% endfor %}
 	</div>

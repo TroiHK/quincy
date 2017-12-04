@@ -58,14 +58,18 @@
 					<div class="row">
 						{% for item in local.area %}
 						<div class="block-general__item col-sm-6">
+							{% if item.link|trim != '#' and item.link|trim != '' %}
 							<a href="{{ item.link }}">
+							{% endif %}
 								<div class="block-general__item__thumb">
 									<img src="{{Image(item.image).src|resize(750, 430)}}" class="w-100">
 								</div>
 								<div class="block-general__item__detail">
 									<p>{{ item.description }}</p>
 								</div>
+							{% if item.link|trim != '#' and item.link|trim != '' %}
 							</a>
+							{% endif %}
 						</div>
 						{% endfor %}
 					</div>

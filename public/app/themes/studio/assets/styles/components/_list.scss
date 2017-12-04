@@ -35,10 +35,21 @@
 				width: 45px;
 				left: -40px;
 			}
+
+			+li {
+				@include breakpoint(tablet) {
+					margin-top: 10px;
+				}
+			}
 		}
 		a {
 			font-weight: $font-weight--medium;
 			letter-spacing: 0.3rem;
+
+			@include breakpoint(phone) {
+				font-size: 14px;
+				letter-spacing: .1rem;
+			}
 		}
 	}
 }

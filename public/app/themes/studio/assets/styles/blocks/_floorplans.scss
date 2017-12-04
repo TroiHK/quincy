@@ -28,6 +28,10 @@
 						right:55px;
 					}
 				}
+
+				.apartment-date {
+					height: 48px;
+				}
 			}
 		}
 	}
@@ -162,6 +166,11 @@
 		display: inline-block;
 		position: relative;
 		transition:all .5s ease;
+
+		@include breakpoint(phone) {
+			font-size: 30px;
+			padding-top: 30px;
+		}
 
 		&:before{
 			content:"";

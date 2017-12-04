@@ -24,6 +24,13 @@
 		h1, h1~p {
 			font-weight: $font-weight--light;
 		}
+
+		h1 {
+			@include breakpoint(phone) {
+				font-size: 30px;
+			}
+		}
+
 		.res-list {
 		    overflow: hidden;
 		    margin-top: 50px;
@@ -112,6 +119,10 @@
 
 				.list-default {
 					margin-top: 50px;
+
+					@include breakpoint(phone) {
+						margin-top: 30px;
+					}
 				}
 
 				h1 {
@@ -137,6 +148,10 @@
 					.page-template-sightmap & .list-default, .page-template-floorplans & .list-default {
 						margin-top: 50px;
 					}
+				}
+
+				@include breakpoint(phone) {
+					left: 0px;
 				}
 			}
 		}
@@ -448,6 +463,7 @@
 		    &:after {
 				content: "MENU";
 				transition: all .3s ease-in-out;
+				letter-spacing: .3rem;
 		    }
 
 		    @include breakpoint(custom_phone) {

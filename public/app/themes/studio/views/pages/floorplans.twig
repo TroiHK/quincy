@@ -102,7 +102,7 @@
 
 					<div id="fp{{ floorplan.id }}" class="residences__item {{ floorplan.bedroomcount matches '/^[-+]?[0-9]*\\.?[0-9]+$/' ? floorplan.bedroomcount ~ 'bed' : floorplan.bedroomcount }} {{ priceRange ? 'price-' ~ priceRange : '' }} {{ move_in_date ? 'has-date date-' ~ move_in_date : '' }} {{ isNow ? 'now' : '' }}" data-date="{{ move_in_date ? move_in_date : '' }}">
 						<div class="residences__item--image">
-							<img src="{{ Image(floorplan.floorplan_image).src|resize(170) }}" alt="{{ floorplan.name }}" class="img-responsive" />
+							<img src="{{ Image(floorplan.floorplan_image).src|resize(600) }}" alt="{{ floorplan.name }}" class="w-100" />
 						</div>
 
 						<div class="residences__item--main">

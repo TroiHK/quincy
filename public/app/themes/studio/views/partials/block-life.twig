@@ -16,7 +16,9 @@
         <div class="row block-general__list">
             {% for item in l_posts %}
             <div class="block-general__item col-sm-6">
+                {% if item.link|trim != '#' and item.link|trim != '' %}
                 <a href="{{item.link}}">
+                {% endif %}
                     <div class="block-general__item__thumb">
                         <img src="{{Image(item.image).src|resize(620, 415)}}" alt="{{Image(item.image).title}}" class="w-100">
                     </div>
@@ -24,7 +26,9 @@
                         <p class="block-general__item__title">{{item.title}}</p>
                         <p>{{item.description}}</p>
                     </div>
+                {% if item.link|trim != '#' and item.link|trim != '' %}
                 </a>
+                {% endif %}
             </div>
             {% endfor %}
         </div>

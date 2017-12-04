@@ -120,8 +120,15 @@
 		}
 	}
 
-	@include breakpoint(tablet) {
-
+	table.small-only tr {
+		td {
+			text-align: center;
+		}
+		.st-head-row:not(.st-head-row-main) {
+			color: $white;
+			background: $luxor-gold;
+			border-top: 2px solid $white;
+		}
 	}
 }
 
@@ -129,5 +136,11 @@
 	margin-bottom: 30px;
 	@include breakpoint(tablet) {
 		margin-bottom: 50px;
+	}
+
+	iframe {
+		@media (max-width: 991px) {
+			border: 1px solid $black;
+		}
 	}
 }
