@@ -68,6 +68,7 @@ gulp.task('styles-libs', function () {
   		paths.vendor + '/select2/dist/css/select2.css',
   		paths.vendor + '/datepicker-master/dist/datepicker.css',
   		paths.vendor + '/stacktable.js/stacktable.css',
+  		paths.vendor + '/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css',
   	])
   	.pipe(concat('libs.css'))
 	.pipe(gulp.dest(paths.bundles))
@@ -123,6 +124,7 @@ gulp.task('scripts-libs', function () {
 			paths.vendor + '/masonry/dist/masonry.pkgd.min.js',
 			paths.vendor + '/isotope/dist/isotope.pkgd.min.js',
 			paths.vendor + '/stacktable.js/stacktable.js',
+			paths.vendor + '/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js',
 			paths.vendor + '/lodash/dist/lodash.js'
 		]) 
 		.pipe(concat('libs.js'))
